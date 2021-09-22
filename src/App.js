@@ -1,23 +1,37 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
+import { Route } from 'react-router-dom';
+import HomeView from './components/HomeView';
+import ProjectView from './components/ProjectView';
+import User from './components/User';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <a href="/">Data Collective</a>
       </header>
+      <main>
+        <Route path="/" exact component={HomeView} />
+        <Route
+          path="projects/:id"
+          exact
+          render={(routerProps) =>
+            <ProjectView
+              id={routerProps.match.params.id}
+            />
+          }
+          />
+          <Route
+          path="citizens/:id"
+          exact
+          render={(routerProps) =>
+            <User
+              id={routerProps.match.params.id}
+            />
+          }
+          />
+      </main>
     </div>
   );
 }
