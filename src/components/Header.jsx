@@ -1,11 +1,11 @@
 import React from 'react';
 
-const ProjectView = () => {
+const Header = () => {
     return (
         <div>
-            ProjectView
+            Header
         </div>
     );
 };
 
-export default ProjectView;
+export default Header;
