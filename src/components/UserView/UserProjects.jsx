@@ -1,9 +1,10 @@
 import React from 'react';
+import ProjectCard from '../HomeView/ProjectCard';
 
-const UserProjects = () => {
+const UserProjects = ({projects}) => {
     return (
-        <div>
-            UserProjects
+        <div className='UserProjects'>
+            {projects.map(project => <ProjectCard key={project.id} p={project} />)}
         </div>
     );
 };
