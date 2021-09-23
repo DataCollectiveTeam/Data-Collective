@@ -1,7 +1,6 @@
 .HomeView {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
 }
 
 .ProjectCard {
@@ -9,9 +8,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-decoration: none;
+    color: black;
+}
+
+.card {
+    border: 2px solid black;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 1em;
+    box-shadow: 0 1em 1em rgb(130, 130, 130);
+    height: 16em;
 }
 
 .ProjectCard img {
-    width: 50rem;
+    max-width: 10em;
     height: auto;
 }
