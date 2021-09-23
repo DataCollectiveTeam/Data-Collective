@@ -3,7 +3,7 @@ import ProjectCard from './ProjectCard';
 import axios from 'axios';
 import './HomeView.css';
 
-const HomeView = () => {
+const HomeView = ({logInModal}) => {
 
     const [projects, setProjects] = useState([]);
 
@@ -14,7 +14,7 @@ const HomeView = () => {
             setProjects(res.data);
             })
           .catch(console.error);
-    }, []);
+    }, [logInModal]);
 
     if (projects){
         return (
