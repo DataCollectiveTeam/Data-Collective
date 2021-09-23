@@ -1,0 +1,21 @@
+.Header {
+    background-color: gray;
+    top: 0;
+    left: 0;
+    margin-top: 0em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+}
+
+.home-link {
+    text-decoration: none;
+    color: white;
+}
+
+.user-interaction {
+    border: 1px solid black;
+    margin: 1em;
+}

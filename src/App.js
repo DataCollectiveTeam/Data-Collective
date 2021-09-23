@@ -1,18 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import './App.css';
 import { Route } from 'react-router-dom';
 import HomeView from './components/HomeView/HomeView';
 import ProjectView from './components/ProjectView/ProjectView';
 import User from './components/UserView/User';
+import Header from "./components/Header";
 
 function App() {
+
+  const [logInModal, setLogInModal] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <a href="/">Data Collective</a>
-      </header>
+      <Header setLogInModal={setLogInModal} />
       <main>
-        <Route path="/" exact component={HomeView} />
+        <Route path="/" 
+          exact 
+          render={() => 
+            <HomeView 
+              logInModal={logInModal}
+            />
+          }
+         />
         <Route
           path="/projects/:id"
           exact
