@@ -7,14 +7,20 @@ import User from './components/UserView/User';
 import Header from "./components/Header";
 import LogInModal from './components/Modals/LogInModal.jsx'
 import NewProjectModal from "./components/Modals/NewProjectModal";
+import { DataContext } from "./DataContext";
 
 function App() {
 
   const [logInModal, setLogInModal] = useState(false);
   const [newProjectModal, setNewProjectModal] = useState(false);
+  const [thisUser, setThisUser] = useState(null);
 
   return (
     <div className="App">
+      <DataContext.Provider value={{
+        thisUser, 
+        setThisUser
+      }}>
       {(logInModal === true) && 
         <LogInModal setLogInModal={setLogInModal}/>
       }
@@ -51,6 +57,7 @@ function App() {
           }
           />
       </main>
+      </DataContext.Provider>
     </div>
   );
 }
