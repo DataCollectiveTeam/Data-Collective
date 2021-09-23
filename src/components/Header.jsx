@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.css';
 
-const Header = ({setLogInModal}) => {
+const Header = ({setLogInModal, setNewProjectModal}) => {
     return (
         <div className='Header'>
             <div className='site-logo'>
@@ -9,7 +9,7 @@ const Header = ({setLogInModal}) => {
             </div>
             <div className='user-interaction'>
                 <button type='button' onClick={() => setLogInModal(true)}>log in</button>
-                <button type='button'>new project</button>
+                <button type='button' onClick={() => setNewProjectModal(true)}>new project</button>
                 <button type='button'>new user</button>
             </div>
         </div>

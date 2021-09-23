@@ -6,17 +6,25 @@ import ProjectView from './components/ProjectView/ProjectView';
 import User from './components/UserView/User';
 import Header from "./components/Header";
 import LogInModal from './components/Modals/LogInModal.jsx'
+import NewProjectModal from "./components/Modals/NewProjectModal";
 
 function App() {
 
   const [logInModal, setLogInModal] = useState(false);
+  const [newProjectModal, setNewProjectModal] = useState(false);
 
   return (
     <div className="App">
       {(logInModal === true) && 
         <LogInModal setLogInModal={setLogInModal}/>
       }
-      <Header setLogInModal={setLogInModal} />
+      {(newProjectModal === true) && 
+        <NewProjectModal setNewProjectModal={setNewProjectModal} />
+      }
+      <Header 
+        setLogInModal={setLogInModal} 
+        setNewProjectModal={setNewProjectModal}
+      />
       <main>
         <Route path="/" 
           exact 
