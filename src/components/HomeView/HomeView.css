@@ -1,0 +1,17 @@
+.HomeView {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ProjectCard {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ProjectCard img {
+    width: 50rem;
+    height: auto;
+}

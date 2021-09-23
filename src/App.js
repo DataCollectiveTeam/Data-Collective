@@ -1,9 +1,9 @@
 import React from "react";
 import './App.css';
 import { Route } from 'react-router-dom';
-import HomeView from './components/HomeView';
-import ProjectView from './components/ProjectView';
-import User from './components/User';
+import HomeView from './components/HomeView/HomeView';
+import ProjectView from './components/ProjectView/ProjectView';
+import User from './components/UserView/User';
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
       <main>
         <Route path="/" exact component={HomeView} />
         <Route
-          path="projects/:id"
+          path="/projects/:id"
           exact
           render={(routerProps) =>
             <ProjectView
@@ -23,7 +23,7 @@ function App() {
           }
           />
           <Route
-          path="citizens/:id"
+          path="/citizens/:id"
           exact
           render={(routerProps) =>
             <User

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProjectCard from './ProjectCard';
 import axios from 'axios';
+import './HomeView.css';
 
 const HomeView = () => {
 
@@ -20,7 +21,7 @@ const HomeView = () => {
             <div className="HomeView">
                 {projects.map((p) => {
                         return <ProjectCard
-                            key={p._id} p={p} 
+                            key={p.id} p={p} 
                         />
                     })}
             </div>
