@@ -12,25 +12,40 @@ const User = ({id}) => {
 
     useEffect(() => {
         const url = `http://localhost:8000/citizens/${id}`;
-        const projectsUrl = 'http://localhost:8000/projects'
-        axios.get(url)
-          .then(res => {
-                setUser(res.data);
-            })
-          .catch(console.error);
-        axios.get(projectsUrl)
-            .then(res => {
-                let projectsCreated = res.data.filter(proj => proj.creator.toString() === id)
-                if (projectsCreated.length > 0) {
-                    setUserProjects(projectsCreated)
-                }
-                let projectsContributed = res.data.filter(proj => (proj.contributor_list).some(contributor => contributor.toString() === id))
-                if (projectsContributed.length > 0) {
-                    setUserContributions(projectsContributed)
-                }
-            })
-            .catch(console.error)
+        const aUrl = `http://localhost:8000/alist/${id}`;
+        const cUrl = `http://localhost:8000/contributions/${id}`;
+
+        getUser(url);
+        getAList(aUrl);
+        getContributions(cUrl);
+
     }, [id]);
+
+    function getUser(url){
+        axios.get(url)
+        .then(res => {
+            setUser(res.data);
+        })
+        .catch(console.error);
+    }
+
+    function getAList(url){
+        axios.get(url)
+        .then(res => {
+            setUserProjects(res.data);
+            console.log(res.data)
+        })
+        .catch(console.error);
+    }
+
+    function getContributions(url){
+        axios.get(url)
+        .then(res => {
+            setUserContributions(res.data);
+            console.log(res.data)
+        })
+        .catch(console.error);
+    }
 
     if(user){
         return (
