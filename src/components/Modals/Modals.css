@@ -1,0 +1,27 @@
+.modal-background {
+    background-color: rgba(62, 62, 62, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+    overflow: auto;
+
+    text-align: center;
+    
+}
+
+.modal-textbox {
+    background-color: white;
+    border: 2px solid black;
+    box-shadow: 0rem 0rem 2rem rgb(130, 130, 130);
+    width: 20em;
+    height: 20em;
+    border-radius: 1em;
+
+    margin: 10rem auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
