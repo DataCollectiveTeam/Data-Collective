@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Modals.css'
+import axios from 'axios';
+import { DataContext } from '../../DataContext';
 
 function LogInModal({setLogInModal}) {
+
+    const {thisUser, setThisUser } = useContext(DataContext);
 
     const defaultLogIn = {username: '', password: ''}
 
@@ -13,6 +17,11 @@ function LogInModal({setLogInModal}) {
 
     const handleSubmit = () => {
         console.log(logInState)
+        const url = `https://localhost:8000/citizens/login/${logInState.username}/`;
+        axios.get(url)
+            .then(res => console.log(res))
+            .catch(console.error);
+
     }
 
     return (
