@@ -5,6 +5,7 @@ import HomeView from './components/HomeView/HomeView';
 import ProjectView from './components/ProjectView/ProjectView';
 import User from './components/UserView/User';
 import Header from "./components/Header";
+import LogInModal from './components/Modals/LogInModal.jsx'
 
 function App() {
 
@@ -12,14 +13,15 @@ function App() {
 
   return (
     <div className="App">
+      {(logInModal === true) && 
+        <LogInModal setLogInModal={setLogInModal}/>
+      }
       <Header setLogInModal={setLogInModal} />
       <main>
         <Route path="/" 
           exact 
           render={() => 
-            <HomeView 
-              logInModal={logInModal}
-            />
+            <HomeView />
           }
          />
         <Route
