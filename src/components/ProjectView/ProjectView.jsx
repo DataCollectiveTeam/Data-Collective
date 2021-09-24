@@ -2,6 +2,7 @@ import React, { useState,useEffect } from "react";
 import ProjectDetails from './ProjectDetails';
 import ProjectHeader from './ProjectHeader';
 import axios from "axios";
+import AdminPanel from "./AdminPanel";
 
 const ProjectView = ({id}) => {
 
@@ -21,6 +22,7 @@ const ProjectView = ({id}) => {
             <div className="ProjectView">
                 <ProjectHeader p={project}/>
                 <ProjectDetails p={project}/>
+                <AdminPanel p={project}/>
             </div>
           );
     } else {
