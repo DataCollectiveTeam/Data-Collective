@@ -4,7 +4,6 @@ const ProjectDetails = ({p}) => {
     return (
         <div className="Project Details">
                 <div className="card-image">
-                    <img src={p.img} alt={p.name} />
                 </div>
                 <div className="card-body">
                     <p>Creator: {p.creator}</p>
