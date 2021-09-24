@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect } from 'react';
 import './App.css';
 import { Route } from 'react-router-dom';
 import HomeView from './components/HomeView/HomeView';
@@ -14,7 +14,22 @@ function App() {
   const [logInModal, setLogInModal] = useState(false);
   const [newProjectModal, setNewProjectModal] = useState(false);
   const [thisUser, setThisUser] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+    //check whether there is a user in localstorage
+
+    useEffect(() => {
+      const sessionName = localStorage.getItem("name");
+      const sessionID = localStorage.getItem("id");
+      if (sessionName && sessionID) {
+        setThisUser({...thisUser, name: sessionName, id: sessionID});
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+    }, []);
+
+    
   return (
     <div className="App">
       <DataContext.Provider value={{
@@ -30,6 +45,8 @@ function App() {
       <Header 
         setLogInModal={setLogInModal} 
         setNewProjectModal={setNewProjectModal}
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
       />
       <main>
         <Route path="/" 
