@@ -17,13 +17,22 @@ function LogInModal({setLogInModal}) {
 
     const handleSubmit = () => {
         console.log(logInState)
-        const url = `http://localhost:8000/citizens/login/${logInState.username}`;
+        const url = `http://localhost:8000/citizens/login/${logInState.username}`
 
         axios.get(url)
-            .then(res => setThisUser(res.data[0]))
-            .catch(console.error);
-        
-        console.log(thisUser)
+            .then(res => {
+                if (res.data){
+                    //if login succeeeds, set user state and localStorage user
+                    setThisUser(res.data[0])
+                    localStorage.setItem('name', res.data[0].name)
+                    localStorage.setItem('id', res.data[0].id)
+                    console.log(res.data[0])
+                }
+                else{
+                    //if login attempt fails, show error state
+                    console.log('login failed')
+                }
+            })
     }
 
     return (

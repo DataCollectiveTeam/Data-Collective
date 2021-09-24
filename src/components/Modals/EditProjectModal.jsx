@@ -16,6 +16,7 @@ const EditProjectModal = ({p, setShowEditModal}) => {
     const [editedProject, setEditedProject] = useState(defaultEditedProject);
 
     const handleChange = (e) => {
+        console.log(thisUser)
         setEditedProject({...editedProject, [e.target.id]: e.target.value})
     }
 
