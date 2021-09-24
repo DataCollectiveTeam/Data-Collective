@@ -1,12 +1,17 @@
-import React, { useState,useEffect } from "react";
+import React, { useState,useEffect, useContext } from "react";
 import ProjectDetails from './ProjectDetails';
 import ProjectHeader from './ProjectHeader';
 import axios from "axios";
+import { DataContext } from "../../DataContext";
+import NewFormModal from "../Modals/NewFormModal";
 import AdminPanel from "./AdminPanel";
 
 const ProjectView = ({id}) => {
 
+    const {thisUser} = useContext(DataContext);
+
     const [project, setProject] = useState(null);
+    const [showNewForm, setShowNewForm] = useState(false);
 
     useEffect(() => {
         const url = `http://localhost:8000/projects/${id}`;
@@ -20,8 +25,12 @@ const ProjectView = ({id}) => {
     if(project){
         return (
             <div className="ProjectView">
+                {(showNewForm === true) && 
+                    <NewFormModal setShowNewForm={setShowNewForm} thisProject={id} />
+                }
                 <ProjectHeader p={project}/>
                 <ProjectDetails p={project}/>
+                <button type='button' onClick={() => setShowNewForm(true)} >add new form</button> 
                 <AdminPanel p={project}/>
             </div>
           );
