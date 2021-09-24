@@ -5,6 +5,7 @@ import axios from "axios";
 import { DataContext } from "../../DataContext";
 import NewFormModal from "../Modals/NewFormModal";
 import AdminPanel from "./AdminPanel";
+import './ProjectView.css';
 
 const ProjectView = ({id}) => {
 
