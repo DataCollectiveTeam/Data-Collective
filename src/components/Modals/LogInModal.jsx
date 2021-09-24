@@ -19,8 +19,10 @@ function LogInModal({setLogInModal}) {
         console.log(logInState)
         const url = `http://localhost:8000/citizens/login/${logInState.username}`;
         axios.get(url)
-            .then(res => setThisUser(res.data))
+            .then(res => setThisUser(res.data[0]))
             .catch(console.error);
+        
+        console.log(thisUser)
     }
 
     return (

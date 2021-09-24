@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
+import { DataContext } from '../../DataContext';
 
 function NewProjectModal({setNewProjectModal}) {
+
+    const { thisUser } = useContext(DataContext);
 
     const defaultNewProject = {
         name: '',
@@ -17,7 +20,17 @@ function NewProjectModal({setNewProjectModal}) {
     }
 
     const handleSubmit = () => {
-        console.log(newProject)
+        let newProjectObj = {
+            ...newProject,
+            creator: thisUser.id,
+            admin_list: [thisUser.id],
+            contributor_list: [thisUser.id]
+        }
+
+        const url = 'http://localhost:8000/projects/'
+        axios.post(url, newProjectObj)
+            .then(res => console.log(res))
+            .catch(console.error);
     }
 
     return (
