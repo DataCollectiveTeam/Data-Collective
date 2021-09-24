@@ -5,32 +5,33 @@ import { DataContext } from '../../DataContext';
 
 function LogInModal({setLogInModal}) {
 
-    const {thisUser, setThisUser } = useContext(DataContext);
+    const { setThisUser } = useContext(DataContext);
 
-    const defaultLogIn = {username: '', password: ''}
+    const defaultForm = {username: '', password: ''}
 
-    const [logInState, setLogInState] = useState(defaultLogIn);
+    const [formState, setFormState] = useState(defaultForm)
+    const [errorState, setErrorState] = useState(false)
 
     const handleChange = (e) => {
-        setLogInState({...logInState, [e.target.id]: e.target.value})
+        setFormState({...formState, [e.target.id]: e.target.value})
     }
 
     const handleSubmit = () => {
-        console.log(logInState)
-        const url = `http://localhost:8000/citizens/login/${logInState.username}`
+        const url = `http://localhost:8000/citizens/login/${formState.username}`
 
         axios.get(url)
             .then(res => {
-                if (res.data){
+                if (res.data[0]){
                     //if login succeeeds, set user state and localStorage user
-                    setThisUser(res.data[0])
+                    setThisUser({name: res.data[0].name, id: res.data[0].id})
                     localStorage.setItem('name', res.data[0].name)
                     localStorage.setItem('id', res.data[0].id)
-                    console.log(res.data[0])
+                    setLogInModal(false)
                 }
                 else{
                     //if login attempt fails, show error state
-                    console.log('login failed')
+                    setFormState(defaultForm)
+                    setErrorState(true)
                 }
             })
     }
@@ -38,8 +39,9 @@ function LogInModal({setLogInModal}) {
     return (
         <div className='modal-background'>
             <div className='modal-textbox'>
-                <input type='text' id='username' placeholder='username' onChange={handleChange}/>
-                <input type='text' id='password' placeholder='password' onChange={handleChange}/>
+                <input type='text' id='username' placeholder='username' value={formState.username} onChange={handleChange}/>
+                <input type='text' id='password' placeholder='password' value={formState.password} onChange={handleChange}/>
+                {errorState ? <p>login failed</p>: null}
                 <button type='button' onClick={handleSubmit} >log in</button>
                 <button type='button' onClick={() => setLogInModal(false)} >close</button>
             </div>

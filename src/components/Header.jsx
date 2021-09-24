@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import './Header.css';
 import { DataContext } from '../DataContext';
 
-const Header = ({setLogInModal, setNewProjectModal, isLoggedIn, setIsLoggedIn}) => {
+const Header = ({setLogInModal, setNewUserModal, setNewProjectModal, isLoggedIn, setIsLoggedIn}) => {
 
     const {thisUser, setThisUser } = useContext(DataContext);
 
@@ -33,7 +33,7 @@ const Header = ({setLogInModal, setNewProjectModal, isLoggedIn, setIsLoggedIn}) 
                 </div>
                 <div className='user-interaction'>
                     <button type='button' onClick={() => setLogInModal(true)}>log in</button>
-                    <button type='button'>new user</button>
+                    <button type='button' onClick={() => setNewUserModal(true)}>new user</button>
                 </div>
             </div>
         )

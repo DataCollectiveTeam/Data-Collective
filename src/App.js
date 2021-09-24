@@ -6,12 +6,14 @@ import ProjectView from './components/ProjectView/ProjectView';
 import User from './components/UserView/User';
 import Header from "./components/Header";
 import LogInModal from './components/Modals/LogInModal.jsx'
+import NewUserModal from './components/Modals/NewUserModal';
 import NewProjectModal from "./components/Modals/NewProjectModal";
 import { DataContext } from "./DataContext";
 
 function App() {
 
   const [logInModal, setLogInModal] = useState(false);
+  const [newUserModal, setNewUserModal] = useState(false);
   const [newProjectModal, setNewProjectModal] = useState(false);
   const [thisUser, setThisUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -39,11 +41,15 @@ function App() {
       {(logInModal === true) && 
         <LogInModal setLogInModal={setLogInModal}/>
       }
+      {(newUserModal === true) && 
+        <NewUserModal setNewUserModal={setNewUserModal}/>
+      }
       {(newProjectModal === true) && 
         <NewProjectModal setNewProjectModal={setNewProjectModal} />
       }
       <Header 
         setLogInModal={setLogInModal} 
+        setNewUserModal={setNewUserModal}
         setNewProjectModal={setNewProjectModal}
         isLoggedIn={isLoggedIn}
         setIsLoggedIn={setIsLoggedIn}
