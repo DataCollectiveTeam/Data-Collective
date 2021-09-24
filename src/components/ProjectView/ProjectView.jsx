@@ -4,6 +4,7 @@ import ProjectHeader from './ProjectHeader';
 import axios from "axios";
 import { DataContext } from "../../DataContext";
 import NewFormModal from "../Modals/NewFormModal";
+import AdminPanel from "./AdminPanel";
 
 const ProjectView = ({id}) => {
 
@@ -30,6 +31,7 @@ const ProjectView = ({id}) => {
                 <ProjectHeader p={project}/>
                 <ProjectDetails p={project}/>
                 <button type='button' onClick={() => setShowNewForm(true)} >add new form</button> 
+                <AdminPanel p={project}/>
             </div>
           );
     } else {
