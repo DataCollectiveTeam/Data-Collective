@@ -18,13 +18,12 @@ function LogInModal({setLogInModal}) {
     const handleSubmit = () => {
         console.log(logInState)
         const url = `http://localhost:8000/citizens/login/${logInState.username}`;
-        login(url);
-    }
 
-    function login(url){
         axios.get(url)
-        .then(res => console.log(res))
-        .catch(console.error);
+            .then(res => setThisUser(res.data[0]))
+            .catch(console.error);
+        
+        console.log(thisUser)
     }
 
     return (
