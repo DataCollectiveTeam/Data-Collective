@@ -1,9 +1,10 @@
 import React from 'react';
 
-function TabDescription(props) {
+function TabDescription({project}) {
     return (
         <div>
-            description
+            <h2>project description</h2>
+            <p>{project.description}</p>
         </div>
     );
 }

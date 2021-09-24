@@ -27,7 +27,7 @@ function Tabs({project, setShowNewForm}) {
             </div>
             <div className='tab-viewer'>
                 {(tabState === 'desc') && 
-                    <TabDescription />
+                    <TabDescription project={project} />
                 }
                 {(tabState === 'data_entry') && 
                     <DataEntry project={project}/>

@@ -48,7 +48,10 @@ function DataEntry({project}) {
     }
 
     const handleSubmit = () => {
-        console.log(dataEntry);
+        const url = 'http://localhost:8000/data_entries/'
+        axios.post(url, dataEntry)
+            .then(res => console.log(res))
+            .catch(console.error);
     }
     
 
@@ -158,7 +161,7 @@ function DataEntry({project}) {
     } else {
         return (
             <div className='DataEntry'>
-                <p>loading...</p>
+                <p>this project hasn't set up a form to track data yet</p>
             </div> 
         )
     }
