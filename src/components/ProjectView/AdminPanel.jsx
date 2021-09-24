@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import EditProjectModal from '../Modals/EditProjectModal';
 import axios from 'axios';
 
-const AdminPanel = ({p}) => {
+const AdminPanel = ({p, setShowNewForm}) => {
 
     const [showEditModal, setShowEditModal] = useState(false);
     
@@ -23,6 +23,7 @@ const AdminPanel = ({p}) => {
                 <EditProjectModal p={p} setShowEditModal={setShowEditModal}/>
             }
             <div className='project-admin-buttons'>
+            <button type='button' onClick={() => setShowNewForm(true)} >add new form</button> 
                     <button className='edit-project-button' type='button' onClick={editProject} ><span className='far fa-edit'>Edit</span></button>
                     <button className='delete-project-button' type='button' onClick={deleteProject} ><span className='far fa-trash-alt'>Delete</span></button>
             </div>

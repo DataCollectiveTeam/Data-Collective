@@ -6,6 +6,7 @@ import { DataContext } from "../../DataContext";
 import NewFormModal from "../Modals/NewFormModal";
 import AdminPanel from "./AdminPanel";
 import './ProjectView.css';
+import Tabs from "./Tabs";
 
 const ProjectView = ({id}) => {
 
@@ -31,8 +32,10 @@ const ProjectView = ({id}) => {
                 }
                 <ProjectHeader p={project}/>
                 <ProjectDetails p={project}/>
-                <button type='button' onClick={() => setShowNewForm(true)} >add new form</button> 
-                <AdminPanel p={project}/>
+                {project && 
+                    <Tabs project={project} setShowNewForm={setShowNewForm}/>
+                }
+                
             </div>
           );
     } else {
