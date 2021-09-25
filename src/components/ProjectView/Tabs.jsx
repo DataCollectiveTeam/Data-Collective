@@ -6,11 +6,13 @@ import DataVis from './DataVis';
 import RawData from './RawData';
 import TabDescription from './TabDescription';
 
-function Tabs({project, setShowNewForm}) {
+function Tabs({project, data, setShowNewForm}) {
+
 
     const {thisUser} = useContext(DataContext);
 
     const defaultTabState = 'desc';
+    
 
     const [tabState, setTabState] = useState(defaultTabState);
 
@@ -33,10 +35,10 @@ function Tabs({project, setShowNewForm}) {
                     <DataEntry project={project}/>
                 }
                 {(tabState === 'raw_data') && 
-                    <RawData />
+                    <RawData data={data} />
                 }
                 {(tabState === 'data_vis') && 
-                    <DataVis />
+                    <DataVis data={data} />
                 }
                 {(tabState === 'admin') && 
                     <AdminPanel p={project} setShowNewForm={setShowNewForm}/>

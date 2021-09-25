@@ -30,3 +30,13 @@
     margin: 1em;
     padding: 1em;
 }
+
+/*------- DatePoint -------*/
+
+.DataPoint {
+    border: 1px solid black;
+    border-radius: 1em;
+    padding: 1em;
+    margin: 1em;
+    box-shadow: 0 1em 1em rgb(130, 130, 130);
+}
