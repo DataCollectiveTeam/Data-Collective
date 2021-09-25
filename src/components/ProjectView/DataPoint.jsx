@@ -1,8 +1,10 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useContext } from 'react';
+import { DataContext } from '../../DataContext';
 
-function DataPoint({point}) {
-    console.log('point')
-    console.log(point)
+function DataPoint({point, creator}) {
+
+    const {thisUser} = useContext(DataContext);
 
     let dataToRender = [];
 
@@ -10,6 +12,13 @@ function DataPoint({point}) {
         if (key !== 'id' && key !== 'contributor') {
             dataToRender.push([key, point[key]])
         }
+    }
+
+    const deletePoint = () => {
+        const url = `http://localhost:8000/data_entries/${point.id}`;
+        axios.delete(url)
+            .then(res => console.log(res))
+            .catch(console.error);
     }
 
     
@@ -20,6 +29,9 @@ function DataPoint({point}) {
                 {dataToRender.map(pair => {
                     return <p>{pair[0]}: {pair[1]}</p>
                 })}
+                {(creator === parseInt(thisUser.id)) &&
+                    <button type='button' onClick={deletePoint} >delete data point</button> 
+                }
             </div>
         );
     } else {

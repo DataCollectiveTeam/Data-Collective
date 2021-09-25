@@ -35,7 +35,7 @@ function Tabs({project, data, setShowNewForm}) {
                     <DataEntry project={project}/>
                 }
                 {(tabState === 'raw_data') && 
-                    <RawData data={data} />
+                    <RawData data={data} creator={project.creator} />
                 }
                 {(tabState === 'data_vis') && 
                     <DataVis data={data} />

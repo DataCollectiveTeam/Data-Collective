@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import DataPoint from './DataPoint';
 
-function RawData({data}) {
+function RawData({data, creator}) {
 
     let labelRegEx = '_label';
     let optionsRegEx = 'Options';
@@ -20,24 +20,23 @@ function RawData({data}) {
                 entry[key] !== ''
                 ) { 
                     if (key === 'lat') {
-                        validData['latitude'] = entry[key]
+                        validData['latitude'] = entry[key];
                     } else if (key === 'lon') {
-                        validData['longitude'] = entry[key]
+                        validData['longitude'] = entry[key];
                     } else if (
                         key !== 'notes' &&
                         key !== 'zipcode' 
                         ) {
                             let label = `${key}_label`;
-                            validData[entry[label]] = entry[key]
+                            validData[entry[label]] = entry[key];
                     } else {
-                        validData[key] = entry[key]
+                        validData[key] = entry[key];
                     }  
                 }
             }
 
-        validData['id'] = entry.id
-        validData['contributor'] = entry.contributor
-        console.log(validData)
+        validData['id'] = entry.id;
+        validData['contributor'] = entry.contributor;
         processedData.push(validData);
         
         })
@@ -46,7 +45,7 @@ function RawData({data}) {
     return (
         <div>
             {processedData.map(entry => {
-                return <DataPoint key={entry.id} point={entry} />
+                return <DataPoint key={entry.id} point={entry} creator={creator} />
             })}
         </div>
     );
