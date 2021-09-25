@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ProjectCard from './ProjectCard';
 import axios from 'axios';
 import './HomeView.css';
+import SearchBar from './SearchBar';
 
 const HomeView = () => {
 
@@ -18,12 +19,16 @@ const HomeView = () => {
 
     if (projects){
         return (
-            <div className="HomeView">
-                {projects.map((p) => {
-                        return <ProjectCard
-                            key={p.id} p={p} 
-                        />
-                    })}
+
+            <div>
+                <SearchBar setProjects={setProjects}/>
+                <div className="HomeView">
+                    {projects.map((p) => {
+                            return <ProjectCard
+                                key={p.id} p={p} 
+                            />
+                        })}
+                </div>
             </div>
         )
     } else {
