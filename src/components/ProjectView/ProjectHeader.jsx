@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 
 const ProjectHeader = ({p}) => {
 
+    console.log(p)
+
     let dateOptions = {year: 'numeric', month: 'long', day: 'numeric'};
     const dateStarted = new Date(p.date_created).toLocaleDateString(undefined, dateOptions)
     const [creator, setCreator] = useState(null);
