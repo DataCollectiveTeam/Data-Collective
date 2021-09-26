@@ -7,6 +7,8 @@ function DataEntry({project}) {
 
     const {thisUser} = useContext(DataContext);
 
+    //defaut form includes this projects id
+    //also includes this user's id
     const defaultDataEntry = {
         project: project.id,
         contributor: parseInt(thisUser.id),
@@ -41,12 +43,17 @@ function DataEntry({project}) {
     const [form, setForm] = useState(null);
     const [dataEntry, setDataEntry] = useState(defaultDataEntry)
 
+    //splits dropdown options string into an array
+    //to allow mapping through options in the data entry form 
     const getDropDownOptions = (string) => {
         return string.split(', ');
     }
 
+    //gets labels from form data
     const getLabels = (f) => {
         let newObj = {};
+        //if key includes '_label' and is not blank
+        //creates a new key-value pair in 'newObj' 
         for (let key in f) {
             if (
                 key.includes('_label') === true &&
@@ -55,31 +62,42 @@ function DataEntry({project}) {
                 newObj[key] = f[key];
             }
         }
+        //if 1st dropdown is present
+        //set default data entry to 1st option
         if (f.dropdown1 === true) {
             let options = getDropDownOptions(f.dropdownOptions1);
             newObj['dropdown1'] = options[0]
         }
+        //if 2nd dropdown is present
+        //set default data entry to 1st option
         if (f.dropdown2 === true) {
             let options = getDropDownOptions(f.dropdownOptions2);
             newObj['dropdown2'] = options[0]
         }
+        //update dataEntry state with labels and default dropdown values
         setDataEntry({...dataEntry, ...newObj});
     }
 
+    //called on page load
+    //gets form data for this project
     const getForm = () => {
         const url = `http://localhost:8000/formgrab/${project.id}`
         axios.get(url)
             .then(res => {
+                //calls form data in state
                 setForm(res.data[0]);
+                //gets labels from form data
                 getLabels(res.data[0]);
             })
             .catch(console.error);
     }
 
+    //handle change function for form fields
     const handleChange = (e) => {
         setDataEntry({...dataEntry, [e.target.id]: e.target.value})
     }
 
+    //posts new data entry to 'data_entries'
     const handleSubmit = () => {
         const url = 'http://localhost:8000/data_entries/'
         axios.post(url, dataEntry)
@@ -93,6 +111,8 @@ function DataEntry({project}) {
         getForm();
     }, [])
 
+    //when rendering the form, it only displays fields that
+    //have been set to 'true' by the admin who created the form
     if (form) {
         return (
         <div className='DataEntry'>

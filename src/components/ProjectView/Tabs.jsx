@@ -11,20 +11,23 @@ function Tabs({project, data, setShowNewForm}) {
 
     const {thisUser} = useContext(DataContext);
 
+    //sets default tab display to description
     const defaultTabState = 'desc';
-    
 
     const [tabState, setTabState] = useState(defaultTabState);
     const [procData, setProcData] = useState(null);
-
+    //regexs to check for when processing data
     let labelRegEx = '_label';
     let optionsRegEx = 'Options';
 
-    let processedData = [];
+    
 
     const processData = () => {
+        let processedData = [];
+        //for each data entry
         data.forEach(entry => {
         let validData = {};
+        //check which data fields are used
         for (let key in entry) {
             if (key !== 'id' &&
                 key !== 'project' &&
@@ -34,27 +37,41 @@ function Tabs({project, data, setShowNewForm}) {
                 entry[key] !== null &&
                 entry[key] !== ''
             ) { 
+                //of valid fields...
+                //if 'lat', pass in value as 'latitude'
                 if (key === 'lat') {
                     validData['latitude'] = entry[key];
+                //if 'lon', pass in value as 'longitude'
                 } else if (key === 'lon') {
                     validData['longitude'] = entry[key];
+                //for everything else
+                //except zipcode and notes
                 } else if (
                     key !== 'notes' &&
                     key !== 'zipcode' 
                     ) {
+                        //pass in a key value pair with the label as key
+                        //and the data as value
                         let label = `${key}_label`;
                         validData[entry[label]] = entry[key];
+                //for notes and zipcode
+                //pass them in as normal
                 } else {
                     validData[key] = entry[key];
                 }  
             }
         }
 
+        //pass in the id and contributor to each processed data point 
         validData['id'] = entry.id;
         validData['contributor'] = entry.contributor;
+        //push the processed data point into the processed data array
         processedData.push(validData);
         })
 
+    //after each data point has been processed
+    //pass the array of processed data to the 'procData' state
+    //to be used in the raw data an data visualization tab
     setProcData(processedData)
 
     }

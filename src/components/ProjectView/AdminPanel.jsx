@@ -11,22 +11,32 @@ const AdminPanel = ({p, setShowNewForm}) => {
     const [filteredUsers, setFilteredUsers] = useState(null);
     const [showUsers, setShowUsers] = useState(false);
     
+    //displays edit project modal
     const editProject = () => {
         setShowEditModal(true);
     }
 
+    //functionality for admin add search bar
     const adminChange = (e) => {
+        //if search field is empty
+        //don't show users
+        //set filtered results to null
+        //and set newAdmin to an empty string
         if (e.target.value === '') {
             setShowUsers(false);
             setFilteredUsers(null);
             setNewAdmin('')
+        //otherwise
+        //show list of users matching what's in the search field
+        //set filtered users to users matching what's in the search field
+        //set newAdmin to the value in the search field
         } else {
             setShowUsers(true);
             setFilteredUsers(users.filter(user => user.name.includes(e.target.value)));
             setNewAdmin(e.target.value);
         }
     }
-
+    
     const addAdmin = () => {
         setShowUsers(false);
         setFilteredUsers(null);

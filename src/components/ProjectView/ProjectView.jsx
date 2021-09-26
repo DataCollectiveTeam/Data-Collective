@@ -12,18 +12,11 @@ const ProjectView = ({id}) => {
 
     const {thisUser} = useContext(DataContext);
 
-    const defaultProjectData = {
-        adminList: null,
-        contributorList: null,
-        project: null,
-        data: null
-    }
-
     const [project, setProject] = useState(null);
     const [data, setData] = useState(null);
     const [showNewForm, setShowNewForm] = useState(false);
 
-
+    //get info for this project and this project's data
     useEffect(() => {
         const url = `http://localhost:8000/projects/${id}`;
         const url2 = `http://localhost:8000/project_data/${id}`
@@ -42,7 +35,6 @@ const ProjectView = ({id}) => {
     if(data && project) {
         return (
             <div className="ProjectView">
-                <p>loaded</p>
                 {(showNewForm === true) && 
                     <NewFormModal setShowNewForm={setShowNewForm} thisProject={id} />
                 }
@@ -51,7 +43,6 @@ const ProjectView = ({id}) => {
                 {project && 
                     <Tabs project={project} data={data} setShowNewForm={setShowNewForm}/>
                 }
-                
             </div>
           );
     } else {
