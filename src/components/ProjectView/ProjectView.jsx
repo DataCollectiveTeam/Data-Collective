@@ -39,9 +39,6 @@ const ProjectView = ({id}) => {
         // .catch(console.error)
     }, [id]);
 
-    console.log(project)
-    console.log(data)
-
     if(data && project) {
         return (
             <div className="ProjectView">
