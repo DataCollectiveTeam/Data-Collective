@@ -72,7 +72,6 @@ const AdminPanel = ({p, setShowNewForm}) => {
                         </div>
                     }
                 </div>
-                
             </div>
         </div>
     );
