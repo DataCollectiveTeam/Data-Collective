@@ -3,6 +3,8 @@ import DataPoint from './DataPoint';
 
 function RawData({procData, creator, admins, }) {
 
+    //maps through processed data and displays each point in a 'DataPoint' component
+
     return (
         <div>
             {procData.map(entry => {

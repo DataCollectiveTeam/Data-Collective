@@ -7,6 +7,9 @@ function NewFormModal({setShowNewForm, thisProject}) {
 
     const { thisUser } = useContext(DataContext);
 
+    //each form is defaulted to have the project id for this project
+    //and the user id of the admin who created it
+    //the current date is also passed in when the form is submitted
     let newFormDefault = {
         "project": parseInt(thisProject),
         "creator": thisUser.id,
@@ -52,6 +55,7 @@ function NewFormModal({setShowNewForm, thisProject}) {
         console.log(formState);
     }
 
+    //posts formState to the form database
     const handleSubmit = () => {
         const url = 'http://localhost:8000/forms/';
         axios.post(url, formState)
@@ -59,6 +63,16 @@ function NewFormModal({setShowNewForm, thisProject}) {
             .catch(console.error);
     }
 
+    //each button sets the corresponding boolean in the formState to True
+    //for fields of the same type, each button is only displayed
+    //when the field before it is true
+    //for example: only one 'add int' button is visible 
+    //until the form creator decides to add an int
+    //at that point, the button to add a second int also becomes available
+    //this happens for ints, floats, and dropdowns
+    //
+    //whenever you decided to add a field, you have the ability to add a label to the field
+    //except for 'notes', 'zipcode', and 'latitude and longitude'
     return (
         <div className='modal-background'>
             <div className='modal-textbox'>
