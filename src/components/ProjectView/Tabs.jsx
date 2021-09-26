@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { DataContext } from '../../DataContext';
 import AdminPanel from './AdminPanel';
 import DataEntry from './DataEntry';
@@ -15,6 +15,53 @@ function Tabs({project, data, setShowNewForm}) {
     
 
     const [tabState, setTabState] = useState(defaultTabState);
+    const [procData, setProcData] = useState(null);
+
+    let labelRegEx = '_label';
+    let optionsRegEx = 'Options';
+
+    let processedData = [];
+
+    const processData = () => {
+        data.forEach(entry => {
+        let validData = {};
+        for (let key in entry) {
+            if (key !== 'id' &&
+                key !== 'project' &&
+                key !== 'contributor' &&
+                key.match(labelRegEx) === null &&
+                key.match(optionsRegEx) === null &&
+                entry[key] !== null &&
+                entry[key] !== ''
+            ) { 
+                if (key === 'lat') {
+                    validData['latitude'] = entry[key];
+                } else if (key === 'lon') {
+                    validData['longitude'] = entry[key];
+                } else if (
+                    key !== 'notes' &&
+                    key !== 'zipcode' 
+                    ) {
+                        let label = `${key}_label`;
+                        validData[entry[label]] = entry[key];
+                } else {
+                    validData[key] = entry[key];
+                }  
+            }
+        }
+
+        validData['id'] = entry.id;
+        validData['contributor'] = entry.contributor;
+        processedData.push(validData);
+        })
+
+    setProcData(processedData)
+
+    }
+
+    useEffect(() => {
+        processData();
+    }, [])
 
     return (
         <div className='Tabs'>
@@ -35,10 +82,10 @@ function Tabs({project, data, setShowNewForm}) {
                     <DataEntry project={project}/>
                 }
                 {(tabState === 'raw_data') && 
-                    <RawData data={data} creator={project.creator} admins={project.admin_list} />
+                    <RawData procData={procData} creator={project.creator} admins={project.admin_list} />
                 }
                 {(tabState === 'data_vis') && 
-                    <DataVis data={data} />
+                    <DataVis procData={procData} />
                 }
                 {(tabState === 'admin') && 
                     <AdminPanel p={project} setShowNewForm={setShowNewForm}/>
