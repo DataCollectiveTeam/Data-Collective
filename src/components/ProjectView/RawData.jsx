@@ -33,7 +33,7 @@ function RawData({data, creator, admins}) {
                         validData[key] = entry[key];
                     }  
                 }
-            }
+        }
 
         validData['id'] = entry.id;
         validData['contributor'] = entry.contributor;

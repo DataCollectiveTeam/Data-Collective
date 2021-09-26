@@ -14,13 +14,24 @@ function DataEntry({project}) {
         int2: null,
         int3: null,
         int4: null,
+        int1_label: "",
+        int2_label: "",
+        int3_label: "",
+        int4_label: "",
         float1: null,
         float2: null,
         float3: null,
         float4: null,
+        float1_label: "",
+        float2_label: "",
+        float3_label: "",
+        float4_label: "",
         img_url: "",
+        img_label: "",
         dropdown1: "",
         dropdown2: "",
+        dropdown1_label: "",
+        dropdown2_label: "",
         notes: "",
         lat: null,
         lon: null,
@@ -30,21 +41,43 @@ function DataEntry({project}) {
     const [form, setForm] = useState(null);
     const [dataEntry, setDataEntry] = useState(defaultDataEntry)
 
+    const getDropDownOptions = (string) => {
+        return string.split(', ');
+    }
+
+    const getLabels = (f) => {
+        let newObj = {};
+        for (let key in f) {
+            if (
+                key.includes('_label') === true &&
+                f[key] !== ''
+            ) {
+                newObj[key] = f[key];
+            }
+        }
+        if (f.dropdown1 === true) {
+            let options = getDropDownOptions(f.dropdownOptions1);
+            newObj['dropdown1'] = options[0]
+        }
+        if (f.dropdown2 === true) {
+            let options = getDropDownOptions(f.dropdownOptions2);
+            newObj['dropdown2'] = options[0]
+        }
+        setDataEntry({...dataEntry, ...newObj});
+    }
+
     const getForm = () => {
         const url = `http://localhost:8000/formgrab/${project.id}`
         axios.get(url)
             .then(res => {
                 setForm(res.data[0]);
+                getLabels(res.data[0]);
             })
             .catch(console.error);
     }
 
     const handleChange = (e) => {
         setDataEntry({...dataEntry, [e.target.id]: e.target.value})
-    }
-
-    const getDropDownOptions = (string) => {
-        return string.split(', ');
     }
 
     const handleSubmit = () => {
@@ -116,7 +149,7 @@ function DataEntry({project}) {
                     <p>{form.dropdown1_label}</p>
                     <select name='dropdown1' id='dropdown1' onChange={handleChange}>
                         {getDropDownOptions(form.dropdownOptions1).map(option => {
-                            return <option key= {option} id='dropdown1' value={option}>{option}</option>
+                            return <option key= {option} id='dropdown1' value={option} >{option}</option>
                         })}
                     </select>
                 </div>    
@@ -125,7 +158,7 @@ function DataEntry({project}) {
                 <div>
                     <p>{form.dropdown2_label}</p>
                     <select name='dropdown2' id='dropdown2' onChange={handleChange}>
-                        {getDropDownOptions(form.dropdownOptions2).map(option => {
+                        {getDropDownOptions(form.dropdownOptions2, 'dropdown2').map(option => {
                             return <option key= {option} id='dropdown2' value={option} >{option}</option>
                         })}
                     </select>
