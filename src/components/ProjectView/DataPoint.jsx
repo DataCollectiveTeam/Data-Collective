@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useContext } from 'react';
 import { DataContext } from '../../DataContext';
 
-function DataPoint({point, creator}) {
+function DataPoint({point, creator, admins}) {
 
     const {thisUser} = useContext(DataContext);
 
@@ -21,15 +21,14 @@ function DataPoint({point, creator}) {
             .catch(console.error);
     }
 
-    
-
     if (dataToRender !== []) {
         return (
             <div className='DataPoint'>
                 {dataToRender.map(pair => {
-                    return <p>{pair[0]}: {pair[1]}</p>
+                    return <p key={pair[0]}>{pair[0]}: {pair[1]}</p>
                 })}
-                {(creator === parseInt(thisUser.id)) &&
+                {(admins.some(admin => admin === parseInt(thisUser.id)) === true) &&
+                 (point.contibutor === parseInt(thisUser.id)) &&
                     <button type='button' onClick={deletePoint} >delete data point</button> 
                 }
             </div>

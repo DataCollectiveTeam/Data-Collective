@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import DataPoint from './DataPoint';
 
-function RawData({data, creator}) {
+function RawData({data, creator, admins}) {
 
     let labelRegEx = '_label';
     let optionsRegEx = 'Options';
@@ -45,7 +45,7 @@ function RawData({data, creator}) {
     return (
         <div>
             {processedData.map(entry => {
-                return <DataPoint key={entry.id} point={entry} creator={creator} />
+                return <DataPoint key={entry.id} point={entry} creator={creator} admins={admins}/>
             })}
         </div>
     );
