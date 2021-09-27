@@ -11,7 +11,6 @@ function DataVisItem({item, procData}) {
     }
 
     let data = [
-        [item.x_axis, item.y_axis]
     ]
 
     procData.forEach(point => {
@@ -19,11 +18,15 @@ function DataVisItem({item, procData}) {
         data.push(val);
     })
 
+    data.sort((a, b) => {
+        return a[0] - b[0]
+    })
+
     return (
         <div className='DataVisItem'>
             <Chart 
                 chartType={item.chart_type}
-                data={data}
+                data={[[item.x_axis, item.y_axis], ...data]}
                 options={options}
                 width='80%'
                 height='500px'
