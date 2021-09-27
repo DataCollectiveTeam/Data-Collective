@@ -152,15 +152,12 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
                         <input type='text' id='pie_hole' placeholder='pie hole size' onChange={handleChange} />
                     </div>
                 }
-                
 
                 <p>display legend</p>
                 {(dataVis.legend) 
                 ? <button type='button' onClick={() => setDataVis({...dataVis, legend: false})} >showing legend</button>
                 : <button type='button' onClick={() => setDataVis({...dataVis, legend: true})} >legend not showing</button>
                 }
-
-                
 
                 <button type='button' onClick={handleSubmit} >submit</button>
                 <button type='button' onClick={() => setShowDataVisModal(false)} >cancel</button>
