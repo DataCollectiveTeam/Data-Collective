@@ -42,6 +42,7 @@ const NewUserModal = ({setNewUserModal}) => {
                     setThisUser({name: res.data.name, id: res.data.id})
                     localStorage.setItem('name', res.data.name)
                     localStorage.setItem('id', res.data.id)
+                    localStorage.setItem('img', res.data.img)
                     setNewUserModal(false)
                 }
                 else{
