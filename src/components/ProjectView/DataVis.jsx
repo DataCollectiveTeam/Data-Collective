@@ -1,29 +1,26 @@
-import React from 'react';
-import { Chart } from 'react-google-charts';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import DataVisItem from './DataVisItem';
 
-function DataVis({procData}) {
+function DataVis({procData, project}) {
 
-    let options = {
-        title: 'Temp High vs Humidity',
-        hAxis: { title: "Temp High", viewWindow: { min: 0, max: 100} },
-        vAxis: { title: "Humidity", viewWindow: { min: 0, max: 100} },
-        legend: 'none'
-    }
+    const [dataVisItems, setDataVisItems] = useState(null);
 
-    let data = [
-        ['temp high', 'humidity']
-    ]
-
-    procData.forEach(point => {
-        let val = [point['temp high'], point['humidity']];
-        data.push(val);
-    })
-
-    console.log(data);
+    useEffect(() => {
+        const url = `http://localhost:8000/project_data_vis/${project.id}`
+        axios.get(url)
+            .then(res => setDataVisItems(res.data))
+            .catch(console.error);
+    }, [])
 
     return (
-        <div>
-            <table>
+        <div className='DataVis'>
+            {dataVisItems &&
+                dataVisItems.map(item => {
+                    return <DataVisItem key={item.id} item={item} procData={procData}/>
+                })
+            }
+            {/* <table>
                 <tr>
                     {Object.keys(procData[0]).map(header => {
                         if (header !== 'id' && header !== 'contributor') {
@@ -42,15 +39,15 @@ function DataVis({procData}) {
                         </tr>
                     )
                 })}
-            </table>
-            <Chart 
+            </table> */}
+            {/* <Chart 
                 chartType='LineChart'
                 data={data}
                 options={options}
                 width='80%'
                 height='500px'
                 legendToggle
-            />
+            /> */}
         </div>
     );
 }
