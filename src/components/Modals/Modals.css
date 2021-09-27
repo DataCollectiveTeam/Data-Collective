@@ -17,8 +17,9 @@
     border: 2px solid black;
     box-shadow: 0rem 0rem 2rem rgb(130, 130, 130);
     width: 20em;
-    height: 20em;
+    height: auto;
     border-radius: 1em;
+    padding: 1em;
 
     margin: 10rem auto;
     display: flex;
