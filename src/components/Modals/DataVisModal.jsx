@@ -138,6 +138,38 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
                         <input type='text' id='y_axis_max' placeholder='y max' onChange={handleChange} />
                     </div>
                 }
+                {(dataVis.chart_type === 'PieChart') &&
+                    <div>
+                        <p>x axis</p>
+                        <select id='x_axis' onChange={handleChange}>
+                            {options.map(option => {
+                                return <option key={option} value={option}>{option}</option>
+                            })}
+                        </select>
+
+                        <p>x axis min</p>
+                        <input type='text' id='x_axis_min' placeholder='x min' onChange={handleChange} />
+
+                        <p>x axis max</p>
+                        <input type='text' id='x_axis_max' placeholder='x max' onChange={handleChange} />
+
+                        <p>y axis</p>
+                        <select id='y_axis' onChange={handleChange}>
+                            {options.map(option => {
+                                return <option key={option} value={option}>{option}</option>
+                            })}
+                        </select>
+
+                        <p>y axis min</p>
+                        <input type='text' id='y_axis_min' placeholder='y min' onChange={handleChange} />
+
+                        <p>y axis max</p>
+                        <input type='text' id='y_axis_max' placeholder='y max' onChange={handleChange} />
+                        
+                        <p>enter pie hole size</p>
+                        <input type='text' id='pie_hole' placeholder='pie hole size' onChange={handleChange} />
+                    </div>
+                }
                 
 
                 <p>display legend</p>
@@ -146,12 +178,7 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
                     <button type='button' onClick={() => setDataVis({...dataVis, legend: false})} >no</button>
                 </div>
 
-                {(dataVis.chart_type === 'PieChart') &&
-                    <div>
-                        <p>enter pie hole size</p>
-                        <input type='text' id='pie_hole' placeholder='pie hole size' onChange={handleChange} />
-                    </div>
-                }
+                
 
                 <button type='button' onClick={handleSubmit} >submit</button>
                 <button type='button' onClick={() => setShowDataVisModal(false)} >cancel</button>
