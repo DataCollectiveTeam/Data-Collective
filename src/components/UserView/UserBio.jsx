@@ -1,6 +1,21 @@
-import React from 'react';
+import React, { useState,useEffect, useContext } from "react";
+import { DataContext } from "../../DataContext";
 
 const UserBio = ({user, setEditUserModal, setDeleteUserModal}) => {
+
+    const [profileOwner, setProfileOwner] = useState(false)
+    const {thisUser} = useContext(DataContext);
+
+    useEffect(() => {
+        checkOwner()
+      }, []);
+
+    function checkOwner(){
+        console.log(thisUser, user)
+        if (parseInt(thisUser.id) === parseInt(user.id)){
+            setProfileOwner(true)
+        }
+    }
     
     let dateOptions = {year: 'numeric', month: 'long', day: 'numeric'};
     let date = new Date(Date(user.account_created)).toLocaleDateString(undefined, dateOptions)
@@ -15,7 +30,8 @@ const UserBio = ({user, setEditUserModal, setDeleteUserModal}) => {
                 </div>
             </div>
             <div className='profile-interaction'>
-            <button type='button' onClick={() => setEditUserModal(true)}>edit profile</button>
+            
+            {profileOwner ? <button type='button' onClick={() => setEditUserModal(true)}>edit profile</button> : null}
             
             </div>
         </div>
