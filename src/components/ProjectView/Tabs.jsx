@@ -102,7 +102,7 @@ function Tabs({project, data, setShowNewForm}) {
                     <RawData procData={procData} creator={project.creator} admins={project.admin_list} />
                 }
                 {(tabState === 'data_vis') && 
-                    <DataVis procData={procData} />
+                    <DataVis procData={procData} project={project} />
                 }
                 {(tabState === 'admin') && 
                     <AdminPanel p={project} setShowNewForm={setShowNewForm} procData={procData}/>
