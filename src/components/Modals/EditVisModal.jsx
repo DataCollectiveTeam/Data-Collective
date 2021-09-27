@@ -1,9 +1,9 @@
+import React, {useContext, useEffect, useState} from 'react';
 import axios from 'axios';
-import React, { useContext, useState } from 'react';
 import { DataContext } from '../../DataContext';
-import './Modals.css'
 
-function DataVisModal({p, setShowDataVisModal, procData}) {
+
+function EditVisModal({item, procData, project, setShowEditVisModal}) {
 
     let options = [];
 
@@ -20,7 +20,7 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
     const {thisUser} = useContext(DataContext);
 
     const defaultDataVis = {
-        project: p.id,
+        project: project.id,
         contributor: thisUser.id,
         chart_type: 'LineChart',
         chart_title: "",
@@ -41,11 +41,18 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
     }
 
     const handleSubmit = () => {
-        const url = 'http://localhost:8000/data_vis/'
-        axios.post(url, dataVis)
+        const url = `http://localhost:8000/data_vis/${item.id}`
+        axios.put(url, dataVis)
             .then(res => console.log(res))
             .catch(console.error);
     }
+
+    useEffect(() => {
+        const url = `http://localhost:8000/data_vis/${item.id}`;
+        axios.get(url)
+            .then(res => setDataVis(res.data))
+            .catch(console.error);
+    }, [])
 
     return (
         <div className='modal-background'>
@@ -57,117 +64,117 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
                     <option value='PieChart'>Pie Chart</option>
                 </select>
                 <p>enter chart title</p>
-                <input type='text' id='chart_title' placeholder='chart title' onChange={handleChange} />
+                <input type='text' id='chart_title' placeholder='chart title'  value={dataVis.chart_title} onChange={handleChange} />
                 {(dataVis.chart_type === 'LineChart') &&
                     <div>
                         <p>x axis</p>
-                        <select id='x_axis' onChange={handleChange}>
+                        <select id='x_axis' onChange={handleChange} value={dataVis.x_axis}>
                             {options.map(option => {
                                 return <option key={option} value={option}>{option}</option>
                             })}
                         </select>
 
                         <p>x axis min</p>
-                        <input type='text' id='x_axis_min' placeholder='x min' onChange={handleChange} />
+                        <input type='text' id='x_axis_min' placeholder='x min' value={dataVis.x_axis_min} onChange={handleChange} />
 
                         <p>x axis max</p>
-                        <input type='text' id='x_axis_max' placeholder='x max' onChange={handleChange} />
+                        <input type='text' id='x_axis_max' placeholder='x max' value={dataVis.x_axis_max} onChange={handleChange} />
 
                         <p>y axis</p>
-                        <select id='y_axis' onChange={handleChange}>
+                        <select id='y_axis' onChange={handleChange} value={dataVis.y_axis}>
                             {options.map(option => {
                                 return <option key={option} value={option}>{option}</option>
                             })}
                         </select>
 
                         <p>y axis min</p>
-                        <input type='text' id='y_axis_min' placeholder='y min' onChange={handleChange} />
+                        <input type='text' id='y_axis_min' placeholder='y min' value={dataVis.y_axis_min} onChange={handleChange} />
 
                         <p>y axis max</p>
-                        <input type='text' id='y_axis_max' placeholder='y max' onChange={handleChange} />
+                        <input type='text' id='y_axis_max' placeholder='y max' value={dataVis.x_axis_max} onChange={handleChange} />
                     </div>
                 }
                 {(dataVis.chart_type === 'Histogram') &&
                     <div>
                         <p>x axis</p>
-                        <select id='x_axis' onChange={handleChange}>
+                        <select id='x_axis' onChange={handleChange} value={dataVis.x_axis}>
                             {options.map(option => {
                                 return <option key={option} value={option}>{option}</option>
                             })}
                         </select>
 
                         <p>x axis min</p>
-                        <input type='text' id='x_axis_min' placeholder='x min' onChange={handleChange} />
+                        <input type='text' id='x_axis_min' placeholder='x min' value={dataVis.x_axis_min}onChange={handleChange} />
 
                         <p>x axis max</p>
-                        <input type='text' id='x_axis_max' placeholder='x max' onChange={handleChange} />
+                        <input type='text' id='x_axis_max' placeholder='x max' value={dataVis.x_axis_max} onChange={handleChange} />
 
                         <p>frequency min</p>
-                        <input type='text' id='y_axis_min' placeholder='y min' onChange={handleChange} />
+                        <input type='text' id='y_axis_min' placeholder='y min'  value={dataVis.y_axis_min} onChange={handleChange} />
 
                         <p>frequency max</p>
-                        <input type='text' id='y_axis_max' placeholder='y max' onChange={handleChange} />
+                        <input type='text' id='y_axis_max' placeholder='y max' value={dataVis.y_axis_max} onChange={handleChange} />
                     </div>
                 }
                 {(dataVis.chart_type === 'BarChart') &&
                     <div>
                         <p>x axis</p>
-                        <select id='x_axis' onChange={handleChange}>
+                        <select id='x_axis' value={dataVis.x_axis} onChange={handleChange}>
                             {options.map(option => {
                                 return <option key={option} value={option}>{option}</option>
                             })}
                         </select>
 
                         <p>x axis min</p>
-                        <input type='text' id='x_axis_min' placeholder='x min' onChange={handleChange} />
+                        <input type='text' id='x_axis_min' placeholder='x min' value={dataVis.x_axis_min} onChange={handleChange} />
 
                         <p>x axis max</p>
-                        <input type='text' id='x_axis_max' placeholder='x max' onChange={handleChange} />
+                        <input type='text' id='x_axis_max' placeholder='x max' value={dataVis.x_axis_max} onChange={handleChange} />
 
                         <p>y axis</p>
-                        <select id='y_axis' onChange={handleChange}>
+                        <select id='y_axis' value={dataVis.y_axis} onChange={handleChange}>
                             {options.map(option => {
                                 return <option key={option} value={option}>{option}</option>
                             })}
                         </select>
 
                         <p>y axis min</p>
-                        <input type='text' id='y_axis_min' placeholder='y min' onChange={handleChange} />
+                        <input type='text' id='y_axis_min' placeholder='y min' value={dataVis.y_axis_min} onChange={handleChange} />
 
                         <p>y axis max</p>
-                        <input type='text' id='y_axis_max' placeholder='y max' onChange={handleChange} />
+                        <input type='text' id='y_axis_max' placeholder='y max' value={dataVis.y_axis_max} onChange={handleChange} />
                     </div>
                 }
                 {(dataVis.chart_type === 'PieChart') &&
                     <div>
                         <p>x axis</p>
-                        <select id='x_axis' onChange={handleChange}>
+                        <select id='x_axis' value={dataVis.x_axi} onChange={handleChange}>
                             {options.map(option => {
                                 return <option key={option} value={option}>{option}</option>
                             })}
                         </select>
 
                         <p>x axis min</p>
-                        <input type='text' id='x_axis_min' placeholder='x min' onChange={handleChange} />
+                        <input type='text' id='x_axis_min' placeholder='x min' value={dataVis.x_axis_min} onChange={handleChange} />
 
                         <p>x axis max</p>
-                        <input type='text' id='x_axis_max' placeholder='x max' onChange={handleChange} />
+                        <input type='text' id='x_axis_max' placeholder='x max' value={dataVis.x_axis_max} onChange={handleChange} />
 
                         <p>y axis</p>
-                        <select id='y_axis' onChange={handleChange}>
+                        <select id='y_axis' value={dataVis.y_axis} onChange={handleChange}>
                             {options.map(option => {
                                 return <option key={option} value={option}>{option}</option>
                             })}
                         </select>
 
                         <p>y axis min</p>
-                        <input type='text' id='y_axis_min' placeholder='y min' onChange={handleChange} />
+                        <input type='text' id='y_axis_min' placeholder='y min' value={dataVis.y_axis_min} onChange={handleChange} />
 
                         <p>y axis max</p>
-                        <input type='text' id='y_axis_max' placeholder='y max' onChange={handleChange} />
+                        <input type='text' id='y_axis_max' placeholder='y max' value={dataVis.y_axis_max} onChange={handleChange} />
                         
                         <p>enter pie hole size</p>
-                        <input type='text' id='pie_hole' placeholder='pie hole size' onChange={handleChange} />
+                        <input type='text' id='pie_hole' placeholder='pie hole size' value={dataVis.pie_hole} onChange={handleChange} />
                     </div>
                 }
                 
@@ -178,13 +185,11 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
                 : <button type='button' onClick={() => setDataVis({...dataVis, legend: true})} >legend not showing</button>
                 }
 
-                
-
                 <button type='button' onClick={handleSubmit} >submit</button>
-                <button type='button' onClick={() => setShowDataVisModal(false)} >cancel</button>
+                <button type='button' onClick={() => setShowEditVisModal(false)} >cancel</button>
             </div>
         </div>
     );
 }
 
-export default DataVisModal;
+export default EditVisModal;

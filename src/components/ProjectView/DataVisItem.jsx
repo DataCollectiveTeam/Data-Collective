@@ -1,11 +1,13 @@
 import axios from 'axios';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Chart } from 'react-google-charts';
 import { DataContext } from '../../DataContext';
+import EditVisModal from '../Modals/EditVisModal';
 
 function DataVisItem({item, procData, project}) {
 
     const {thisUser} = useContext(DataContext);
+    const [showEditVisModal, setShowEditVisModal] = useState(false);
 
     let options;
 
@@ -77,7 +79,7 @@ function DataVisItem({item, procData, project}) {
         }
         options = {
             title: item.chart_title,
-            pieHole: item.pieHole,
+            pieHole: item.pie_hole,
             legend: 'none'
         }
         if (item.legend === true) {
@@ -89,6 +91,10 @@ function DataVisItem({item, procData, project}) {
         return a[0] - b[0]
     })
 
+    const editVis = () => {
+        setShowEditVisModal(true);
+    }
+
     const deleteVis = () => {
         const url = `http://localhost:8000/data_vis/${item.id}`
         axios.delete(url)
@@ -98,8 +104,15 @@ function DataVisItem({item, procData, project}) {
 
     return (
         <div className='DataVisItem'>
+            {showEditVisModal && 
+                <EditVisModal item={item} procData={procData} project={project} setShowEditVisModal={setShowEditVisModal}/>
+            }
             {(project.admin_list.some(admin => admin === parseInt(thisUser.id))) &&
-                <button type='button' onClick={deleteVis} >delete visualization</button>
+                <div>
+                    <button type='button' onClick={editVis} >edit visualization</button>
+                    <button type='button' onClick={deleteVis} >delete visualization</button>
+                </div>
+                
             }
             {(item.chart_type === 'LineChart') &&
                 <Chart 
