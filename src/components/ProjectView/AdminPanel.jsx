@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import EditProjectModal from '../Modals/EditProjectModal';
 import axios from 'axios';
+import DataVisModal from '../Modals/DataVisModal';
 
 const AdminPanel = ({p, setShowNewForm}) => {
 
@@ -10,6 +11,7 @@ const AdminPanel = ({p, setShowNewForm}) => {
     const [users, setUsers] = useState(null);
     const [filteredUsers, setFilteredUsers] = useState(null);
     const [showUsers, setShowUsers] = useState(false);
+    const [showDataVisModal, setShowDataVisModal] = useState(false);
     
     //displays edit project modal
     const editProject = () => {
@@ -36,7 +38,7 @@ const AdminPanel = ({p, setShowNewForm}) => {
             setNewAdmin(e.target.value);
         }
     }
-    
+
     const addAdmin = () => {
         setShowUsers(false);
         setFilteredUsers(null);
@@ -67,6 +69,9 @@ const AdminPanel = ({p, setShowNewForm}) => {
             {showEditModal &&
                 <EditProjectModal p={p} setShowEditModal={setShowEditModal}/>
             }
+            {showDataVisModal &&
+                <DataVisModal p={p} setShowDataVisModal={setShowDataVisModal} />
+            }
             <div className='project-admin-buttons'>
                 <button type='button' onClick={() => setShowNewForm(true)} >add new form</button> 
                 <button className='edit-project-button' type='button' onClick={editProject} ><span className='far fa-edit'>Edit</span></button>
@@ -82,6 +87,7 @@ const AdminPanel = ({p, setShowNewForm}) => {
                         </div>
                     }
                 </div>
+                <button type='button' onClick={() => setShowDataVisModal(true)} >add data visualization</button>
             </div>
         </div>
     );
