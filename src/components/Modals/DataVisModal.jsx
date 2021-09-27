@@ -3,9 +3,19 @@ import React, { useContext, useState } from 'react';
 import { DataContext } from '../../DataContext';
 import './Modals.css'
 
-function DataVisModal({p, setShowDataVisModal}) {
+function DataVisModal({p, setShowDataVisModal, procData}) {
 
-    console.log(p)
+    let options = [];
+
+    for (let key in procData[0]) {
+        if (
+            key !== 'id' &&
+            key !== 'contributor' &&
+            key !== 'notes'
+            ) {
+                options.push(key)
+            }
+        } 
 
     const {thisUser} = useContext(DataContext);
 
@@ -14,10 +24,10 @@ function DataVisModal({p, setShowDataVisModal}) {
         contributor: thisUser.id,
         chart_type: 'LineChart',
         chart_title: "",
-        x_axis: "",
+        x_axis: options[0],
         x_axis_min: null,
         x_axis_max: null,
-        y_axis: "",
+        y_axis: options[1],
         y_axis_min: null,
         y_axis_max: null,
         legend: false,
@@ -50,7 +60,11 @@ function DataVisModal({p, setShowDataVisModal}) {
                 <input type='text' id='chart_title' placeholder='chart title' onChange={handleChange} />
 
                 <p>x axis</p>
-                <input type='text' id='x_axis' placeholder='x axis' onChange={handleChange} />
+                <select id='x_axis' onChange={handleChange}>
+                    {options.map(option => {
+                        return <option key={option} value={option}>{option}</option>
+                    })}
+                </select>
 
                 <p>x axis min</p>
                 <input type='text' id='x_axis_min' placeholder='x min' onChange={handleChange} />
@@ -59,7 +73,11 @@ function DataVisModal({p, setShowDataVisModal}) {
                 <input type='text' id='x_axis_max' placeholder='x max' onChange={handleChange} />
 
                 <p>y axis</p>
-                <input type='text' id='y_axis' placeholder='y axis' onChange={handleChange} />
+                <select id='y_axis' onChange={handleChange}>
+                    {options.map(option => {
+                        return <option key={option} value={option}>{option}</option>
+                    })}
+                </select>
 
                 <p>y axis min</p>
                 <input type='text' id='y_axis_min' placeholder='y min' onChange={handleChange} />

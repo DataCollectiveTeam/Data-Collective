@@ -3,7 +3,7 @@ import EditProjectModal from '../Modals/EditProjectModal';
 import axios from 'axios';
 import DataVisModal from '../Modals/DataVisModal';
 
-const AdminPanel = ({p, setShowNewForm}) => {
+const AdminPanel = ({p, setShowNewForm, procData}) => {
 
     const [showEditModal, setShowEditModal] = useState(false);
     const [newAdmin, setNewAdmin] = useState('');
@@ -70,7 +70,7 @@ const AdminPanel = ({p, setShowNewForm}) => {
                 <EditProjectModal p={p} setShowEditModal={setShowEditModal}/>
             }
             {showDataVisModal &&
-                <DataVisModal p={p} setShowDataVisModal={setShowDataVisModal} />
+                <DataVisModal p={p} setShowDataVisModal={setShowDataVisModal} procData={procData}/>
             }
             <div className='project-admin-buttons'>
                 <button type='button' onClick={() => setShowNewForm(true)} >add new form</button> 
