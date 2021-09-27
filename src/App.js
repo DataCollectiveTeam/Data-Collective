@@ -23,8 +23,9 @@ function App() {
     useEffect(() => {
       const sessionName = localStorage.getItem("name");
       const sessionID = localStorage.getItem("id");
+      const sessionImg = localStorage.getItem("img");
       if (sessionName && sessionID) {
-        setThisUser({...thisUser, name: sessionName, id: sessionID});
+        setThisUser({...thisUser, name: sessionName, id: sessionID, img: sessionImg});
         setIsLoggedIn(true);
       } else {
         setIsLoggedIn(false);

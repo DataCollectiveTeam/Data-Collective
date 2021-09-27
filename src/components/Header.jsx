@@ -19,9 +19,14 @@ const Header = ({setLogInModal, setNewUserModal, setNewProjectModal, isLoggedIn,
                     <h1><a className='home-link' href='/'>DataCollective</a></h1>
                 </div>
                 <div className='user-interaction'>
-                    <h4>{thisUser.name}</h4>
-                    <button type='button' onClick={() => setNewProjectModal(true)}>new project</button>
-                    <button type='button' onClick={logOut}>log out</button>
+                    <a className="profile user" href={`/citizens/${thisUser.id}`}>
+                        <h4>{thisUser.name}</h4>
+                        <img className="profile-pic" src={thisUser.img} alt="profile"/>
+                    </a>
+                    <div className="profile button">
+                        <button type='button' onClick={() => setNewProjectModal(true)}>new project</button>
+                        <button type='button' onClick={logOut}>log out</button>
+                    </div>
                 </div>
             </div>
         )

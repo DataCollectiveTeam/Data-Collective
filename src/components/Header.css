@@ -16,6 +16,31 @@
 }
 
 .user-interaction {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     border: 1px solid black;
     margin: 1em;
+}
+
+.profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+}
+
+.profile h4 {
+    color: black;
+    text-decoration: none;
+    margin: 0px 5px;
+}
+
+.profile-pic {
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    margin: 0px 5px;
 }

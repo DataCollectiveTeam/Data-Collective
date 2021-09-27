@@ -26,6 +26,7 @@ function LogInModal({setLogInModal}) {
                     setThisUser({name: res.data.name, id: res.data[0].id})
                     localStorage.setItem('name', res.data[0].name)
                     localStorage.setItem('id', res.data[0].id)
+                    localStorage.setItem('img', res.data[0].img)
                     setLogInModal(false)
                 }
                 else{

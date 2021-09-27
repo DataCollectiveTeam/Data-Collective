@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UserBio = ({user}) => {
+const UserBio = ({user, setEditUserModal, setDeleteUserModal}) => {
     
     let dateOptions = {year: 'numeric', month: 'long', day: 'numeric'};
     let date = new Date(Date(user.account_created)).toLocaleDateString(undefined, dateOptions)
@@ -13,6 +13,10 @@ const UserBio = ({user}) => {
                     <h4 className='user-bio'>{user.bio}</h4>
                     <h5 className='date-joined'>Joined: {date}</h5>
                 </div>
+            </div>
+            <div className='profile-interaction'>
+            <button type='button' onClick={() => setEditUserModal(true)}>edit profile</button>
+            
             </div>
         </div>
     );
