@@ -15,39 +15,15 @@ function DataVis({procData, project}) {
 
     return (
         <div className='DataVis'>
+            {/* 
+                create a data vis item component for each data 
+                vis item associated with this project
+            */}
             {dataVisItems &&
                 dataVisItems.map(item => {
                     return <DataVisItem key={item.id} item={item} procData={procData} project={project}/>
                 })
             }
-            {/* <table>
-                <tr>
-                    {Object.keys(procData[0]).map(header => {
-                        if (header !== 'id' && header !== 'contributor') {
-                            return <th key={header}>{header}</th>
-                        }
-                    })}
-                </tr>
-                {procData.map(point => {
-                    return (
-                        <tr>
-                            {Object.entries(point).map(val => {
-                                if (val[0] !== 'id' && val[0] !== 'contributor') {
-                                   return <td key={val[1]}>{val[1]}</td> 
-                                }
-                            })}
-                        </tr>
-                    )
-                })}
-            </table> */}
-            {/* <Chart 
-                chartType='LineChart'
-                data={data}
-                options={options}
-                width='80%'
-                height='500px'
-                legendToggle
-            /> */}
         </div>
     );
 }
