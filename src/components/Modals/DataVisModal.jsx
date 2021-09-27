@@ -58,32 +58,87 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
                 </select>
                 <p>enter chart title</p>
                 <input type='text' id='chart_title' placeholder='chart title' onChange={handleChange} />
+                {(dataVis.chart_type === 'LineChart') &&
+                    <div>
+                        <p>x axis</p>
+                        <select id='x_axis' onChange={handleChange}>
+                            {options.map(option => {
+                                return <option key={option} value={option}>{option}</option>
+                            })}
+                        </select>
 
-                <p>x axis</p>
-                <select id='x_axis' onChange={handleChange}>
-                    {options.map(option => {
-                        return <option key={option} value={option}>{option}</option>
-                    })}
-                </select>
+                        <p>x axis min</p>
+                        <input type='text' id='x_axis_min' placeholder='x min' onChange={handleChange} />
 
-                <p>x axis min</p>
-                <input type='text' id='x_axis_min' placeholder='x min' onChange={handleChange} />
+                        <p>x axis max</p>
+                        <input type='text' id='x_axis_max' placeholder='x max' onChange={handleChange} />
 
-                <p>x axis max</p>
-                <input type='text' id='x_axis_max' placeholder='x max' onChange={handleChange} />
+                        <p>y axis</p>
+                        <select id='y_axis' onChange={handleChange}>
+                            {options.map(option => {
+                                return <option key={option} value={option}>{option}</option>
+                            })}
+                        </select>
 
-                <p>y axis</p>
-                <select id='y_axis' onChange={handleChange}>
-                    {options.map(option => {
-                        return <option key={option} value={option}>{option}</option>
-                    })}
-                </select>
+                        <p>y axis min</p>
+                        <input type='text' id='y_axis_min' placeholder='y min' onChange={handleChange} />
 
-                <p>y axis min</p>
-                <input type='text' id='y_axis_min' placeholder='y min' onChange={handleChange} />
+                        <p>y axis max</p>
+                        <input type='text' id='y_axis_max' placeholder='y max' onChange={handleChange} />
+                    </div>
+                }
+                {(dataVis.chart_type === 'Histogram') &&
+                    <div>
+                        <p>x axis</p>
+                        <select id='x_axis' onChange={handleChange}>
+                            {options.map(option => {
+                                return <option key={option} value={option}>{option}</option>
+                            })}
+                        </select>
 
-                <p>y axis max</p>
-                <input type='text' id='y_axis_max' placeholder='y max' onChange={handleChange} />
+                        <p>x axis min</p>
+                        <input type='text' id='x_axis_min' placeholder='x min' onChange={handleChange} />
+
+                        <p>x axis max</p>
+                        <input type='text' id='x_axis_max' placeholder='x max' onChange={handleChange} />
+
+                        <p>frequency min</p>
+                        <input type='text' id='y_axis_min' placeholder='y min' onChange={handleChange} />
+
+                        <p>frequency max</p>
+                        <input type='text' id='y_axis_max' placeholder='y max' onChange={handleChange} />
+                    </div>
+                }
+                {(dataVis.chart_type === 'BarChart') &&
+                    <div>
+                        <p>x axis</p>
+                        <select id='x_axis' onChange={handleChange}>
+                            {options.map(option => {
+                                return <option key={option} value={option}>{option}</option>
+                            })}
+                        </select>
+
+                        <p>x axis min</p>
+                        <input type='text' id='x_axis_min' placeholder='x min' onChange={handleChange} />
+
+                        <p>x axis max</p>
+                        <input type='text' id='x_axis_max' placeholder='x max' onChange={handleChange} />
+
+                        <p>y axis</p>
+                        <select id='y_axis' onChange={handleChange}>
+                            {options.map(option => {
+                                return <option key={option} value={option}>{option}</option>
+                            })}
+                        </select>
+
+                        <p>y axis min</p>
+                        <input type='text' id='y_axis_min' placeholder='y min' onChange={handleChange} />
+
+                        <p>y axis max</p>
+                        <input type='text' id='y_axis_max' placeholder='y max' onChange={handleChange} />
+                    </div>
+                }
+                
 
                 <p>display legend</p>
                 <div>

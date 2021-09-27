@@ -17,7 +17,7 @@ function DataVis({procData, project}) {
         <div className='DataVis'>
             {dataVisItems &&
                 dataVisItems.map(item => {
-                    return <DataVisItem key={item.id} item={item} procData={procData}/>
+                    return <DataVisItem key={item.id} item={item} procData={procData} project={project}/>
                 })
             }
             {/* <table>
