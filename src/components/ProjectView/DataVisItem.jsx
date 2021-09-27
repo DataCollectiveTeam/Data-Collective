@@ -60,8 +60,30 @@ function DataVisItem({item, procData, project}) {
         if (item.legend === true) {
             options.legend = {position: 'bottom'}
         }
+    } else if (item.chart_type === 'PieChart') {
+        let counts = {}
+        procData.forEach(point => {
+            console.log(point)
+            if (counts[point[item.x_axis]] === undefined) {
+                counts[point[item.x_axis]] = 1;
+            } else {
+                counts[point[item.x_axis]]++;
+            }
+        })
+        for (let key in counts) {
+            let val = [key, counts[key]];
+            console.log(val)
+            data.push(val)
+        }
+        options = {
+            title: item.chart_title,
+            pieHole: item.pieHole,
+            legend: 'none'
+        }
+        if (item.legend === true) {
+            options.legend = {position: 'bottom'}
+        }
     }
-    
 
     data.sort((a, b) => {
         return a[0] - b[0]
@@ -91,22 +113,32 @@ function DataVisItem({item, procData, project}) {
             }
             {(item.chart_type === 'Histogram') &&
                 <Chart 
-                chartType={item.chart_type}
-                data={[[item.x_axis], ...data]}
-                options={options}
-                width='80%'
-                height='500px'
-                legendToggle
+                    chartType={item.chart_type}
+                    data={[[item.x_axis], ...data]}
+                    options={options}
+                    width='80%'
+                    height='500px'
+                    legendToggle
                 />
             }
             {(item.chart_type === 'BarChart') &&
                 <Chart 
-                chartType={item.chart_type}
-                data={[[item.x_axis, item.y_axis, {role: 'style'}], ...data]}
-                options={options}
-                width='80%'
-                height='500px'
-                legendToggle
+                    chartType={item.chart_type}
+                    data={[[item.x_axis, item.y_axis, {role: 'style'}], ...data]}
+                    options={options}
+                    width='80%'
+                    height='500px'
+                    legendToggle
+                />
+            }
+            {(item.chart_type === 'PieChart') &&
+                <Chart 
+                    chartType={item.chart_type}
+                    data={[[item.x_axis, item.y_axis], ...data]}
+                    options={options}
+                    width='80%'
+                    height='500px'
+                    legendToggle
                 />
             }
             
