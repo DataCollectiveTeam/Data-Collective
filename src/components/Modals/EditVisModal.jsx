@@ -57,7 +57,7 @@ function EditVisModal({item, procData, project, setShowEditVisModal}) {
     return (
         <div className='modal-background'>
             <div className='modal-textbox'>
-                <select id='chart_type' onChange={handleChange}>
+                <select id='chart_type' value={dataVis.chart_type} onChange={handleChange}>
                     <option value='LineChart'>Line Chart</option>
                     <option value='BarChart'>Bar Chart</option>
                     <option value='Histogram'>Histogram</option>
@@ -96,7 +96,7 @@ function EditVisModal({item, procData, project, setShowEditVisModal}) {
                 }
                 {(dataVis.chart_type === 'Histogram') &&
                     <div>
-                        <p>x axis</p>
+                        <p>field to analyze</p>
                         <select id='x_axis' onChange={handleChange} value={dataVis.x_axis}>
                             {options.map(option => {
                                 return <option key={option} value={option}>{option}</option>
@@ -147,31 +147,12 @@ function EditVisModal({item, procData, project, setShowEditVisModal}) {
                 }
                 {(dataVis.chart_type === 'PieChart') &&
                     <div>
-                        <p>x axis</p>
-                        <select id='x_axis' value={dataVis.x_axi} onChange={handleChange}>
+                        <p>field to compare</p>
+                        <select id='x_axis' value={dataVis.x_axis} onChange={handleChange}>
                             {options.map(option => {
                                 return <option key={option} value={option}>{option}</option>
                             })}
                         </select>
-
-                        <p>x axis min</p>
-                        <input type='text' id='x_axis_min' placeholder='x min' value={dataVis.x_axis_min} onChange={handleChange} />
-
-                        <p>x axis max</p>
-                        <input type='text' id='x_axis_max' placeholder='x max' value={dataVis.x_axis_max} onChange={handleChange} />
-
-                        <p>y axis</p>
-                        <select id='y_axis' value={dataVis.y_axis} onChange={handleChange}>
-                            {options.map(option => {
-                                return <option key={option} value={option}>{option}</option>
-                            })}
-                        </select>
-
-                        <p>y axis min</p>
-                        <input type='text' id='y_axis_min' placeholder='y min' value={dataVis.y_axis_min} onChange={handleChange} />
-
-                        <p>y axis max</p>
-                        <input type='text' id='y_axis_max' placeholder='y max' value={dataVis.y_axis_max} onChange={handleChange} />
                         
                         <p>enter pie hole size</p>
                         <input type='text' id='pie_hole' placeholder='pie hole size' value={dataVis.pie_hole} onChange={handleChange} />
