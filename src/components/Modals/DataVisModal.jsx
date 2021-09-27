@@ -41,6 +41,7 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
     }
 
     const handleSubmit = () => {
+
         const url = 'http://localhost:8000/data_vis/'
         axios.post(url, dataVis)
             .then(res => console.log(res))
@@ -89,7 +90,7 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
                 }
                 {(dataVis.chart_type === 'Histogram') &&
                     <div>
-                        <p>x axis</p>
+                        <p>field to analyze</p>
                         <select id='x_axis' onChange={handleChange}>
                             {options.map(option => {
                                 return <option key={option} value={option}>{option}</option>
@@ -140,31 +141,12 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
                 }
                 {(dataVis.chart_type === 'PieChart') &&
                     <div>
-                        <p>x axis</p>
+                        <p>field to compare</p>
                         <select id='x_axis' onChange={handleChange}>
                             {options.map(option => {
                                 return <option key={option} value={option}>{option}</option>
                             })}
                         </select>
-
-                        <p>x axis min</p>
-                        <input type='text' id='x_axis_min' placeholder='x min' onChange={handleChange} />
-
-                        <p>x axis max</p>
-                        <input type='text' id='x_axis_max' placeholder='x max' onChange={handleChange} />
-
-                        <p>y axis</p>
-                        <select id='y_axis' onChange={handleChange}>
-                            {options.map(option => {
-                                return <option key={option} value={option}>{option}</option>
-                            })}
-                        </select>
-
-                        <p>y axis min</p>
-                        <input type='text' id='y_axis_min' placeholder='y min' onChange={handleChange} />
-
-                        <p>y axis max</p>
-                        <input type='text' id='y_axis_max' placeholder='y max' onChange={handleChange} />
                         
                         <p>enter pie hole size</p>
                         <input type='text' id='pie_hole' placeholder='pie hole size' onChange={handleChange} />
