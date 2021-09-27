@@ -37,7 +37,6 @@ const User = ({id}) => {
         axios.get(url)
         .then(res => {
             setUserProjects(res.data);
-            console.log(res.data)
         })
         .catch(console.error);
     }
