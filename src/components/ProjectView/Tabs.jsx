@@ -105,7 +105,7 @@ function Tabs({project, data, setShowNewForm}) {
                     <DataVis procData={procData} />
                 }
                 {(tabState === 'admin') && 
-                    <AdminPanel p={project} setShowNewForm={setShowNewForm}/>
+                    <AdminPanel p={project} setShowNewForm={setShowNewForm} procData={procData}/>
                 }
             </div>
             
