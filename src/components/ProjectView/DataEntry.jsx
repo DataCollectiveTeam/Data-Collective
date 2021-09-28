@@ -5,7 +5,7 @@ import { DataContext } from '../../DataContext';
 
 function DataEntry({project}) {
 
-    const {thisUser} = useContext(DataContext);
+    const {thisUser, URL } = useContext(DataContext);
 
     //defaut form includes this projects id
     //also includes this user's id
@@ -81,7 +81,7 @@ function DataEntry({project}) {
     //called on page load
     //gets form data for this project
     const getForm = () => {
-        const url = `http://localhost:8000/formgrab/${project.id}`
+        const url = `${URL}/formgrab/${project.id}`
         axios.get(url)
             .then(res => {
                 //calls form data in state
@@ -99,7 +99,7 @@ function DataEntry({project}) {
 
     //posts new data entry to 'data_entries'
     const handleSubmit = () => {
-        const url = 'http://localhost:8000/data_entries/'
+        const url = `${URL}/data_entries/`
         axios.post(url, dataEntry)
             .then(res => console.log(res))
             .catch(console.error);

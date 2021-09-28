@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
+import { DataContext } from '../../DataContext';
 
 const SearchBar = ({setProjects}) => {
+
+    const { URL } = useContext(DataContext);
 
     //state to store search item as string
     const [searchItem, setSearchItem] = useState('');
@@ -30,13 +33,13 @@ const SearchBar = ({setProjects}) => {
 
     //filter posts by search term on submit
     const handleSubmit = () => {
-        const url = `http://localhost:8000/projects/?search=${searchItem}`
+        const url = `${URL}/projects/?search=${searchItem}`
         getProjects(url)
     }
 
     //return all projects
     const handleClear = () => {
-        const url = `http://localhost:8000/projects/`
+        const url = `${URL}/projects/`
         getProjects(url)
     }
 

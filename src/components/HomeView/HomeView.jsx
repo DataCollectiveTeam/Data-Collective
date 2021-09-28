@@ -1,19 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ProjectCard from './ProjectCard';
 import axios from 'axios';
 import './HomeView.css';
 import SearchBar from './SearchBar';
+import { DataContext } from '../../DataContext';
 
 const HomeView = () => {
     
+    const { URL } = useContext(DataContext);
+
     //store all projects in an array
     const [projects, setProjects] = useState([]);
 
     //get all projects and store in state
     useEffect(() => {
-        const url = "http://localhost:8000/projects/";
+        const url = `${URL}/projects/`;
         axios.get(url)
           .then(res => {
+            console.log(res)
             setProjects(res.data);
             })
           .catch(console.error);

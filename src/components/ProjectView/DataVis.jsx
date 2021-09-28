@@ -1,13 +1,16 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { DataContext } from '../../DataContext';
 import DataVisItem from './DataVisItem';
 
 function DataVis({procData, project}) {
 
+    const { URL } = useContext(DataContext);
+
     const [dataVisItems, setDataVisItems] = useState(null);
 
     useEffect(() => {
-        const url = `http://localhost:8000/project_data_vis/${project.id}`
+        const url = `${URL}/project_data_vis/${project.id}`
         axios.get(url)
             .then(res => setDataVisItems(res.data))
             .catch(console.error);

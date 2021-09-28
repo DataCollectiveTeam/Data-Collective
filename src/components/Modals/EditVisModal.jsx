@@ -13,7 +13,7 @@ function EditVisModal({item, procData, project, setShowEditVisModal}) {
             }
         } 
 
-    const {thisUser} = useContext(DataContext);
+    const { thisUser, URL } = useContext(DataContext);
 
     const defaultDataVis = {
         project: project.id,
@@ -37,14 +37,14 @@ function EditVisModal({item, procData, project, setShowEditVisModal}) {
     }
 
     const handleSubmit = () => {
-        const url = `http://localhost:8000/data_vis/${item.id}`
+        const url = `${URL}/data_vis/${item.id}`
         axios.put(url, dataVis)
             .then(res => console.log(res))
             .catch(console.error);
     }
 
     useEffect(() => {
-        const url = `http://localhost:8000/data_vis/${item.id}`;
+        const url = `${URL}/data_vis/${item.id}`;
         axios.get(url)
             .then(res => setDataVis(res.data))
             .catch(console.error);

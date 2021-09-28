@@ -1,11 +1,14 @@
-import React, { useState,useEffect } from "react";
+import React, { useState,useEffect, useContext } from "react";
 import UserBio from './UserBio';
 import UserProjects from './UserProjects';
 import EditUserModal from './../Modals/EditUserModal'
 import axios from 'axios';
 import './UserView.css';
+import { DataContext } from "../../DataContext";
 
 const User = ({id}) => {
+
+    const { URL } = useContext(DataContext);
 
     const [user, setUser] = useState(null)
     const [userProjects, setUserProjects] = useState(null)
@@ -13,9 +16,9 @@ const User = ({id}) => {
     const [editUserModal, setEditUserModal] = useState(false)
 
     useEffect(() => {
-        const url = `http://localhost:8000/citizens/${id}`;
-        const aUrl = `http://localhost:8000/alist/${id}`;
-        const cUrl = `http://localhost:8000/contributions/${id}`;
+        const url = `${URL}/citizens/${id}`;
+        const aUrl = `${URL}/alist/${id}`;
+        const cUrl = `${URL}/contributions/${id}`;
 
         getUser(url);
         getAList(aUrl);

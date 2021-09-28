@@ -1,7 +1,10 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { DataContext } from '../../DataContext';
 
 const ProjectHeader = ({p}) => {
+
+    const { URL } = useContext(DataContext);
 
     console.log(p)
 
@@ -10,7 +13,7 @@ const ProjectHeader = ({p}) => {
     const [creator, setCreator] = useState(null);
 
     const getCreator = () => {
-        const url = `http://localhost:8000/citizens/${p.creator}`
+        const url = `${URL}/citizens/${p.creator}`
         axios.get(url)
             .then(res => setCreator(res.data))
             .catch(console.error);

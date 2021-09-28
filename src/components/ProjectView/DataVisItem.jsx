@@ -6,7 +6,7 @@ import EditVisModal from '../Modals/EditVisModal';
 
 function DataVisItem({item, procData, project}) {
 
-    const {thisUser} = useContext(DataContext);
+    const {thisUser, URL} = useContext(DataContext);
     const [showEditVisModal, setShowEditVisModal] = useState(false);
     //declaring empty variables
     let options;
@@ -167,7 +167,7 @@ function DataVisItem({item, procData, project}) {
 
     //deletes the visualization
     const deleteVis = () => {
-        const url = `http://localhost:8000/data_vis/${item.id}`
+        const url = `${URL}/data_vis/${item.id}`
         axios.delete(url)
             .then(res => console.log(res))
             .catch(console.error);

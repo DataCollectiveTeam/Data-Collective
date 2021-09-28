@@ -4,7 +4,7 @@ import { DataContext } from '../../DataContext';
 
 function DataPoint({point, admins}) {
 
-    const {thisUser} = useContext(DataContext);
+    const {thisUser, URL} = useContext(DataContext);
 
     let dataToRender = [];
     //pass each key-value pair into dataToRender
@@ -17,7 +17,7 @@ function DataPoint({point, admins}) {
 
     //deletes this data point from the database
     const deletePoint = () => {
-        const url = `http://localhost:8000/data_entries/${point.id}`;
+        const url = `${URL}/data_entries/${point.id}`;
         axios.delete(url)
             .then(res => console.log(res))
             .catch(console.error);
