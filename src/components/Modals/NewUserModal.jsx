@@ -64,8 +64,8 @@ const NewUserModal = ({setNewUserModal}) => {
         <div className='modal-background'>
             <div className='modal-textbox'>
                 <input type='text' id='name' placeholder='username' value={formState.name} onChange={handleChange}/>
-                <input type='text' id='password' placeholder='password' value={formState.password} onChange={handleChange}/>
-                <input type='text' id='confirmPassword' placeholder='confirm password' value={formState.confirmPassword} onChange={handleChange}/>
+                <input type='password' id='password' placeholder='password' value={formState.password} onChange={handleChange}/>
+                <input type='password' id='confirmPassword' placeholder='confirm password' value={formState.confirmPassword} onChange={handleChange}/>
                 <input type='text' id='img' placeholder='image url' value={formState.img} onChange={handleChange}/>
                 <input type='text' id='bio' placeholder='brief bio' value={formState.bio} onChange={handleChange}/>
                 {errorState.passwordMismatch ? <p>passwords must match</p>: null}

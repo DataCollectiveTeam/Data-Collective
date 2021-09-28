@@ -45,7 +45,7 @@ function LogInModal({setLogInModal}) {
         <div className='modal-background'>
             <div className='modal-textbox'>
                 <input type='text' id='name' placeholder='name' value={formState.name} onChange={handleChange}/>
-                <input type='text' id='password' placeholder='password' value={formState.password} onChange={handleChange}/>
+                <input type='password' id='password' placeholder='password' value={formState.password} onChange={handleChange}/>
                 {errorState ? <p>login failed</p>: null}
                 <button type='button' onClick={handleSubmit} >log in</button>
                 <button type='button' onClick={() => setLogInModal(false)} >close</button>
