@@ -41,7 +41,7 @@ function DataPoint({point, admins}) {
                     give them the option to delete this data point
                 */}
                 {((admins.some(admin => admin === parseInt(thisUser.id)) === true) ||
-                 (point.contibutor === parseInt(thisUser.id))) &&
+                 (point.contributor === parseInt(thisUser.id))) &&
                     <button type='button' onClick={deletePoint} >delete data point</button> 
                 }
             </div>
