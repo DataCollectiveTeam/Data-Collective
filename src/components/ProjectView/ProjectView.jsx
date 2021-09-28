@@ -1,5 +1,4 @@
 import React, { useState,useEffect, useContext } from "react";
-import ProjectDetails from './ProjectDetails';
 import ProjectHeader from './ProjectHeader';
 import axios from "axios";
 import { DataContext } from "../../DataContext";
@@ -39,7 +38,6 @@ const ProjectView = ({id}) => {
                     <NewFormModal setShowNewForm={setShowNewForm} thisProject={id} />
                 }
                 <ProjectHeader p={project}/>
-                <ProjectDetails p={project}/>
                 {project && 
                     <Tabs project={project} data={data} setShowNewForm={setShowNewForm}/>
                 }
