@@ -28,7 +28,7 @@ const ProjectView = ({id}) => {
             console.log(res2)
             setData(res2.data)
         }))
-        // .catch(console.error)
+        .catch(console.error)
     }, [id]);
 
     if(data && project) {
