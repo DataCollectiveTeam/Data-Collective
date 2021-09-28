@@ -98,19 +98,26 @@ function DataEntry({project}) {
         setDataEntry({...dataEntry, [e.target.id]: e.target.value})
     }
 
+    const postEntry = () => {
+        const url = `${URL}/data_entries/`
+        axios.post(url, dataEntry)
+            .then(res => console.log(res))
+            .catch(console.error);
+    }
+
+    const addContributor = () => {
+        const url = `${URL}/projects/${project.id}`;
+        axios.put(url, {...project, contributor_list: [...project.contributor_list, thisUser.id]})
+            .then(res => console.log(res))
+            .catch(console.error);
+    }
+
     //posts new data entry to 'data_entries'
     const handleSubmit = () => {
-
-        const url = `${URL}/projects/${project.id}`;
-        const url2 = `${URL}/data_entries`
-        axios.all([
-            axios.put(url, {...project, contributor_list: [...project.contributor_list, thisUser.id]}),
-            axios.post(url2, dataEntry)
-        ])
-        .then(axios.spread((res1, res2) => {
-            console.log(res1, res2);
-        }))
-        .catch(console.error)
+        postEntry();
+        if (project.contributor_list.some((cont => cont === thisUser.id) === false)) {
+            addContributor();
+        }
     }
     
 
