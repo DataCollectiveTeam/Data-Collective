@@ -1,38 +1,22 @@
 .HomeView {
     display: flex;
     flex-wrap: wrap;
+    background-color: #DEEEF7;
+    min-height: 76vh;
 }
 
+/*----------- ProjectCard --------------*/
+
 .ProjectCard {
-    width: 350px;
+    width: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-decoration: none;
     color: black;
-}
-
-.SearchBar {
-    background-color: gray;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    padding: 10px;
-    font-size: 16px;
-}
-
-.searchbar-input, .searchbar-submit {
-    font-size: 16px;
-}
-
-.searchbar-input {
-    width: 200px;
-}
-
-.card {
-    border: 2px solid black;
+    background-color: #F8EEDD;
+    border: 2px solid #7F8D7C;
+    color: #464e45;
     padding: 1em;
     margin: 1em;
     border-radius: 1em;
@@ -42,5 +26,60 @@
 
 .ProjectCard img {
     max-width: 10em;
-    height: auto;
+    max-height: 10em;
+    
+}
+
+.card-image {
+    width: 10em;
+    height: 10em;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-body {
+    margin-bottom: 0.5em;
+}
+
+/*------------- SearchBar --------------*/
+.SearchBar {
+    color: whitesmoke;
+    background-color: #7F8D7C;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.searchbar-clear, .searchbar-submit {
+    color: #F8EEDD;
+    background-color: #5070B9;
+    padding: 0.5em;
+    margin: 0.5em;
+    border-radius: 0.25em;
+    border: 2px solid #F8EEDD;
+}
+
+.searchbar-clear:hover, .searchbar-submit:hover {
+    color: #5070B9;
+    background-color: #F8EEDD;
+    padding: 0.5em;
+    margin: 0.5em;
+    border-radius: 0.25em;
+    border: 2px solid #5070B9;
+}
+
+.searchbar-input {
+    padding: 0.5em;
+    margin: 0.5em;
+    border-radius: 0.25em;
+    width: 200px;
+    background-color: #F8EEDD;
+    color: #5070B9;
+    border: 2px solid #5070B9;
 }

@@ -28,12 +28,6 @@ function DataPoint({point, admins}) {
         return (
             <div className='DataPoint'>
                 {/* 
-                    maps through the dataToRender array 
-                */}
-                {dataToRender.map(pair => {
-                    return <p key={pair[0]}>{pair[0]}: {pair[1]}</p>
-                })}
-                {/* 
                     if the currently logged in user is: 
                         an admin on this project
                         or the user who submitted this data
@@ -42,8 +36,15 @@ function DataPoint({point, admins}) {
                 */}
                 {((admins.some(admin => admin === parseInt(thisUser.id)) === true) ||
                  (point.contributor === parseInt(thisUser.id))) &&
-                    <button type='button' onClick={deletePoint} >delete data point</button> 
+                    <button className='delete-button' type='button' onClick={deletePoint} >delete data point</button> 
                 }
+                {/* 
+                    maps through the dataToRender array 
+                */}
+                {dataToRender.map(pair => {
+                    return <p key={pair[0]}>{pair[0]}: {pair[1]}</p>
+                })}
+                
             </div>
         );
     } else {

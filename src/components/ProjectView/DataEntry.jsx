@@ -130,55 +130,55 @@ function DataEntry({project}) {
         return (
         <div className='DataEntry'>
             {form.int1 && 
-                <div>
+                <div className='int'>
                     <p>{form.int1_label}</p>
                     <input type='text' id='int1' placeholder='integer' onChange={handleChange} />
                 </div>    
             }
             {form.int2 && 
-                <div>
+                <div className='int'>
                     <p>{form.int2_label}</p>
                     <input type='text' id='int2' placeholder='integer' onChange={handleChange} />
                 </div>    
             }
             {form.int3 && 
-                <div>
+                <div className='int'>
                     <p>{form.int3_label}</p>
                     <input type='text' id='int3' placeholder='integer' onChange={handleChange} />
                 </div>    
             }
             {form.int4 && 
-                <div>
+                <div className='int'>
                     <p>{form.int4_label}</p>
                     <input type='text' id='int4' placeholder='integer' onChange={handleChange} />
                 </div>    
             }
             {form.float1 && 
-                <div>
+                <div className='float'>
                     <p>{form.float1_label}</p>
                     <input type='text' id='float1' placeholder='integer' onChange={handleChange} />
                 </div>    
             }
             {form.float2 && 
-                <div>
+                <div className='float'>
                     <p>{form.float2_label}</p>
                     <input type='text' id='float2' placeholder='integer' onChange={handleChange} />
                 </div>    
             }
             {form.float3 && 
-                <div>
+                <div className='float'>
                     <p>{form.float3_label}</p>
                     <input type='text' id='float3' placeholder='integer' onChange={handleChange} />
                 </div>    
             }
             {form.float4 && 
-                <div>
+                <div className='float'>
                     <p>{form.float4_label}</p>
                     <input type='text' id='float4' placeholder='integer' onChange={handleChange} />
                 </div>    
             }
             {form.dropdown1 && 
-                <div>
+                <div className='dropdown'>
                     <p>{form.dropdown1_label}</p>
                     <select name='dropdown1' id='dropdown1' onChange={handleChange}>
                         {getDropDownOptions(form.dropdownOptions1).map(option => {
@@ -188,7 +188,7 @@ function DataEntry({project}) {
                 </div>    
             }
             {form.dropdown2 && 
-                <div>
+                <div className='dropdown'>
                     <p>{form.dropdown2_label}</p>
                     <select name='dropdown2' id='dropdown2' onChange={handleChange}>
                         {getDropDownOptions(form.dropdownOptions2, 'dropdown2').map(option => {
@@ -198,30 +198,30 @@ function DataEntry({project}) {
                 </div>    
             }
             {form.img_url && 
-                <div>
+                <div className='img'>
                     <p>{form.img_url}</p>
                     <input type='text' id='img_url' placeholder='image url' onChange={handleChange} />
                 </div>    
             }
             {form.notes && 
-                <div>
+                <div className='notes'>
                     <textarea id='notes' placeholder='enter notes here' onChange={handleChange}></textarea>
                 </div>
             }
             {form.latlon && 
-                <div>
+                <div className='latlon'>
                     <p>enter coordinates</p>
                     <input type='text' id='lat' placeholder='latitude' onChange={handleChange} />
                     <input type='text' id='lon' placeholder='longitude' onChange={handleChange} />
                 </div>    
             }
             {form.zipcode &&
-                <div>
+                <div className='zipcode'>
                     <p>enter zipcode</p>
                     <input type='text' id='zipcode' placeholder='zipcode' onChange={handleChange} />
                 </div>
             }
-            <button type='button' onClick={handleSubmit}>submit</button>
+            <button className='submit-button' type='button' onClick={handleSubmit}>submit</button>
         </div>
         );
     } else {

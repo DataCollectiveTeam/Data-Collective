@@ -6,7 +6,7 @@ function RawData({procData, creator, admins, }) {
     //maps through processed data and displays each point in a 'DataPoint' component
 
     return (
-        <div>
+        <div className='RawData'>
             {procData.map(entry => {
                 return <DataPoint key={entry.id} point={entry} creator={creator} admins={admins}/>
             })}

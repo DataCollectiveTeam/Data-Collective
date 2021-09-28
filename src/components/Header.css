@@ -1,5 +1,6 @@
 .Header {
-    background-color: gray;
+    color: whitesmoke;
+    background-color: #7F8D7C;
     top: 0;
     left: 0;
     margin-top: 0em;
@@ -12,7 +13,7 @@
 
 .home-link {
     text-decoration: none;
-    color: white;
+    color: #F8EEDD;
 }
 
 .user-interaction {
@@ -20,8 +21,11 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid black;
     margin: 1em;
+    padding: 1em;
+    background-color: #DEEEF7;
+    border-radius: 0.5em;
+    box-shadow: 0 0.5em 1em rgb(69, 69, 69);
 }
 
 .profile {
@@ -44,3 +48,22 @@
     overflow: hidden;
     margin: 0px 5px;
 }
+
+.interaction-button {
+    color: #F8EEDD;
+    background-color: #5070B9;
+    padding: 0.5em;
+    margin: 0.5em;
+    border-radius: 0.25em;
+    border: 2px solid #F8EEDD;
+}
+
+.interaction-button:hover {
+    color: #5070B9;
+    background-color: #F8EEDD;
+    padding: 0.5em;
+    margin: 0.5em;
+    border-radius: 0.25em;
+    border: 2px solid #5070B9;
+}
+
