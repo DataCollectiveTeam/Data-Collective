@@ -5,9 +5,11 @@ import './HomeView.css';
 import SearchBar from './SearchBar';
 
 const HomeView = () => {
-
+    
+    //store all projects in an array
     const [projects, setProjects] = useState([]);
 
+    //get all projects and store in state
     useEffect(() => {
         const url = "http://localhost:8000/projects/";
         axios.get(url)
@@ -17,6 +19,7 @@ const HomeView = () => {
           .catch(console.error);
     }, []);
 
+    //return project cards if axios call succeeds
     if (projects){
         return (
 
