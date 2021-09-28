@@ -6,7 +6,7 @@ import { DataContext } from '../../DataContext';
 const NewUserModal = ({setNewUserModal}) => {
 
     //get function to update current user from DataContext
-    const { setThisUser } = useContext(DataContext);
+    const { setThisUser, URL } = useContext(DataContext);
 
     //default the form state to empty strings
     const defaultForm = {
@@ -40,7 +40,7 @@ const NewUserModal = ({setNewUserModal}) => {
                 ...formState,
                 account_created: new Date()
             }
-            const url = `http://localhost:8000/citizens/`
+            const url = `${URL}/citizens/`
             axios.post(url, newUserObj)
             .then(res => {
                 if (res.data){

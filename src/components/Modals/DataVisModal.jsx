@@ -13,7 +13,7 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
             }
         } 
 
-    const {thisUser} = useContext(DataContext);
+    const {thisUser, URL} = useContext(DataContext);
 
     const defaultDataVis = {
         project: p.id,
@@ -38,7 +38,7 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
 
     const handleSubmit = () => {
 
-        const url = 'http://localhost:8000/data_vis/'
+        const url = `${URL}/data_vis/`
         axios.post(url, dataVis)
             .then(res => console.log(res))
             .catch(console.error);

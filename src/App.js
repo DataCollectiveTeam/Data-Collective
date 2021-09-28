@@ -18,6 +18,8 @@ function App() {
   const [thisUser, setThisUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const URL = 'https://datacollectivebackend.herokuapp.com'
+
     //check whether there is a user in localstorage
 
     useEffect(() => {
@@ -37,7 +39,8 @@ function App() {
     <div className="App">
       <DataContext.Provider value={{
         thisUser, 
-        setThisUser
+        setThisUser, 
+        URL
       }}>
       {(logInModal === true) && 
         <LogInModal setLogInModal={setLogInModal}/>

@@ -5,7 +5,7 @@ import { DataContext } from '../../DataContext';
 const EditProjectModal = ({p, setShowEditModal}) => {
     
     //get current user from DataContext
-    const { thisUser } = useContext(DataContext);
+    const { thisUser, URL } = useContext(DataContext);
 
     const defaultEditedProject = {
         name: p.name,
@@ -29,7 +29,7 @@ const EditProjectModal = ({p, setShowEditModal}) => {
             contributor_list: [thisUser.id]
         }
         
-        const url = 'http://localhost:8000/'
+        const url = URL;
         axios.put(`${url}projects/${p.id}`, editedProjectObj)
             .then(res => console.log(res))
             .catch(console.error);

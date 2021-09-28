@@ -2,8 +2,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import EditProjectModal from '../Modals/EditProjectModal';
 import axios from 'axios';
 import DataVisModal from '../Modals/DataVisModal';
+import { DataContext } from '../../DataContext';
 
-const AdminPanel = ({p, setShowNewForm, procData}) => {
+const AdminPanel = ({p, setShowNewForm}) => {
+
+    const { URL } = useContext(DataContext);
 
     const [showEditModal, setShowEditModal] = useState(false);
     const [newAdmin, setNewAdmin] = useState('');
@@ -44,21 +47,21 @@ const AdminPanel = ({p, setShowNewForm, procData}) => {
         setFilteredUsers(null);
         setNewAdmin('');
         let newAdminList = {admin_list: [...p.admin_list, newAdminId]}
-        const url = `http://localhost:8000/projects/${p.id}`
+        const url = `${URL}/projects/${p.id}`
         axios.patch(url, newAdminList)
             .then(res => console.log(res))
             .catch(console.error);
     }
 
     const deleteProject = () => {
-        const url = `http://localhost:8000/`
+        const url = URL;
         axios.delete(`${url}projects/${p.id}`)
         .then(res => console.log(res))
         .catch(console.error);
     }
 
     useEffect(() => {
-        const url = 'http://localhost:8000/citizens/'
+        const url = `${URL}/citizens/`
         axios.get(url)
             .then(res => setUsers(res.data))
             .catch(console.error);
@@ -70,7 +73,7 @@ const AdminPanel = ({p, setShowNewForm, procData}) => {
                 <EditProjectModal p={p} setShowEditModal={setShowEditModal}/>
             }
             {showDataVisModal &&
-                <DataVisModal p={p} setShowDataVisModal={setShowDataVisModal} procData={procData}/>
+                <DataVisModal p={p} setShowDataVisModal={setShowDataVisModal} />
             }
             <div className='project-admin-buttons'>
                 <button type='button' onClick={() => setShowNewForm(true)} >add new form</button> 

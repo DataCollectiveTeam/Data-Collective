@@ -4,7 +4,7 @@ import { DataContext } from '../../DataContext';
 
 function NewProjectModal({setNewProjectModal}) {
 
-    const { thisUser } = useContext(DataContext);
+    const { thisUser, URL } = useContext(DataContext);
 
     const defaultNewProject = {
         name: '',
@@ -27,7 +27,7 @@ function NewProjectModal({setNewProjectModal}) {
             contributor_list: [thisUser.id]
         }
 
-        const url = 'http://localhost:8000/projects/'
+        const url = `${URL}/projects/`
         axios.post(url, newProjectObj)
             .then(res => console.log(res))
             .catch(console.error);

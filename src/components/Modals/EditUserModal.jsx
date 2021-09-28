@@ -6,7 +6,7 @@ import { DataContext } from '../../DataContext';
 const EditUserModal = ({user, setEditUserModal}) => {
     
     //get function to update current user from DataContext
-    const { setThisUser } = useContext(DataContext);
+    const { setThisUser, URL } = useContext(DataContext);
     
     //pull current user info to set as initial state
     const defaultUserInfo= {
@@ -27,7 +27,7 @@ const EditUserModal = ({user, setEditUserModal}) => {
 
     //put changes to databases and udate localStorage items
     const handleSubmit = () => {
-        const url = `http://localhost:8000`
+        const url = URL;
         axios.put(`${url}/citizens/${user.id}`, editedUser)
         .then(res => {
             //if login succeeeds, set user state and localStorage user
@@ -41,7 +41,7 @@ const EditUserModal = ({user, setEditUserModal}) => {
 
     //delete user from database
     const deleteUser = () => {
-        const url = `http://localhost:8000`
+        const url = URL;
         axios.delete(`${url}/citizens/${user.id}`)
     }
     

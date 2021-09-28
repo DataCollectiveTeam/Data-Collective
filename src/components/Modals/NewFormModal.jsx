@@ -5,7 +5,7 @@ import './Modals.css';
 
 function NewFormModal({setShowNewForm, thisProject}) {
 
-    const { thisUser } = useContext(DataContext);
+    const { thisUser, URL } = useContext(DataContext);
 
     //each form is defaulted to have the project id for this project
     //and the user id of the admin who created it
@@ -57,7 +57,7 @@ function NewFormModal({setShowNewForm, thisProject}) {
 
     //posts formState to the form database
     const handleSubmit = () => {
-        const url = 'http://localhost:8000/forms/';
+        const url = `${URL}/forms/`;
         axios.post(url, formState)
             .then(res => console.log(res))
             .catch(console.error);

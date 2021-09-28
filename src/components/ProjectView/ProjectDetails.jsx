@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import CitizenCard from './CitizenCard';
 import axios from 'axios';
+import { DataContext } from '../../DataContext';
 
 const ProjectDetails = ({p}) => {
+    
+    const { URL } = useContext(DataContext);
 
     const [creator, setCreator] = useState([])
     const [admin, setAdmin] = useState([])
     const [contributors, setContributors] = useState([])
 
     useEffect(() => {
-        const url = "http://localhost:8000/citizens/";
+        const url = URL;
         axios.get(url)
           .then(res => {
               let adminList = []

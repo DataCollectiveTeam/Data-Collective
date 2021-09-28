@@ -6,7 +6,7 @@ import { DataContext } from '../../DataContext';
 function LogInModal({setLogInModal}) {
 
     //get function to update current user from DataContext
-    const { setThisUser } = useContext(DataContext);
+    const { setThisUser, URL } = useContext(DataContext);
 
     //default the form state to empty strings
     const defaultForm = {name: '', password: ''}
@@ -22,7 +22,7 @@ function LogInModal({setLogInModal}) {
 
     //get citizen by username and password
     const handleSubmit = () => {
-        const url = `http://localhost:8000/citizens/login/${formState.name}&${formState.password}`
+        const url = `${URL}/citizens/login/${formState.name}&${formState.password}`
         axios.get(url)
             .then(res => {
                 if (res.data[0]){

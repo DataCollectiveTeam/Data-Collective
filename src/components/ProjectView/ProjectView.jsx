@@ -10,7 +10,7 @@ import Tabs from "./Tabs";
 
 const ProjectView = ({id}) => {
 
-    const {thisUser} = useContext(DataContext);
+    const {thisUser, URL } = useContext(DataContext);
 
     const [project, setProject] = useState(null);
     const [data, setData] = useState(null);
@@ -18,8 +18,8 @@ const ProjectView = ({id}) => {
 
     //get info for this project and this project's data
     useEffect(() => {
-        const url = `http://localhost:8000/projects/${id}`;
-        const url2 = `http://localhost:8000/project_data/${id}`
+        const url = `${URL}/projects/${id}`;
+        const url2 = `${URL}/project_data/${id}`
         axios.all([
             axios.get(url),
             axios.get(url2)
