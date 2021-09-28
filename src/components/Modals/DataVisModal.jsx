@@ -8,11 +8,7 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
     let options = [];
 
     for (let key in procData[0]) {
-        if (
-            key !== 'id' &&
-            key !== 'contributor' &&
-            key !== 'notes'
-            ) {
+        if (key !== 'notes') {
                 options.push(key)
             }
         } 

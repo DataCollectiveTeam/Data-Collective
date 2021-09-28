@@ -12,6 +12,50 @@ function DataVisItem({item, procData, project}) {
     let options;
     let data = [];
 
+    if (item.x_axis === 'id') {
+        procData.sort((a, b) => {
+            console.log(a, b)
+            return a.id - b.id;
+        })
+        options = {
+            hAxis: { title: item.x_axis, viewWindow: { min: procData[0].id, max: procData[procData.length - 1].id} }
+        }
+    } else if (item.x_axis === 'id' && item.chart_type === 'BarChart') {
+        options = {
+            vAxis: { title: item.x_axis, viewWindow: { min: procData[0].id, max: procData[procData.length - 1].id} }
+        }
+    } else if (item.x_axis === 'contributor') {
+        procData.sort((a, b) => {
+            console.log(a, b)
+            return a.contributor - b.contributor;
+        })
+        options = {
+            hAxis: { title: item.x_axis, viewWindow: { min: procData[0].contributor, max: procData[procData.length - 1].contributor} }
+        }
+    } else if (item.x_axis === 'contributor' && item.chart_type === 'BarChart') {
+        procData.sort((a, b) => {
+            console.log(a, b)
+            return a.contributor - b.contributor;
+        })
+        options = {
+            vAxis: { title: item.x_axis, viewWindow: { min: procData[0].contributor, max: procData[procData.length - 1].contributor} }
+        }
+    } else if (item.chart_type === 'BarChart') {
+        procData.sort((a, b) => {
+            console.log(a, b)
+            return a[item.x_axis] - b[item.x_axis];
+        })
+        options = {
+            vAxis: { title: item.x_axis, viewWindow: { min: procData[0][item.x_axis], max: procData[procData.length - 1][item.x_axis]} }
+        }
+    } else {
+        options = {
+            hAxis: { title: item.x_axis, viewWindow: { min: item.x_axis_min, max: item.x_axis_max} },
+        }
+    }
+
+    console.log(procData);
+
     //cases for each chart type
     if (item.chart_type === 'LineChart') {
         //for each data point, create a sub array
@@ -24,8 +68,8 @@ function DataVisItem({item, procData, project}) {
         })
         //fill in chart options with chosen values
         options = {
+            ...options,
             title: item.chart_title,
-            hAxis: { title: item.x_axis, viewWindow: { min: item.x_axis_min, max: item.x_axis_max} },
             vAxis: { title: item.y_axis, viewWindow: { min: item.y_axis_min, max: item.y_axis_max} },
             legend: 'none'
         }
@@ -50,7 +94,6 @@ function DataVisItem({item, procData, project}) {
         //y axis automatically set to frequency for histogram
         options = {
             title: item.chart_title,
-            hAxis: { title: item.x_axis, viewWindow: { min: item.x_axis_min, max: item.x_axis_max} },
             vAxis: { title: 'frequency', viewWindow: { min: item.y_axis_min, max: item.y_axis_max} },
             legend: 'none'
         }
@@ -77,8 +120,7 @@ function DataVisItem({item, procData, project}) {
         //fill in chart options with chosen values
         options = {
             title: item.chart_title,
-            hAxis: { title: item.x_axis, viewWindow: { min: item.x_axis_min, max: item.x_axis_max} },
-            vAxis: { title: item.y_axis, viewWindow: { min: item.y_axis_min, max: item.y_axis_max} },
+            hAxis: { title: item.y_axis, viewWindow: { min: item.y_axis_min, max: item.y_axis_max} },
             legend: 'none'
         }
         //append legend if user chose to display legend 

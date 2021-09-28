@@ -8,11 +8,7 @@ function EditVisModal({item, procData, project, setShowEditVisModal}) {
     let options = [];
 
     for (let key in procData[0]) {
-        if (
-            key !== 'id' &&
-            key !== 'contributor' &&
-            key !== 'notes'
-            ) {
+        if (key !== 'notes') {
                 options.push(key)
             }
         } 
@@ -91,7 +87,7 @@ function EditVisModal({item, procData, project, setShowEditVisModal}) {
                         <input type='text' id='y_axis_min' placeholder='y min' value={dataVis.y_axis_min} onChange={handleChange} />
 
                         <p>y axis max</p>
-                        <input type='text' id='y_axis_max' placeholder='y max' value={dataVis.x_axis_max} onChange={handleChange} />
+                        <input type='text' id='y_axis_max' placeholder='y max' value={dataVis.y_axis_max} onChange={handleChange} />
                     </div>
                 }
                 {(dataVis.chart_type === 'Histogram') &&
