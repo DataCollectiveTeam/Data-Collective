@@ -4,7 +4,7 @@ import CitizenCard from './CitizenCard';
 import axios from 'axios';
 
 function TabDescription({project}) {
-
+    console.log(project)
     const { URL } = useContext(DataContext);
 
     const [creator, setCreator] = useState([])
