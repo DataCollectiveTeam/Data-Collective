@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './HomeView.css';
 
 function ProjectCard({p}) {
-
+    //card component for each project in homeview and user view
     return (
         <Link className="ProjectCard" to={`/projects/${p.id}`} key={p.id}>
             <div className="card">

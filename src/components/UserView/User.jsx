@@ -2,7 +2,6 @@ import React, { useState,useEffect } from "react";
 import UserBio from './UserBio';
 import UserProjects from './UserProjects';
 import EditUserModal from './../Modals/EditUserModal'
-import DeleteUserModal from './../Modals/DeleteUserModal'
 import axios from 'axios';
 import './UserView.css';
 
@@ -12,7 +11,6 @@ const User = ({id}) => {
     const [userProjects, setUserProjects] = useState(null)
     const [userContributions, setUserContributions] = useState(null)
     const [editUserModal, setEditUserModal] = useState(false)
-    const [deleteUserModal, setDeleteUserModal] = useState(false)
 
     useEffect(() => {
         const url = `http://localhost:8000/citizens/${id}`;
@@ -55,10 +53,7 @@ const User = ({id}) => {
             
             <div className="User">
                 {(editUserModal === true) && 
-                <EditUserModal user={user} setEditUserModal={setEditUserModal} setDeleteUserModal={setDeleteUserModal}/>
-                }
-                {(deleteUserModal === true) && 
-                <DeleteUserModal user={user} setDeleteUserModal={setDeleteUserModal}/>
+                <EditUserModal user={user} setEditUserModal={setEditUserModal}/>
                 }
                 <UserBio user={user} setEditUserModal={setEditUserModal}/>
                 <h3 className='projects-header'>projects this user has created</h3>

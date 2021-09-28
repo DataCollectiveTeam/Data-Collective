@@ -5,8 +5,10 @@ import { DataContext } from '../../DataContext';
 
 const NewUserModal = ({setNewUserModal}) => {
 
+    //get function to update current user from DataContext
     const { setThisUser } = useContext(DataContext);
 
+    //default the form state to empty strings
     const defaultForm = {
         name: '',
         password: '',
@@ -14,16 +16,20 @@ const NewUserModal = ({setNewUserModal}) => {
         img: '',
         bio: ''
     }
-
+    
+    //default the error state to false for both errors
     const defaultErrorState = {passwordMismatch: false, duplicateUser:false}
 
+    //store form and error status in state
     const [formState, setFormState] = useState(defaultForm)
     const [errorState, setErrorState] = useState(defaultErrorState)
 
+    //match input id to property of editedUser object and update
     const handleChange = (e) => {
         setFormState({...formState, [e.target.id]: e.target.value})
     }
 
+    //if passwords match, post new citizen to database
     const handleSubmit = () => {
         console.log(formState)
         if (formState.password !== formState.confirmPassword){

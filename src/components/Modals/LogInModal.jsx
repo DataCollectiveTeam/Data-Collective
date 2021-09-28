@@ -5,20 +5,24 @@ import { DataContext } from '../../DataContext';
 
 function LogInModal({setLogInModal}) {
 
+    //get function to update current user from DataContext
     const { setThisUser } = useContext(DataContext);
 
+    //default the form state to empty strings
     const defaultForm = {name: '', password: ''}
 
+    //store form and error status in state
     const [formState, setFormState] = useState(defaultForm)
     const [errorState, setErrorState] = useState(false)
 
+    //match input id to property of editedUser object and update
     const handleChange = (e) => {
         setFormState({...formState, [e.target.id]: e.target.value})
     }
 
+    //get citizen by username and password
     const handleSubmit = () => {
         const url = `http://localhost:8000/citizens/login/${formState.name}&${formState.password}`
-
         axios.get(url)
             .then(res => {
                 if (res.data[0]){
@@ -36,7 +40,7 @@ function LogInModal({setLogInModal}) {
                 }
             })
     }
-
+    
     return (
         <div className='modal-background'>
             <div className='modal-textbox'>
