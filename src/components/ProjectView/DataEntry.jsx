@@ -115,12 +115,10 @@ function DataEntry({project}) {
     //posts new data entry to 'data_entries'
     const handleSubmit = () => {
         postEntry();
-        if (project.contributor_list.some((cont => cont === thisUser.id) === false)) {
+        if (!project.contributor_list.some((cont => cont === thisUser.id))) {
             addContributor();
         }
     }
-    
-
 
     useEffect(() => {
         getForm();
