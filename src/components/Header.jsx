@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import './Header.css';
 import { DataContext } from '../DataContext';
+import { useEffect } from 'react/cjs/react.development';
 
 const Header = ({setLogInModal, setNewUserModal, setNewProjectModal, isLoggedIn, setIsLoggedIn}) => {
 
@@ -11,6 +12,10 @@ const Header = ({setLogInModal, setNewUserModal, setNewProjectModal, isLoggedIn,
         setIsLoggedIn(false)
         localStorage.clear()
     }
+
+    useEffect(() => {
+
+      }, []);
 
     if(isLoggedIn){
         return (

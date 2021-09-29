@@ -12,17 +12,17 @@ import { DataContext } from "./DataContext";
 
 function App() {
 
+  const defaultUser = {name: 'guest', id: 0, img: '#'}
   const [logInModal, setLogInModal] = useState(false);
   const [newUserModal, setNewUserModal] = useState(false);
   const [newProjectModal, setNewProjectModal] = useState(false);
-  const [thisUser, setThisUser] = useState(null);
+  const [thisUser, setThisUser] = useState(defaultUser);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const URL = 'https://datacollectivebackend.herokuapp.com'
 
     //check whether there is a user in localstorage
-
-    useEffect(() => {
+    function checkSessionUser() {
       const sessionName = localStorage.getItem("name");
       const sessionID = localStorage.getItem("id");
       const sessionImg = localStorage.getItem("img");
@@ -30,9 +30,14 @@ function App() {
         setThisUser({...thisUser, name: sessionName, id: sessionID, img: sessionImg});
         setIsLoggedIn(true);
       } else {
+        setThisUser(defaultUser);
         setIsLoggedIn(false);
       }
-    }, []);
+    }
+
+    useEffect(() => {
+      checkSessionUser()
+    }, [logInModal, newUserModal, newProjectModal]);
 
     
   return (
