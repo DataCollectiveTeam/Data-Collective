@@ -6,75 +6,85 @@ import axios from 'axios';
 import { DataContext } from '../../DataContext';
 import { PostContext } from './Posts/PostContext';
 
-function Discussion({project, admins, showNewPostModal, setShowNewPostModal}) {
+function Discussion({project, admins}) {
 
     const {URL} = useContext(DataContext);
 
     const [posts, setPosts] = useState(null);
     const [pinnedPosts, setPinnedPosts] = useState(null);
     const [editPost, setEditPost] = useState(false);
+    const [confirmDelete, setConfirmDelete] = useState(false);
+    const [showNewPostModal, setShowNewPostModal] = useState(false);
+    const [pin, setPin] = useState(false);
 
     const pinPost = (thisPost) => {
-        console.log('PINNING', thisPost)
         let postToPin = thisPost;
         postToPin.pinned = !postToPin.pinned;
         const url = `${URL}/posts/${thisPost.id}`
         axios.put(url, postToPin)
-            .then(res => console.log(res))
+            .then(res => {
+                console.log(postToPin)
+                setPin(!pin)
+            })
             .catch(console.error);
+        
     }
 
     const deletePost = (thisPost) => {
         const url = `${URL}/posts/${thisPost.id}`
         axios.delete(url)
-            .then(res => {console.log(res)})
+            .then(res => setConfirmDelete(false))
             .catch(console.error);
+        
     }
 
     useEffect(() => {
-        const url = `${URL}/project_posts/${project}`
-        const url2 = `${URL}/pinned_posts/${project}`
+        const url = `${URL}/project_posts/${project.id}`
+        const url2 = `${URL}/pinned_posts/${project.id}`
         axios.all([
             axios.get(url),
             axios.get(url2)
         ])
         .then(axios.spread((res1, res2) => {
             console.log('POSTS', res1.data)
-            if (res1.data.length > 0) {
-                setPosts(res1.data);
-            }
+            setPosts(res1.data);
+            
             console.log('PINNED', res2.data)
-            if (res2.data.length > 0) {
-               setPinnedPosts(res2.data); 
-            }
+            setPinnedPosts(res2.data); 
+            
         } )) 
         .catch(console.error);   
-    }, [showNewPostModal, editPost])
+    }, [showNewPostModal, editPost, confirmDelete, pin])
 
     return (
         <div className='Discussion'>
             <PostContext.Provider value={{
                 pinPost,
-                deletePost
+                deletePost,
+                confirmDelete,
+                setConfirmDelete
             }}>
-                <button type='button' onClick={() => setShowNewPostModal(true)} >new post</button>
-                {(pinnedPosts) &&
-                    <PinnedPosts 
-                        admins={admins} 
-                        posts={pinnedPosts} 
-                        pinPost={pinPost}
-                        editPost={editPost}
-                        setEditPost={setEditPost}
-                    />
+                {(showNewPostModal) && 
+                    <NewPost project={project} setShowNewPostModal={setShowNewPostModal}/>
                 }
-                {(posts) &&
-                    <Posts 
-                        admins={admins} 
-                        posts={posts}
-                        pinPost={pinPost}
-                        editPost={editPost}
-                        setEditPost={setEditPost}
+                <button type='button' onClick={() => setShowNewPostModal(true)} >new post</button>
+                {(pinnedPosts && posts) &&
+                    <div>
+                        <PinnedPosts 
+                            admins={admins} 
+                            posts={pinnedPosts} 
+                            pinPost={pinPost}
+                            editPost={editPost}
+                            setEditPost={setEditPost}
                         />
+                        <Posts 
+                            admins={admins} 
+                            posts={posts}
+                            pinPost={pinPost}
+                            editPost={editPost}
+                            setEditPost={setEditPost}
+                        />
+                    </div>
                 }
             </ PostContext.Provider>
             

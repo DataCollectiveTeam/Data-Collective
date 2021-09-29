@@ -7,7 +7,7 @@ import Discussion from './Discussion';
 import RawData from './RawData';
 import TabDescription from './TabDescription';
 
-function Tabs({project, data, setShowNewForm, showNewPostModal, setShowNewPostModal}) {
+function Tabs({project, data, setShowNewForm}) {
 
 
     const {thisUser} = useContext(DataContext);
@@ -101,7 +101,7 @@ function Tabs({project, data, setShowNewForm, showNewPostModal, setShowNewPostMo
                     <DataEntry project={project}/>
                 }
                 {(tabState === 'disc') &&
-                    <Discussion project={project.id} admins={project.admin_list} showNewPostModal={showNewPostModal} setShowNewPostModal={setShowNewPostModal} />
+                    <Discussion project={project} admins={project.admin_list} />
                 }
                 {(tabState === 'raw_data') && 
                     <RawData procData={procData} creator={project.creator} admins={project.admin_list} />
