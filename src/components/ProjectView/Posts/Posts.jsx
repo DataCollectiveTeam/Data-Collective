@@ -4,9 +4,11 @@ import Post from './Post';
 
 function Posts({posts, admins}) {
 
-    console.log(posts);
-
     const {thisUser} = useContext(DataContext);
+
+    posts.sort((a, b) => {
+        return a.id - b.id;
+    })
 
     return (
         <div className='Posts'>
