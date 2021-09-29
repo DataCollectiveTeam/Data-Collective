@@ -37,6 +37,7 @@ function EditVisModal({item, procData, project, setShowEditVisModal}) {
     }
 
     const handleSubmit = () => {
+        setShowEditVisModal(false);
         const url = `${URL}/data_vis/${item.id}`
         axios.put(url, dataVis)
             .then(res => console.log(res))

@@ -22,6 +22,7 @@ function LogInModal({setLogInModal}) {
 
     //get citizen by username and password
     const handleSubmit = () => {
+        setLogInModal(false);
         const url = `${URL}/citizens/login/${formState.name}&${formState.password}`
         axios.get(url)
             .then(res => {

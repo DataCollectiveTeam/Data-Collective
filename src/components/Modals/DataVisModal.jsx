@@ -37,7 +37,7 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
     }
 
     const handleSubmit = () => {
-
+        setShowDataVisModal(false);
         const url = `${URL}/data_vis/`
         axios.post(url, dataVis)
             .then(res => console.log(res))
