@@ -9,6 +9,7 @@ function NewPost({project}) {
     const defaultNewPost = {
         project: project,
         author: parseInt(thisUser.id),
+        username: thisUser.name,
         title: '',
         body: '',
         pinned: false,
