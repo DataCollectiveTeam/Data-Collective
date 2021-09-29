@@ -20,6 +20,7 @@ function NewProjectModal({setNewProjectModal}) {
     }
 
     const handleSubmit = () => {
+        setNewProjectModal(false);
         let newProjectObj = {
             ...newProject,
             creator: thisUser.id,

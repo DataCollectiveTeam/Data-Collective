@@ -27,6 +27,7 @@ const EditUserModal = ({user, setEditUserModal}) => {
 
     //put changes to databases and udate localStorage items
     const handleSubmit = () => {
+        setEditUserModal(false);
         const url = URL;
         axios.put(`${url}/citizens/${user.id}`, editedUser)
         .then(res => {

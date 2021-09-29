@@ -21,7 +21,7 @@ const EditProjectModal = ({p, setShowEditModal}) => {
     }
 
     const handleSubmit = () => {
-        
+        setShowEditModal(false);
         let editedProjectObj = {
             ...editedProject,
             creator: thisUser.id,

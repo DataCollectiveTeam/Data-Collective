@@ -3,6 +3,7 @@ import { DataContext } from '../../DataContext';
 import AdminPanel from './AdminPanel';
 import DataEntry from './DataEntry';
 import DataVis from './DataVis';
+import Discussion from './Discussion';
 import RawData from './RawData';
 import TabDescription from './TabDescription';
 
@@ -84,6 +85,7 @@ function Tabs({project, data, setShowNewForm}) {
         <div className='Tabs'>
             <div className='buttons'>
                 <button type='button' onClick={() => setTabState('desc')}>description</button>
+                <button type='button' onClick={() => setTabState('disc')}>discussion</button>
                 <button type='button' onClick={() => setTabState('data_entry')}>enter data</button>
                 <button type='button' onClick={() => setTabState('raw_data')}>view data</button>
                 <button type='button' onClick={() => setTabState('data_vis')}>data visulaization</button>
@@ -97,6 +99,9 @@ function Tabs({project, data, setShowNewForm}) {
                 }
                 {(tabState === 'data_entry') && 
                     <DataEntry project={project}/>
+                }
+                {(tabState === 'disc') &&
+                    <Discussion project={project.id} admins={project.admin_list} />
                 }
                 {(tabState === 'raw_data') && 
                     <RawData procData={procData} creator={project.creator} admins={project.admin_list} />
