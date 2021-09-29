@@ -57,6 +57,7 @@ function NewFormModal({setShowNewForm, thisProject}) {
 
     //posts formState to the form database
     const handleSubmit = () => {
+        setShowNewForm(false);
         const url = `${URL}/forms/`;
         axios.post(url, formState)
             .then(res => console.log(res))
