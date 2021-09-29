@@ -2,12 +2,14 @@ import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { DataContext } from '../../../DataContext';
 
-function NewPost({project}) {
+function NewPost({project, setShowNewPostModal}) {
+
+    console.log(project)
 
     const { thisUser, URL } = useContext(DataContext);
 
     const defaultNewPost = {
-        project: project,
+        project: project.id,
         author: parseInt(thisUser.id),
         username: thisUser.name,
         title: '',
@@ -23,17 +25,22 @@ function NewPost({project}) {
     }
 
     const handleSubmit = () => {
+        console.log(newPost)
         const url = `${URL}/posts/`
         axios.post(url, newPost)
             .then(res => console.log(res))
             .catch(console.error);
+        setShowNewPostModal(false);
     }
 
     return (
-        <div className='NewPost'>
-            <input type='text' id='title' placeholder='title' onChange={handleChange} />
-            <textarea id='body' placeholder='discuss here' onChange={handleChange} />
-            <button type='button' onClick={handleSubmit} >post</button>
+        <div className='modal-background'>
+            <div className='modal-textbox'>
+               <input type='text' id='title' placeholder='title' value={newPost.title} onChange={handleChange} />
+                <textarea id='body' placeholder='discuss here' value={newPost.body} onChange={handleChange} />
+                <button type='button' onClick={handleSubmit} >post</button> 
+                <button type='button' onClick={() => setShowNewPostModal(false)} >cancel</button>
+            </div>
         </div>
     );
 }

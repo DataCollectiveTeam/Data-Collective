@@ -55,7 +55,7 @@ const AdminPanel = ({p, setShowNewForm}) => {
 
     const deleteProject = () => {
         const url = URL;
-        axios.delete(`${url}projects/${p.id}`)
+        axios.delete(`${url}/projects/${p.id}`)
         .then(res => console.log(res))
         .catch(console.error);
     }

@@ -6,12 +6,13 @@ import axios from 'axios';
 import { DataContext } from '../../DataContext';
 import { PostContext } from './Posts/PostContext';
 
-function Discussion({project, admins}) {
+function Discussion({project, admins, showNewPostModal, setShowNewPostModal}) {
 
     const {URL} = useContext(DataContext);
 
     const [posts, setPosts] = useState(null);
     const [pinnedPosts, setPinnedPosts] = useState(null);
+    const [editPost, setEditPost] = useState(false);
 
     const pinPost = (thisPost) => {
         console.log('PINNING', thisPost)
@@ -48,8 +49,7 @@ function Discussion({project, admins}) {
             }
         } )) 
         .catch(console.error);   
-    }, [])
-
+    }, [showNewPostModal, editPost])
 
     return (
         <div className='Discussion'>
@@ -57,13 +57,14 @@ function Discussion({project, admins}) {
                 pinPost,
                 deletePost
             }}>
-                <NewPost project={project} />
-                <hr />
+                <button type='button' onClick={() => setShowNewPostModal(true)} >new post</button>
                 {(pinnedPosts) &&
                     <PinnedPosts 
                         admins={admins} 
                         posts={pinnedPosts} 
                         pinPost={pinPost}
+                        editPost={editPost}
+                        setEditPost={setEditPost}
                     />
                 }
                 {(posts) &&
@@ -71,6 +72,8 @@ function Discussion({project, admins}) {
                         admins={admins} 
                         posts={posts}
                         pinPost={pinPost}
+                        editPost={editPost}
+                        setEditPost={setEditPost}
                         />
                 }
             </ PostContext.Provider>
