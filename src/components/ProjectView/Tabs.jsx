@@ -7,7 +7,7 @@ import Discussion from './Discussion';
 import RawData from './RawData';
 import TabDescription from './TabDescription';
 
-function Tabs({project, data, setShowNewForm}) {
+function Tabs({project, data, setShowNewForm, addData, setAddData, dataDeleted, setDataDeleted}) {
 
 
     const {thisUser} = useContext(DataContext);
@@ -17,11 +17,10 @@ function Tabs({project, data, setShowNewForm}) {
 
     const [tabState, setTabState] = useState(defaultTabState);
     const [procData, setProcData] = useState(null);
+
     //regexs to check for when processing data
     let labelRegEx = '_label';
     let optionsRegEx = 'Options';
-
-    
 
     const processData = () => {
         let processedData = [];
@@ -79,14 +78,16 @@ function Tabs({project, data, setShowNewForm}) {
 
     useEffect(() => {
         processData();
-    }, [])
+    }, [data])
 
     return (
         <div className='Tabs'>
+            {(addData) && 
+                <DataEntry project={project} setAddData={setAddData}/>
+            }
             <div className='buttons'>
                 <button type='button' onClick={() => setTabState('desc')}>description</button>
                 <button type='button' onClick={() => setTabState('disc')}>discussion</button>
-                <button type='button' onClick={() => setTabState('data_entry')}>enter data</button>
                 <button type='button' onClick={() => setTabState('raw_data')}>view data</button>
                 <button type='button' onClick={() => setTabState('data_vis')}>data visulaization</button>
                 {thisUser && (project.admin_list.some(admin => admin === parseInt(thisUser.id))) && 
@@ -97,14 +98,11 @@ function Tabs({project, data, setShowNewForm}) {
                 {(tabState === 'desc') && 
                     <TabDescription project={project} />
                 }
-                {(tabState === 'data_entry') && 
-                    <DataEntry project={project}/>
-                }
                 {(tabState === 'disc') &&
                     <Discussion project={project} admins={project.admin_list} />
                 }
                 {(tabState === 'raw_data') && 
-                    <RawData procData={procData} creator={project.creator} admins={project.admin_list} />
+                    <RawData procData={procData} creator={project.creator} admins={project.admin_list} setAddData={setAddData} dataDeleted={dataDeleted} setDataDeleted={setDataDeleted} />
                 }
                 {(tabState === 'data_vis') && 
                     <DataVis procData={procData} project={project} />

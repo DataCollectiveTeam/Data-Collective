@@ -15,9 +15,12 @@ const ProjectView = ({id}) => {
     const [project, setProject] = useState(null);
     const [data, setData] = useState(null);
     const [showNewForm, setShowNewForm] = useState(false);
+    const [addData, setAddData] = useState(false);
+    const [dataDeleted, setDataDeleted] = useState(false);
 
     //get info for this project and this project's data
     useEffect(() => {
+        console.log('RELOADING')
         const url = `${URL}/projects/${id}`;
         const url2 = `${URL}/project_data/${id}`
         axios.all([
@@ -30,7 +33,7 @@ const ProjectView = ({id}) => {
             setData(res2.data)
         }))
         .catch(console.error)
-    }, [id]);
+    }, [id, addData, dataDeleted]);
 
     if(data && project) {
         return (
@@ -44,6 +47,10 @@ const ProjectView = ({id}) => {
                         project={project} 
                         data={data} 
                         setShowNewForm={setShowNewForm}
+                        addData={addData}
+                        setAddData={setAddData}
+                        dataDeleted={dataDeleted}
+                        setDataDeleted={setDataDeleted}
                     />
                 }
             </div>
