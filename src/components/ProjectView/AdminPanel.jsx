@@ -4,7 +4,7 @@ import axios from 'axios';
 import DataVisModal from '../Modals/DataVisModal';
 import { DataContext } from '../../DataContext';
 
-const AdminPanel = ({p, setShowNewForm}) => {
+const AdminPanel = ({p, setShowNewForm, procData}) => {
 
     const { URL } = useContext(DataContext);
 
@@ -73,7 +73,7 @@ const AdminPanel = ({p, setShowNewForm}) => {
                 <EditProjectModal p={p} setShowEditModal={setShowEditModal}/>
             }
             {showDataVisModal &&
-                <DataVisModal p={p} setShowDataVisModal={setShowDataVisModal} />
+                <DataVisModal p={p} setShowDataVisModal={setShowDataVisModal} procData={procData}/>
             }
             <div className='project-admin-buttons'>
                 <button type='button' onClick={() => setShowNewForm(true)} >add new form</button> 
