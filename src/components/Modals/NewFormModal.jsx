@@ -77,49 +77,78 @@ function NewFormModal({setShowNewForm, thisProject}) {
     return (
         <div className='modal-background'>
             <div className='modal-textbox'>
-                <button type='button' id='int1' onClick={handleClick}>add int</button>
+                <button type='button' id='int1' onClick={handleClick}>add integer</button>
                 {(formState.int1 === true) &&
                     <div>
                         <input type='text' id='int1_label' placeholder='label for first integer field' onChange={handleChange} />
-                        <button type='button' id='int2' onClick={handleClick}>add int</button>
+                        <div>
+                            <button type='button' id='int1' onClick={handleClick}>remove this integer</button>
+                            <button type='button' id='int2' onClick={handleClick}>add another integer</button>
+                        </div>
+                        
                     </div>
                 }
                 {(formState.int2 === true) &&
                     <div>
                         <input type='text' id='int2_label' placeholder='label for second integer field' onChange={handleChange} />
-                        <button type='button' id='int3' onClick={handleClick}>add int</button>
+                        <div>
+                            <button type='button' id='int2' onClick={handleClick}>remove this integer</button>
+                            <button type='button' id='int3' onClick={handleClick}>add another integer</button>
+                        </div>
                     </div>
                 }
                 {(formState.int3 === true) &&
                     <div>
                         <input type='text' id='int3_label' placeholder='label for third integer field' onChange={handleChange} />
-                        <button type='button' id='int4' onClick={handleClick}>add int</button>
+                        <div>
+                            <button type='button' id='int3' onClick={handleClick}>remove this integer</button>
+                            <button type='button' id='int4' onClick={handleClick}>add another integer</button>
+                        </div>
                     </div>
                 }
                 {(formState.int4 === true) &&
-                    <input type='text' id='int4_label' placeholder='label for fourth integer field' onChange={handleChange} />
+                    <div>
+                        <input type='text' id='int4_label' placeholder='label for fourth integer field' onChange={handleChange} />
+                        <div>
+                            <button type='button' id='int4' onClick={handleClick}>remove this integer</button>
+                        </div>
+                    </div>    
                 }
                 <button type='button' id='float1' onClick={handleClick} >add decimal</button>
                 {(formState.float1 === true) &&
                     <div>
                         <input type='text' id='float1_label' placeholder='label for first decimal field' onChange={handleChange} />
-                        <button type='button' id='float2' onClick={handleClick}>add decimal</button>
+                        <div>
+                            <button type='button' id='float1' onClick={handleClick}>remove this decimal</button>
+                            <button type='button' id='float2' onClick={handleClick}>add another decimal</button>
+                        </div>
                     </div>
                 }
                 {(formState.float2 === true) &&
                     <div>
                         <input type='text' id='float2_label' placeholder='label for second decimal field' onChange={handleChange} />
-                        <button type='button' id='float3' onClick={handleClick}>add decimal</button>
+                        <div>
+                            <button type='button' id='float2' onClick={handleClick}>remove this decimal</button>
+                            <button type='button' id='float3' onClick={handleClick}>add another decimal</button>
+                        </div>
                     </div>
                 }
                 {(formState.float3 === true) &&
                     <div>
                         <input type='text' id='float3_label' placeholder='label for third decimal field' onChange={handleChange} />
-                        <button type='button' id='float4' onClick={handleClick}>add decimal</button>
+                        <div>
+                            <button type='button' id='float3' onClick={handleClick}>remove this decimal</button>
+                            <button type='button' id='float4' onClick={handleClick}>add another decimal</button>
+                        </div>
                     </div>
                 }
                 {(formState.float4 === true) &&
-                    <input type='text' id='float4_label' placeholder='label for fourth decimal field' onChange={handleChange} />
+                    <div>
+                        <input type='text' id='float4_label' placeholder='label for fourth decimal field' onChange={handleChange} />
+                        <div>
+                            <button type='button' id='float4' onClick={handleClick}>remove this decimal</button>
+                        </div>
+                    </div>
                 }
                 <button type='button' id='dropdown1' onClick={handleClick} >add dropdown menu</button>
                 {(formState.dropdown1 === true) &&
@@ -128,7 +157,10 @@ function NewFormModal({setShowNewForm, thisProject}) {
                         <p>enter the options for the first dropdown seperated by a comma and a space</p>
                         <p>there is no limit to the amount of dropdown options</p>
                         <input type='text' id='dropdownOptions1' placeholder='e.g. option1, option2, option3, option4' onChange={handleChange} />
-                        <button type='button' id='dropdown2' onClick={handleClick}>add dropdown</button>
+                        <div>
+                            <button type='button' id='dropdown1' onClick={handleClick}>remove this dropdown</button>
+                            <button type='button' id='dropdown2' onClick={handleClick}>add another dropdown</button>
+                        </div>
                     </div>
                 }
                 {(formState.dropdown2 === true) &&
@@ -137,17 +169,35 @@ function NewFormModal({setShowNewForm, thisProject}) {
                         <p>enter the options for the second dropdown seperated by a comma and a space</p>
                         <p>there is no limit to the amount of dropdown options</p>
                         <input type='text' id='dropdownOptions2' placeholder='e.g. option1, option2, option3, option4' onChange={handleChange} />
+                        <div>
+                            <button type='button' id='dropdown2' onClick={handleClick}>remove this dropdown</button>
+                        </div>
                     </div>
                 }
                 <button type='button' id='img_url' onClick={handleClick} >add image url field</button>
                 {(formState.img_url === true) &&
-                    <input type='text' id='img_label' placeholder='label for image url field' onChange={handleChange} />
+                    <div>
+                        <input type='text' id='img_label' placeholder='label for image url field' onChange={handleChange} />
+                        <button type='button' id='img_url' onClick={handleClick} >remove image url field</button>
+                    </div>
                 }
-                <button type='button' id='notes' onClick={handleClick} >allow notes</button>
-                <button type='button' id='latlon' onClick={handleClick} >allow latitude and longitude entry</button> 
-                <button type='button' id='zipcode' onClick={handleClick} >allow zipcode entry</button>     
-                <button type='button' onClick={handleSubmit} >submit</button>       
-                <button type='button' onClick={() => setShowNewForm(false)}>cancel</button>
+                {(formState.notes)
+                ? <button type='button' id='notes' onClick={handleClick} >remove notes field</button>
+                : <button type='button' id='notes' onClick={handleClick} >add notes field</button>
+                }
+                {(formState.latlon)
+                ? <button type='button' id='latlon' onClick={handleClick} >remove latitude and longitude entry</button>
+                : <button type='button' id='latlon' onClick={handleClick} >add latitude and longitude entry</button>
+                }
+                {(formState.zipcode)
+                ? <button type='button' id='zipcode' onClick={handleClick} >remove zipcode entry</button> 
+                : <button type='button' id='zipcode' onClick={handleClick} >add zipcode entry</button>  
+                } 
+                <div>
+                   <button type='button' onClick={handleSubmit} >submit</button>       
+                    <button type='button' onClick={() => setShowNewForm(false)}>cancel</button> 
+                </div>
+                
             </div>
         </div>
     );
