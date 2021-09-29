@@ -3,10 +3,8 @@ import ProjectHeader from './ProjectHeader';
 import axios from "axios";
 import { DataContext } from "../../DataContext";
 import NewFormModal from "../Modals/NewFormModal";
-import AdminPanel from "./AdminPanel";
 import './ProjectView.css';
 import Tabs from "./Tabs";
-import NewPost from "./Posts/NewPost";
 
 const ProjectView = ({id}) => {
 
@@ -29,8 +27,7 @@ const ProjectView = ({id}) => {
         ])
         .then(axios.spread((res1, res2) => {
             setProject(res1.data);
-            console.log(res2)
-            setData(res2.data)
+            setData(res2.data);
         }))
         .catch(console.error)
     }, [id, addData, dataDeleted]);

@@ -3,6 +3,7 @@ import EditProjectModal from '../Modals/EditProjectModal';
 import axios from 'axios';
 import DataVisModal from '../Modals/DataVisModal';
 import { DataContext } from '../../DataContext';
+import DeleteProjectModal from '../Modals/DeleteProjectModal';
 
 const AdminPanel = ({p, setShowNewForm, procData}) => {
 
@@ -15,6 +16,8 @@ const AdminPanel = ({p, setShowNewForm, procData}) => {
     const [filteredUsers, setFilteredUsers] = useState(null);
     const [showUsers, setShowUsers] = useState(false);
     const [showDataVisModal, setShowDataVisModal] = useState(false);
+    const [deleteProjectModal, setDeleteProjectModal] = useState(false);
+    const [hasForm, setHasForm] = useState(false);
     
     //displays edit project modal
     const editProject = () => {
@@ -53,32 +56,54 @@ const AdminPanel = ({p, setShowNewForm, procData}) => {
             .catch(console.error);
     }
 
-    const deleteProject = () => {
-        const url = URL;
-        axios.delete(`${url}/projects/${p.id}`)
-        .then(res => console.log(res))
-        .catch(console.error);
-    }
-
     useEffect(() => {
         const url = `${URL}/citizens/`
-        axios.get(url)
-            .then(res => setUsers(res.data))
-            .catch(console.error);
+        const url2 = `${URL}/formgrab/${p.id}`
+        axios.all([
+            axios.get(url),
+            axios.get(url2)
+        ])
+        .then(axios.spread((res1, res2) => {
+            setUsers(res1.data)
+            if (res2.data.length > 0) {
+                setHasForm(true);
+            }
+        }))
+        .catch(console.error);
     }, [])
 
     return (
         <div>
+            {deleteProjectModal &&
+                <DeleteProjectModal 
+                    p={p} 
+                    setDeleteProjectModal={setDeleteProjectModal} 
+                />
+            }
             {showEditModal &&
-                <EditProjectModal p={p} setShowEditModal={setShowEditModal}/>
+                <EditProjectModal 
+                    p={p} 
+                    setShowEditModal={setShowEditModal}
+                />
             }
             {showDataVisModal &&
-                <DataVisModal p={p} setShowDataVisModal={setShowDataVisModal} procData={procData}/>
+                <DataVisModal 
+                    p={p} 
+                    setShowDataVisModal={setShowDataVisModal} 
+                    procData={procData}
+                />
             }
             <div className='project-admin-buttons'>
-                <button type='button' onClick={() => setShowNewForm(true)} >add new form</button> 
-                <button className='edit-project-button' type='button' onClick={editProject} ><span className='far fa-edit'>Edit</span></button>
-                <button className='delete-project-button' type='button' onClick={deleteProject} ><span className='far fa-trash-alt'>Delete</span></button>
+                {(!hasForm) && 
+                    <div>
+                        <button type='button' onClick={() => setShowNewForm(true)} >add new form</button> 
+                    </div>
+                }
+                <div>
+                    <button className='edit-project-button' type='button' onClick={editProject} ><span className='far fa-edit'>Edit Project</span></button>
+                    <button className='delete-project-button' type='button' onClick={() => setDeleteProjectModal(true)} ><span className='far fa-trash-alt'>Delete Project</span></button>
+                </div>
+                
                 <div className='add-admin-div'>
                     <input type='text' placeholder='add admin' value={newAdmin} onChange={adminChange} />
                     <button type='button' onClick={addAdmin}>add admin</button>

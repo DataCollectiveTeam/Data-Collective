@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { DataContext } from '../../DataContext';
 import AdminPanel from './AdminPanel';
-import DataEntry from './DataEntry';
+import DataEntry from '../Modals/DataEntry';
 import DataVis from './DataVis';
 import Discussion from './Discussion';
 import RawData from './RawData';
