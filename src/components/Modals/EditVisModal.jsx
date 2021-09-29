@@ -3,45 +3,49 @@ import axios from 'axios';
 import { DataContext } from '../../DataContext';
 
 
-function EditVisModal({item, procData, project, setShowEditVisModal}) {
+function EditVisModal({item, procData, p, setShowEditVisModal}) {
 
+    //import the current user and backend url from datacontext
+    const {thisUser, URL} = useContext(DataContext);
+
+    //create an array to store the options for x/y values
     let options = [];
 
-    for (let key in procData[0]) {
-        if (key !== 'notes') {
-                options.push(key)
-            }
-        } 
+    //if there is an array of processed data, add all keys except notes to the options array
+    if(procData[0]){
+        for (let key in procData[0]) {
+            if (key !== 'notes') {
+                    options.push(key)
+                }
+            } 
+    }
 
-    const { thisUser, URL } = useContext(DataContext);
-
+    //default state of datavis form
     const defaultDataVis = {
-        project: project.id,
+        project: p.id,
         contributor: thisUser.id,
         chart_type: 'LineChart',
         chart_title: "",
         x_axis: options[0],
-        x_axis_min: null,
-        x_axis_max: null,
         y_axis: options[1],
-        y_axis_min: null,
-        y_axis_max: null,
         legend: false,
-        pie_hole: null
     }
 
+    //store datavis form in state
     const [dataVis, setDataVis] = useState(defaultDataVis);
-
+    
+    //update properties of datavis state object
     const handleChange = (e) => {
         setDataVis({...dataVis, [e.target.id]: e.target.value})
     }
 
+    //put datavis edits to db
     const handleSubmit = () => {
-        setShowEditVisModal(false);
         const url = `${URL}/data_vis/${item.id}`
         axios.put(url, dataVis)
             .then(res => console.log(res))
             .catch(console.error);
+        setShowEditVisModal(false);
     }
 
     useEffect(() => {
@@ -71,24 +75,12 @@ function EditVisModal({item, procData, project, setShowEditVisModal}) {
                             })}
                         </select>
 
-                        <p>x axis min</p>
-                        <input type='text' id='x_axis_min' placeholder='x min' value={dataVis.x_axis_min} onChange={handleChange} />
-
-                        <p>x axis max</p>
-                        <input type='text' id='x_axis_max' placeholder='x max' value={dataVis.x_axis_max} onChange={handleChange} />
-
                         <p>y axis</p>
                         <select id='y_axis' onChange={handleChange} value={dataVis.y_axis}>
                             {options.map(option => {
                                 return <option key={option} value={option}>{option}</option>
                             })}
                         </select>
-
-                        <p>y axis min</p>
-                        <input type='text' id='y_axis_min' placeholder='y min' value={dataVis.y_axis_min} onChange={handleChange} />
-
-                        <p>y axis max</p>
-                        <input type='text' id='y_axis_max' placeholder='y max' value={dataVis.y_axis_max} onChange={handleChange} />
                     </div>
                 }
                 {(dataVis.chart_type === 'Histogram') &&
@@ -99,18 +91,6 @@ function EditVisModal({item, procData, project, setShowEditVisModal}) {
                                 return <option key={option} value={option}>{option}</option>
                             })}
                         </select>
-
-                        <p>x axis min</p>
-                        <input type='text' id='x_axis_min' placeholder='x min' value={dataVis.x_axis_min}onChange={handleChange} />
-
-                        <p>x axis max</p>
-                        <input type='text' id='x_axis_max' placeholder='x max' value={dataVis.x_axis_max} onChange={handleChange} />
-
-                        <p>frequency min</p>
-                        <input type='text' id='y_axis_min' placeholder='y min'  value={dataVis.y_axis_min} onChange={handleChange} />
-
-                        <p>frequency max</p>
-                        <input type='text' id='y_axis_max' placeholder='y max' value={dataVis.y_axis_max} onChange={handleChange} />
                     </div>
                 }
                 {(dataVis.chart_type === 'BarChart') &&
@@ -121,25 +101,12 @@ function EditVisModal({item, procData, project, setShowEditVisModal}) {
                                 return <option key={option} value={option}>{option}</option>
                             })}
                         </select>
-
-                        <p>x axis min</p>
-                        <input type='text' id='x_axis_min' placeholder='x min' value={dataVis.x_axis_min} onChange={handleChange} />
-
-                        <p>x axis max</p>
-                        <input type='text' id='x_axis_max' placeholder='x max' value={dataVis.x_axis_max} onChange={handleChange} />
-
                         <p>y axis</p>
                         <select id='y_axis' value={dataVis.y_axis} onChange={handleChange}>
                             {options.map(option => {
                                 return <option key={option} value={option}>{option}</option>
                             })}
                         </select>
-
-                        <p>y axis min</p>
-                        <input type='text' id='y_axis_min' placeholder='y min' value={dataVis.y_axis_min} onChange={handleChange} />
-
-                        <p>y axis max</p>
-                        <input type='text' id='y_axis_max' placeholder='y max' value={dataVis.y_axis_max} onChange={handleChange} />
                     </div>
                 }
                 {(dataVis.chart_type === 'PieChart') &&

@@ -6,7 +6,6 @@ import NewFormModal from "../Modals/NewFormModal";
 import AdminPanel from "./AdminPanel";
 import './ProjectView.css';
 import Tabs from "./Tabs";
-import NewPost from "./Posts/NewPost";
 
 const ProjectView = ({id}) => {
 
@@ -15,7 +14,6 @@ const ProjectView = ({id}) => {
     const [project, setProject] = useState(null);
     const [data, setData] = useState(null);
     const [showNewForm, setShowNewForm] = useState(false);
-    const [showNewPostModal, setShowNewPostModal] = useState(false);
 
     //get info for this project and this project's data
     useEffect(() => {
@@ -39,18 +37,9 @@ const ProjectView = ({id}) => {
                 {(showNewForm === true) && 
                     <NewFormModal setShowNewForm={setShowNewForm} thisProject={id} />
                 }
-                {(showNewPostModal) && 
-                    <NewPost project={project} setShowNewPostModal={setShowNewPostModal}/>
-                }
                 <ProjectHeader p={project}/>
                 {project && 
-                    <Tabs 
-                        project={project} 
-                        data={data} 
-                        setShowNewForm={setShowNewForm}
-                        showNewPostModal={showNewPostModal}
-                        setShowNewPostModal={setShowNewPostModal}
-                    />
+                    <Tabs project={project} data={data} setShowNewForm={setShowNewForm}/>
                 }
             </div>
           );

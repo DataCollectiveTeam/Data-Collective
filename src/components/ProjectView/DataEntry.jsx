@@ -85,10 +85,12 @@ function DataEntry({project}) {
         const url = `${URL}/formgrab/${project.id}`
         axios.get(url)
             .then(res => {
-                //calls form data in state
-                setForm(res.data[0]);
-                //gets labels from form data
-                getLabels(res.data[0]);
+                if(res.data[0]){
+                    //calls form data in state
+                    setForm(res.data[0]);
+                    //gets labels from form data
+                    getLabels(res.data[0]);
+                }
             })
             .catch(console.error);
     }
