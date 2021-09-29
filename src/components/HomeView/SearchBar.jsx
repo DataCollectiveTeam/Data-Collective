@@ -46,9 +46,9 @@ const SearchBar = ({setProjects}) => {
     //display search bar
     return (
         <div className='SearchBar'>
-            <input className='searchbar-input' type='text' placeholder='search projects' value={searchItem} onKeyDown={handleKeyDown} onChange={handleChange} />
-            <button className='searchbar-submit' type='button' onClick={handleSubmit}><span className='fas fa-search'>Search</span></button>
-            <button className='searchbar-clear' type='button' onClick={handleClear}><span>Clear</span></button>
+            <input className='searchbar input' type='text' placeholder='search projects' value={searchItem} onKeyDown={handleKeyDown} onChange={handleChange} />
+            <button className='searchbar submit' type='button' onClick={handleSubmit}><span className='fas fa-search'>Search</span></button>
+            <button className='searchbar clear' type='button' onClick={handleClear}><span>Clear</span></button>
         </div>
     );
 };

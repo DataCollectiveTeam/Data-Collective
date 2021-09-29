@@ -34,12 +34,12 @@ const ProjectView = ({id}) => {
     if(data && project) {
         return (
             <div className="ProjectView">
+                {(showNewForm === true) && 
+                    <NewFormModal setShowNewForm={setShowNewForm} thisProject={id} />
+                }
                 <ProjectHeader p={project}/>
                 {project && 
                     <Tabs project={project} data={data} setShowNewForm={setShowNewForm}/>
-                }
-                {(showNewForm === true) && 
-                    <NewFormModal setShowNewForm={setShowNewForm} thisProject={id} />
                 }
             </div>
           );

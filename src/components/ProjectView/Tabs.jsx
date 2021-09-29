@@ -83,12 +83,12 @@ function Tabs({project, data, setShowNewForm}) {
     return (
         <div className='Tabs'>
             <div className='buttons'>
-                <button className='button desc' type='button' onClick={() => setTabState('desc')}>description</button>
-                <button className='button entry' type='button' onClick={() => setTabState('data_entry')}>enter data</button>
-                <button className='button data' type='button' onClick={() => setTabState('raw_data')}>view data</button>
-                <button className='button vis' type='button' onClick={() => setTabState('data_vis')}>data visulaization</button>
+                <button type='button' onClick={() => setTabState('desc')}>description</button>
+                <button type='button' onClick={() => setTabState('data_entry')}>enter data</button>
+                <button type='button' onClick={() => setTabState('raw_data')}>view data</button>
+                <button type='button' onClick={() => setTabState('data_vis')}>data visulaization</button>
                 {thisUser && (project.admin_list.some(admin => admin === parseInt(thisUser.id))) && 
-                    <button className='button admin' type='button' onClick={() => setTabState('admin')}>admin</button>
+                    <button type='button' onClick={() => setTabState('admin')}>admin</button>
                 }
             </div>
             <div className='tab-viewer'>
