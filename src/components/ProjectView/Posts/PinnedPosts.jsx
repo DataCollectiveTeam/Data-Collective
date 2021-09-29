@@ -1,7 +1,7 @@
 import React from 'react';
 import Post from './Post';
 
-function PinnedPosts({posts, admins}) {
+function PinnedPosts({posts, admins, editPost, setEditPost}) {
 
     posts.sort((a, b) => {
         return a.id - b.id;
@@ -10,7 +10,13 @@ function PinnedPosts({posts, admins}) {
     return (
         <div className='PinnedPosts'>
             {posts.map(post => {
-                return <Post key={post.id} post={post} admins={admins} />
+                return <Post 
+                            key={post.id} 
+                            post={post} 
+                            admins={admins}
+                            editPost={editPost}
+                            setEditPost={setEditPost}
+                        />
             })}
         </div>
     );
