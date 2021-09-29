@@ -1,11 +1,11 @@
 import React from 'react';
 
-const UserBio = () => {
+const Footer = () => {
     return (
         <div>
-            UserBio
+            Footer
         </div>
     );
 };
 
-export default UserBio;
+export default Footer;
