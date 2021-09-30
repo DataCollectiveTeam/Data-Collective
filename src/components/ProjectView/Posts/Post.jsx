@@ -28,7 +28,7 @@ function Post({post, admins, editPost, setEditPost}) {
                {(admins.some(admin => admin === parseInt(thisUser.id))) &&
                     <button className='pin-post-button' type='button' onClick={() => pinPost(post)} >{(post.pinned) ? 'unpin post' : 'pin post'}</button>
                 }
-                {(post.author === parseInt(thisUser.id) && admins.some(admin => admin === parseInt(thisUser.id))) &&
+                {(post.author === parseInt(thisUser.id)) &&
                     <button className='edit-post-button' type='button' onClick={() => setEditPost(true)} >edit post</button>
                 }
                 {(post.author === parseInt(thisUser.id) || admins.some(admin => admin === parseInt(thisUser.id))) &&
