@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { DataContext } from '../../DataContext';
 
-function DataPoint({point, admins}) {
+function DataPoint({point, admins, dataDeleted, setDataDeleted}) {
 
     const {thisUser, URL} = useContext(DataContext);
 
@@ -19,7 +19,7 @@ function DataPoint({point, admins}) {
     const deletePoint = () => {
         const url = `${URL}/data_entries/${point.id}`;
         axios.delete(url)
-            .then(res => console.log(res))
+            .then(res => setDataDeleted(!dataDeleted))
             .catch(console.error);
     }
 

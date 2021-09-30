@@ -1,8 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { DataContext } from '../../../DataContext';
-import axios from 'axios';
 import { PostContext } from './PostContext';
 import EditPostModal from './EditPostModal';
+import ConfirmDelete from './ConfirmDelete';
+import NewPost from './NewPost';
 
 function Post({post, admins, editPost, setEditPost}) {
 
@@ -11,10 +12,13 @@ function Post({post, admins, editPost, setEditPost}) {
     let dateOptions = {year: 'numeric', month: 'long', day: 'numeric'};
 
     const {thisUser} = useContext(DataContext);
-    const {pinPost, deletePost} = useContext(PostContext);
+    const {pinPost, deletePost, confirmDelete, setConfirmDelete} = useContext(PostContext);
 
     return (
         <div className='Post'>
+            {(confirmDelete) &&
+                <ConfirmDelete post={post} dateOptions={dateOptions} deletePost={deletePost}/>
+            }
             {(editPost) &&
                 <EditPostModal post={post} setEditPost={setEditPost} />
             }
@@ -27,7 +31,7 @@ function Post({post, admins, editPost, setEditPost}) {
             {(admins.some(admin => admin === parseInt(thisUser.id)) || post.author === parseInt(thisUser.id)) &&
                 <div>
                     <button type='button' onClick={() => setEditPost(true)} >edit post</button>
-                    <button type='button' onClick={() => deletePost(post)} >delete post</button>
+                    <button type='button' onClick={() => setConfirmDelete(true)} >delete post</button>
                 </div>
             }
             <div>

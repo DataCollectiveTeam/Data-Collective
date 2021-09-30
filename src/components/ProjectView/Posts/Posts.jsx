@@ -14,6 +14,7 @@ function Posts({posts, admins, editPost, setEditPost}) {
         <div className='Posts'>
             {posts.map(post => {
                 return <Post 
+                            key={post.id}
                             post={post} 
                             admins={admins}
                             editPost={editPost}

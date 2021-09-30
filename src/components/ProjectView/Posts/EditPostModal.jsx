@@ -15,12 +15,11 @@ function EditPostModal({post, setEditPost}) {
     }
 
     const handleEdit = () => {
-        setEditPost(false)
         const url = `${URL}/posts/${post.id}`
         axios.put(url, editedPost)
-            .then(res => console.log(res))
+            .then(res => setEditPost(false))
             .catch(console.error);
-        setEditPost(false);
+        
     }
 
     return (
