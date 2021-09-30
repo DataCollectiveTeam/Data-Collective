@@ -21,8 +21,6 @@ function Tabs({project, data, setShowNewForm, showNewPostModal, setShowNewPostMo
     let labelRegEx = '_label';
     let optionsRegEx = 'Options';
 
-    
-
     const processData = () => {
         let processedData = [];
         //for each data entry

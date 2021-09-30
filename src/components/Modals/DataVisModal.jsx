@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { DataContext } from '../../DataContext';
+import ChartForm from './ChartForm';
 import './Modals.css'
 
 function DataVisModal({p, setShowDataVisModal, procData}) {
@@ -9,15 +10,11 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
     const {thisUser, URL} = useContext(DataContext);
 
     //create an array to store the options for x/y values
-    let options = [];
-
-    //if there is an array of processed data, add all keys except notes to the options array
-    if(procData[0]){
-        for (let key in procData[0]) {
-            if (key !== 'notes') {
-                    options.push(key)
-                }
-            } 
+    const dataSample ={}
+    for (let key in procData[0]){
+        if (key !== 'id' && key !== 'contributor' && key!=="notes"){
+            dataSample[key] = procData[0][key]
+        }
     }
 
     //default state of datavis form
@@ -25,18 +22,69 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
         project: p.id,
         contributor: thisUser.id,
         chart_type: 'LineChart',
-        chart_title: "",
-        x_axis: options[0],
-        y_axis: options[1],
+        chart_title: 'new',
+        x_axis: '',
+        y_axis: '',
         legend: false,
+        pie_hole: null
     }
-     
+
+    //default array of options for dropdown menus
+    const defaultOptions = {
+        field1: [],
+        field2: []
+    }
+    
     //store datavis form in state
-    const [dataVis, setDataVis] = useState(defaultDataVis);
+    const [dataVis, setDataVis] = useState(defaultDataVis)
+    const [options, setOptions] = useState(defaultOptions)
+
+    //set chart type and populate relevant dropdown menu options
+    const setChartType = (e) => {
+        let options_1 = []
+        let options_2 = []
+
+        let type = e.target.value
+        setDataVis({...dataVis, chart_type: e.target.value})
+        
+        if (type==='LineChart'){
+            for (let key in dataSample) {
+            if ((typeof dataSample[key])==="number") {
+                options_1.push(key)
+            }
+            if ((typeof dataSample[key])==="number") {
+                options_2.push(key)
+            } 
+            }
+        } else if (type==='BarChart'){
+            for (let key in dataSample) {
+            if ((typeof dataSample[key])==="string") {
+                options_1.push(key)
+            }
+            if ((typeof dataSample[key])==="number") {
+                options_2.push(key)
+            }
+            }
+        } else if (type==='Histogram'){
+            for (let key in dataSample) {
+                if ((typeof dataSample[key])==="number") {
+                    options_1.push(key)
+                }
+            }
+        } else if (type==='PieChart'){
+            for (let key in dataSample) {
+            if ((typeof dataSample[key])==="string") {
+                    options_1.push(key)
+                }
+            }
+        }
+        setOptions({field1: options_1, field2: options_2})
+    }
 
     //update properties of datavis state object
     const handleChange = (e) => {
         setDataVis({...dataVis, [e.target.id]: e.target.value})
+        console.log(dataVis)
     }
 
     //post datavis to db
@@ -56,6 +104,7 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
             </div>
         )
     }
+
     //else render form
     else {
     return (
@@ -63,77 +112,22 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
             <div className='modal-textbox'>
 
                 {/* select chart type */}
-                <select id='chart_type' onChange={handleChange}>
+                <select id='chart_type' onChange={setChartType}>
                     <option value='LineChart'>Line Chart</option>
                     <option value='BarChart'>Bar Chart</option>
                     <option value='Histogram'>Histogram</option>
                     <option value='PieChart'>Pie Chart</option>
                 </select>
+
+                {/* enter chart title */}
                 <p>enter chart title</p>
                 <input type='text' id='chart_title' placeholder='chart title' onChange={handleChange} />
-                
-                {/* inputs for line chart */}
-                {(dataVis.chart_type === 'LineChart') &&
-                    <div>
-                        <p>x axis</p>
-                        <select id='x_axis' onChange={handleChange}>
-                            {options.map(option => {
-                                return <option key={option} value={option}>{option}</option>
-                            })}
-                        </select>
-                        <p>y axis</p>
-                        <select id='y_axis' onChange={handleChange}>
-                            {options.map(option => {
-                                return <option key={option} value={option}>{option}</option>
-                            })}
-                        </select>
-                    </div>
-                }
 
-                {/* inputs for line histogram */}
-                {(dataVis.chart_type === 'Histogram') &&
-                    <div>
-                        <p>field to analyze</p>
-                        <select id='x_axis' onChange={handleChange}>
-                            {options.map(option => {
-                                return <option key={option} value={option}>{option}</option>
-                            })}
-                        </select>
-                    </div>
-                }
-
-                {/* inputs for bar chart */}
-                {(dataVis.chart_type === 'BarChart') &&
-                    <div>
-                        <p>x axis</p>
-                        <select id='x_axis' onChange={handleChange}>
-                            {options.map(option => {
-                                return <option key={option} value={option}>{option}</option>
-                            })}
-                        </select>
-                        <p>y axis</p>
-                        <select id='y_axis' onChange={handleChange}>
-                            {options.map(option => {
-                                return <option key={option} value={option}>{option}</option>
-                            })}
-                        </select>
-                    </div>
-                }
-                
-                {/* inputs for pie chart */}
-                {(dataVis.chart_type === 'PieChart') &&
-                    <div>
-                        <p>field to compare</p>
-                        <select id='x_axis' onChange={handleChange}>
-                            {options.map(option => {
-                                return <option key={option} value={option}>{option}</option>
-                            })}
-                        </select>
-                    </div>
-                }
+                {/* generate form by chart type */}
+                <ChartForm type={dataVis.chart_type} options={options} handleChange={handleChange}/>
 
                 {/* toggle chart legend */}
-                <p>display legend</p>
+                <p>toggle legend</p>
                 {(dataVis.legend) 
                 ? <button type='button' onClick={() => setDataVis({...dataVis, legend: false})} >showing legend</button>
                 : <button type='button' onClick={() => setDataVis({...dataVis, legend: true})} >legend not showing</button>
