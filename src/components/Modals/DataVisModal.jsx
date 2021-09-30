@@ -23,8 +23,8 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
 
     //default array of options for dropdown menus
     const defaultOptions = {
-        field1: [],
-        field2: []
+        x_axis: [],
+        y_axis: []
     }
     
     //store datavis form in state
@@ -34,43 +34,44 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
     const [options, setOptions] = useState(defaultOptions)
 
     //set chart type and populate relevant dropdown menu options
-    function setChartType(type) {
-        let options_1 = []
-        let options_2 = []
+    function setChartType(type, data) {
+        let x = []
+        let y = []
         
         if (type==='LineChart'){
-            for (let key in dataSample) {
-            if ((typeof dataSample[key])==="number") {
-                options_1.push(key)
+            for (let key in data) {
+            if ((typeof data[key])==="number") {
+                x.push(key)
             }
-            if ((typeof dataSample[key])==="number") {
-                options_2.push(key)
+            if ((typeof data[key])==="number") {
+                y.push(key)
             } 
             }
         } else if (type==='BarChart'){
-            for (let key in dataSample) {
-            if ((typeof dataSample[key])==="string") {
-                options_2.push(key)
+            for (let key in data) {
+            if ((typeof data[key])==="number") {
+                x.push(key)
             }
-            if ((typeof dataSample[key])==="number") {
-                options_1.push(key)
+            if ((typeof data[key])==="string") {
+                y.push(key)
             }
             }
         } else if (type==='Histogram'){
-            for (let key in dataSample) {
-                if ((typeof dataSample[key])==="number") {
-                    options_1.push(key)
+            for (let key in data) {
+                if ((typeof data[key])==="number") {
+                    x.push(key)
                 }
             }
         } else if (type==='PieChart'){
-            for (let key in dataSample) {
-            if ((typeof dataSample[key])==="string") {
-                    options_1.push(key)
+            for (let key in data) {
+            if ((typeof data[key])==="string") {
+                    x.push(key)
                 }
             }
         }
-        setOptions({field1: options_1, field2: options_2})
-        setDataVis({...dataVis, chart_type: type})
+        console.log(x,y)
+        setOptions({x_axis: x, y_axis: y})
+        setDataVis({...dataVis, chart_type: type, x_axis: x[0], y_axis: y[0]})
     }
 
     useEffect(() => {
@@ -112,12 +113,12 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
         }
         //store list of valid charts in state
         setChartList(charts)
-        setChartType(charts[0])
+        setChartType(charts[0], sample)
         
         }, [])
     
     const updateChartType = (e) => {
-        setChartType(e.target.value)
+        setChartType(e.target.value, dataSample)
     }
     
     //update properties of datavis state object
