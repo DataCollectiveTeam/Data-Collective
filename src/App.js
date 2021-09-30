@@ -47,9 +47,6 @@ function App() {
         setThisUser, 
         URL
       }}>
-      {(logInModal === true) && 
-        <LogInModal setLogInModal={setLogInModal}/>
-      }
       {(newUserModal === true) && 
         <NewUserModal setNewUserModal={setNewUserModal}/>
       }

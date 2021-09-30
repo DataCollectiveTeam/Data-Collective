@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import './Header.css';
 import { DataContext } from '../DataContext';
 import { Redirect } from 'react-router';
+import LogInModal from './Modals/LogInModal';
 
 const Header = ({logInModal, setLogInModal, setNewUserModal, setNewProjectModal, isLoggedIn, setIsLoggedIn}) => {
 
@@ -42,6 +43,9 @@ const Header = ({logInModal, setLogInModal, setNewUserModal, setNewProjectModal,
             <div className='Header'>
                 {loggedOut &&
                     <Redirect to='/' />
+                }
+                {(logInModal === true) && 
+                    <LogInModal setLogInModal={setLogInModal}/>
                 }
                 <div className='site-logo'>
                     <h1><a className='home-link' href='/'>DataCollective</a></h1>
