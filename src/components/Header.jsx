@@ -31,9 +31,9 @@ const Header = ({logInModal, setLogInModal, setNewUserModal, setNewProjectModal,
                         <h4>{thisUser.name}</h4>
                         <img className="profile-pic" src={thisUser.img} alt="profile"/>
                     </a>
-                    <div className="profile button">
-                        <button type='button' onClick={() => setNewProjectModal(true)}>new project</button>
-                        <button type='button' onClick={logOut}>log out</button>
+                    <div className="interaction-buttons">
+                        <button className='interaction-button' type='button' onClick={() => setNewProjectModal(true)}>new project</button>
+                        <button className='interaction-button' type='button' onClick={logOut}>log out</button>
                     </div>
                 </div>
             </div>
@@ -50,9 +50,9 @@ const Header = ({logInModal, setLogInModal, setNewUserModal, setNewProjectModal,
                 <div className='site-logo'>
                     <h1><a className='home-link' href='/'>DataCollective</a></h1>
                 </div>
-                <div className='user-interaction'>
-                    <button type='button' onClick={() => setLogInModal(true)}>log in</button>
-                    <button type='button' onClick={() => setNewUserModal(true)}>new user</button>
+                <div className='profile-buttons'>
+                    <button className='interaction-button' type='button' onClick={() => setLogInModal(true)}>log in</button>
+                    <button className='interaction-button' type='button' onClick={() => setNewUserModal(true)}>new user</button>
                 </div>
             </div>
         )
