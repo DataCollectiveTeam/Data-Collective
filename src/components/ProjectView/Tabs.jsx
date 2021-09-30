@@ -85,13 +85,13 @@ function Tabs({project, data, setShowNewForm, addData, setAddData, dataDeleted, 
             {(addData) && 
                 <DataEntry project={project} setAddData={setAddData}/>
             }
-            <div className='buttons'>
-                <button type='button' onClick={() => setTabState('desc')}>description</button>
-                <button type='button' onClick={() => setTabState('disc')}>discussion</button>
-                <button type='button' onClick={() => setTabState('raw_data')}>view data</button>
-                <button type='button' onClick={() => setTabState('data_vis')}>data visulaization</button>
+            <div className='tab-buttons'>
+                <button className='tab-button' type='button' onClick={() => setTabState('desc')}>description</button>
+                <button className='tab-button' type='button' onClick={() => setTabState('disc')}>discussion</button>
+                <button className='tab-button' type='button' onClick={() => setTabState('raw_data')}>view data</button>
+                <button className='tab-button' type='button' onClick={() => setTabState('data_vis')}>data visulaization</button>
                 {thisUser && (project.admin_list.some(admin => admin === parseInt(thisUser.id))) && 
-                    <button type='button' onClick={() => setTabState('admin')}>admin</button>
+                    <button className='admin-button' type='button' onClick={() => setTabState('admin')}>admin</button>
                 }
             </div>
             <div className='tab-viewer'>
