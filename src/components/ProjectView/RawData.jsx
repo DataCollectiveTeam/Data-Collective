@@ -5,8 +5,8 @@ function RawData({procData, creator, admins, setAddData, dataDeleted, setDataDel
 
     //maps through processed data and displays each point in a 'DataPoint' component
     return (
-        <div>
-            <button type='button' onClick={() => setAddData(true)} >log data</button>
+        <div className='RawData'>
+            <button className='new-data-button' type='button' onClick={() => setAddData(true)} >log data</button>
             {procData.map(entry => {
                 return <DataPoint key={entry.id} point={entry} creator={creator} admins={admins} dataDeleted={dataDeleted} setDataDeleted={setDataDeleted}/>
             })}
