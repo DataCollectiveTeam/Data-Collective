@@ -1,7 +1,54 @@
+/*-------- HomeView --------*/
+
 .HomeView {
     display: flex;
     flex-wrap: wrap;
+    background-color: #DEEEF7;
+    min-height: 70vh;
 }
+
+/*--------- SearchBar ----------*/
+
+.SearchBar {
+    background-color: #7F8D7C;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    padding: 1em;
+    font-size: 16px;
+}
+
+.searchbar-input {
+    width: 200px;
+    background-color: whitesmoke;
+    padding: 0.25em;
+    color: #7F8D7C;
+    border: 2px solid whitesmoke;
+    border-radius: 0.25em;
+    margin: 0em 0.25em;
+    font-size: 16px;
+    box-shadow: 0em 0.25em 0.5em rgb(75, 75, 75);
+}
+
+.searchbar-submit, .searchbar-clear {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid whitesmoke;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(75, 75, 75);
+    font-size: 16px;
+}
+
+.searchbar-submit:hover, .searchbar-clear:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
+}
+
+/*-------- ProjectCard ----------*/
 
 .ProjectCard {
     width: 350px;
@@ -10,37 +57,25 @@
     align-items: center;
     text-decoration: none;
     color: black;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.5em;
+    max-width: 13em;
+    max-height: 15em;
+    margin: 1em;
+    box-shadow: 0 1em 1em rgb(130, 130, 130);
 }
 
-.SearchBar {
-    background-color: gray;
+.card-image {
+    width: 10em;
+    height: 10em;
+    margin: auto;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    text-decoration: none;
-    padding: 10px;
-    font-size: 16px;
-}
-
-.searchbar-input, .searchbar-submit {
-    font-size: 16px;
-}
-
-.searchbar-input {
-    width: 200px;
-}
-
-.card {
-    border: 2px solid black;
-    padding: 1em;
-    margin: 1em;
-    border-radius: 1em;
-    box-shadow: 0 1em 1em rgb(130, 130, 130);
-    height: 16em;
 }
 
 .ProjectCard img {
     max-width: 10em;
-    height: auto;
+    max-height: 10em;
 }
