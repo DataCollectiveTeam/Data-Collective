@@ -1,21 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './Header.css';
 import { DataContext } from '../DataContext';
-import { useEffect } from 'react/cjs/react.development';
+import { Redirect } from 'react-router';
 
-const Header = ({setLogInModal, setNewUserModal, setNewProjectModal, isLoggedIn, setIsLoggedIn}) => {
+const Header = ({logInModal, setLogInModal, setNewUserModal, setNewProjectModal, isLoggedIn, setIsLoggedIn}) => {
 
     const {thisUser, setThisUser } = useContext(DataContext);
+    const [loggedOut, setLoggedOut] = useState(false);
 
     const logOut = () => {
+        setLoggedOut(true);
         setThisUser(null)
-        setIsLoggedIn(false)
         localStorage.clear()
+        setIsLoggedIn(false)
     }
 
     useEffect(() => {
 
-      }, []);
+      }, [isLoggedIn, loggedOut, logInModal, thisUser]);
 
     if(isLoggedIn){
         return (
@@ -38,6 +40,9 @@ const Header = ({setLogInModal, setNewUserModal, setNewProjectModal, isLoggedIn,
     } else {
         return (
             <div className='Header'>
+                {loggedOut &&
+                    <Redirect to='/' />
+                }
                 <div className='site-logo'>
                     <h1><a className='home-link' href='/'>DataCollective</a></h1>
                 </div>

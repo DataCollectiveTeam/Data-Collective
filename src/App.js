@@ -57,6 +57,7 @@ function App() {
         <NewProjectModal setNewProjectModal={setNewProjectModal} />
       }
       <Header 
+        logInModal={logInModal}
         setLogInModal={setLogInModal} 
         setNewUserModal={setNewUserModal}
         setNewProjectModal={setNewProjectModal}
