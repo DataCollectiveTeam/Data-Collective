@@ -4,7 +4,7 @@ import { Chart } from 'react-google-charts';
 import { DataContext } from '../../DataContext';
 import EditVisModal from '../Modals/EditVisModal';
 
-function DataVisItem({item, procData, project}) {
+function DataVisItem({item, procData, project, dataVisChange, setDataVisChange}) {
 
     //import current user and backend url from datacontext
     const {thisUser, URL} = useContext(DataContext);
@@ -139,14 +139,21 @@ function DataVisItem({item, procData, project}) {
     const deleteVis = () => {
         const url = `${URL}/data_vis/${item.id}`
         axios.delete(url)
-            .then(res => console.log(res))
+            .then(res => setDataVisChange(!dataVisChange))
             .catch(console.error);
     }
 
     return (
         <div className='DataVisItem'>
             {showEditVisModal && 
-                <EditVisModal item={item} procData={procData} p={project} setShowEditVisModal={setShowEditVisModal}/>
+                <EditVisModal 
+                    item={item} 
+                    procData={procData} 
+                    p={project} 
+                    setShowEditVisModal={setShowEditVisModal}
+                    dataVisChange={dataVisChange}
+                    setDataVisChange={setDataVisChange}
+                    />
             }
             {(project.admin_list.some(admin => admin === parseInt(thisUser.id))) &&
                 <div className='vis-interaction-buttons'>
