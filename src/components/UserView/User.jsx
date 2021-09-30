@@ -53,7 +53,6 @@ const User = ({id}) => {
 
     if(user){
         return (
-            
             <div className="User">
                 {(editUserModal === true) && 
                 <EditUserModal user={user} setEditUserModal={setEditUserModal}/>
