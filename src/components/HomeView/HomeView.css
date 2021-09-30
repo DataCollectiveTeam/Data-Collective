@@ -1,7 +1,11 @@
+/*-------- HomeView --------*/
+
 .HomeView {
     display: flex;
     flex-wrap: wrap;
 }
+
+/*-------- ProjectCard ----------*/
 
 .ProjectCard {
     width: 350px;
@@ -12,23 +16,45 @@
     color: black;
 }
 
+/*--------- SearchBar ----------*/
+
 .SearchBar {
-    background-color: gray;
+    background-color: #7F8D7C;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    padding: 10px;
-    font-size: 16px;
-}
-
-.searchbar-input, .searchbar-submit {
+    padding: 1em;
     font-size: 16px;
 }
 
 .searchbar-input {
     width: 200px;
+    background-color: whitesmoke;
+    padding: 0.25em;
+    color: #7F8D7C;
+    border: 2px solid whitesmoke;
+    border-radius: 0.25em;
+    margin: 0em 0.25em;
+    font-size: 16px;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+}
+
+.searchbar-submit, .searchbar-clear {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid whitesmoke;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    font-size: 16px;
+}
+
+.searchbar-submit:hover, .searchbar-clear:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
 }
 
 .card {
