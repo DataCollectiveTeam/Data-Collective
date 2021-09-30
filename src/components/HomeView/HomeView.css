@@ -3,6 +3,8 @@
 .HomeView {
     display: flex;
     flex-wrap: wrap;
+    background-color: #DEEEF7;
+    min-height: 70vh;
 }
 
 /*-------- ProjectCard ----------*/
@@ -14,6 +16,27 @@
     align-items: center;
     text-decoration: none;
     color: black;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    max-width: 13em;
+    max-height: 15em;
+    margin: 1em;
+    box-shadow: 0 1em 1em rgb(130, 130, 130);
+}
+
+.card-image {
+    width: 10em;
+    height: 10em;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ProjectCard img {
+    max-width: 10em;
+    max-height: 10em;
 }
 
 /*--------- SearchBar ----------*/
@@ -55,18 +78,4 @@
 .searchbar-submit:hover, .searchbar-clear:hover {
     color: #7F8D7C;
     background-color: whitesmoke;
-}
-
-.card {
-    border: 2px solid black;
-    padding: 1em;
-    margin: 1em;
-    border-radius: 1em;
-    box-shadow: 0 1em 1em rgb(130, 130, 130);
-    height: 16em;
-}
-
-.ProjectCard img {
-    max-width: 10em;
-    height: auto;
 }
