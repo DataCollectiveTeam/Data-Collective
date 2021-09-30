@@ -47,9 +47,6 @@ function App() {
         setThisUser, 
         URL
       }}>
-      {(logInModal === true) && 
-        <LogInModal setLogInModal={setLogInModal}/>
-      }
       {(newUserModal === true) && 
         <NewUserModal setNewUserModal={setNewUserModal}/>
       }
@@ -57,6 +54,7 @@ function App() {
         <NewProjectModal setNewProjectModal={setNewProjectModal} />
       }
       <Header 
+        logInModal={logInModal}
         setLogInModal={setLogInModal} 
         setNewUserModal={setNewUserModal}
         setNewProjectModal={setNewProjectModal}

@@ -31,7 +31,6 @@ const NewUserModal = ({setNewUserModal}) => {
 
     //if passwords match, post new citizen to database
     const handleSubmit = () => {
-        setNewUserModal(false);
         console.log(formState)
         if (formState.password !== formState.confirmPassword){
             setFormState(defaultForm)
