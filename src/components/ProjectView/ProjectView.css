@@ -247,6 +247,66 @@
     font-weight: bold;
 }
 
+/*-------- DataVis ----------*/
+
+.DataVis {
+    background-color: whitesmoke;
+    padding: 1em;
+    border: 2px solid #7F8D7C;
+    min-height: 30em;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.DataVisItem {
+    width: 35em;
+    border: 2px solid #7F8D7C;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+    margin: 2em auto;
+    padding: 1em;
+    border-radius: 0.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chart {
+    margin: 2em auto;
+    border: 2px solid #7F8D7C;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+}
+
+.vis-interaction-buttons {
+    margin-bottom: 1em;
+}
+
+.edit-vis-button {
+    color:#bbaf55;
+    background-color: whitesmoke;
+    border: 2px solid #bbaf55;
+    margin: 0.25em;
+    border-radius: 0.25em;
+}
+
+.delete-vis-button {
+    color:rgb(233, 105, 105);
+    background-color: whitesmoke;
+    border: 2px solid rgb(233, 105, 105);
+    margin: 0.25em;
+    border-radius: 0.25em;
+}
+
+.edit-vis-button:hover {
+    color:whitesmoke;
+    background-color: #bbaf55;
+}
+
+.delete-vis-button:hover {
+    color:whitesmoke;
+    background-color: rgb(233, 105, 105);
+}
+
 /*------- Creator / Admin / Contributor Cards -------*/
 
 .card-list {
