@@ -6,55 +6,22 @@ import EditVisModal from '../Modals/EditVisModal';
 
 function DataVisItem({item, procData, project}) {
 
+    //import current user and backend url from datacontext
     const {thisUser, URL} = useContext(DataContext);
+
+    //toggle edit modal
     const [showEditVisModal, setShowEditVisModal] = useState(false);
-    //declaring empty variables
+
+    //declaring empty variables to be passed to charts
     let options;
     let data = [];
+    let xValues = [];
+    let yValues = []
 
-    if (item.x_axis === 'id') {
-        procData.sort((a, b) => {
-            console.log(a, b)
-            return a.id - b.id;
-        })
-        options = {
-            hAxis: { title: item.x_axis, viewWindow: { min: procData[0].id, max: procData[procData.length - 1].id} }
-        }
-    } else if (item.x_axis === 'id' && item.chart_type === 'BarChart') {
-        options = {
-            vAxis: { title: item.x_axis, viewWindow: { min: procData[0].id, max: procData[procData.length - 1].id} }
-        }
-    } else if (item.x_axis === 'contributor') {
-        procData.sort((a, b) => {
-            console.log(a, b)
-            return a.contributor - b.contributor;
-        })
-        options = {
-            hAxis: { title: item.x_axis, viewWindow: { min: procData[0].contributor, max: procData[procData.length - 1].contributor} }
-        }
-    } else if (item.x_axis === 'contributor' && item.chart_type === 'BarChart') {
-        procData.sort((a, b) => {
-            console.log(a, b)
-            return a.contributor - b.contributor;
-        })
-        options = {
-            vAxis: { title: item.x_axis, viewWindow: { min: procData[0].contributor, max: procData[procData.length - 1].contributor} }
-        }
-    } else if (item.chart_type === 'BarChart') {
-        procData.sort((a, b) => {
-            console.log(a, b)
-            return a[item.x_axis] - b[item.x_axis];
-        })
-        options = {
-            vAxis: { title: item.x_axis, viewWindow: { min: procData[0][item.x_axis], max: procData[procData.length - 1][item.x_axis]} }
-        }
-    } else {
-        options = {
-            hAxis: { title: item.x_axis, viewWindow: { min: item.x_axis_min, max: item.x_axis_max} },
-        }
-    }
-
-    console.log(procData);
+    //strings should have accessible counts and values
+    // if(typeof item.x_axis === "string"){
+    //     console.log("string")
+    // }
 
     //cases for each chart type
     if (item.chart_type === 'LineChart') {
@@ -64,13 +31,15 @@ function DataVisItem({item, procData, project}) {
         //for rendering
         procData.forEach(point => {
         let val = [point[item.x_axis], point[item.y_axis]];
+        xValues.push(point[item.x_axis]);
+        yValues.push(point[item.y_axis]);
         data.push(val);
         })
         //fill in chart options with chosen values
         options = {
-            ...options,
             title: item.chart_title,
-            vAxis: { title: item.y_axis, viewWindow: { min: item.y_axis_min, max: item.y_axis_max} },
+            hAxis: { title: item.x_axis, viewWindow: { min: Math.min(xValues)-(Math.max(xValues)*1.1), max: (Math.max(xValues)*1.1)} },
+            vAxis: { title: item.y_axis, viewWindow: { min: Math.min(yValues)-(Math.max(yValues)*1.1), max: (Math.max(yValues)*1.1)} },
             legend: 'none'
         }
         //append legend if user chose to display legend 
@@ -94,7 +63,8 @@ function DataVisItem({item, procData, project}) {
         //y axis automatically set to frequency for histogram
         options = {
             title: item.chart_title,
-            vAxis: { title: 'frequency', viewWindow: { min: item.y_axis_min, max: item.y_axis_max} },
+            hAxis: { title: item.x_axis, viewWindow: { min: Math.min(xValues)-(Math.max(xValues)*1.1), max: (Math.max(xValues)*1.1)} },
+            vAxis: { title: item.y_axis, viewWindow: { min: Math.min(yValues)-(Math.max(yValues)*1.1), max: (Math.max(yValues)*1.1)} },
             legend: 'none'
         }
         //append legend if user chose to display legend 
@@ -120,7 +90,7 @@ function DataVisItem({item, procData, project}) {
         //fill in chart options with chosen values
         options = {
             title: item.chart_title,
-            hAxis: { title: item.y_axis, viewWindow: { min: item.y_axis_min, max: item.y_axis_max} },
+            hAxis: { title: item.y_axis, viewWindow: { min: Math.min(item.y_axis), max: Math.max(item.y_axis)} },
             legend: 'none'
         }
         //append legend if user chose to display legend 
@@ -151,7 +121,7 @@ function DataVisItem({item, procData, project}) {
         //fill in chart options with chosen values
         options = {
             title: item.chart_title,
-            pieHole: item.pie_hole,
+            pieHole: 0,
             legend: 'none'
         }
         //append legend if user chose to display legend 
@@ -176,7 +146,7 @@ function DataVisItem({item, procData, project}) {
     return (
         <div className='DataVisItem'>
             {showEditVisModal && 
-                <EditVisModal item={item} procData={procData} project={project} setShowEditVisModal={setShowEditVisModal}/>
+                <EditVisModal item={item} procData={procData} p={project} setShowEditVisModal={setShowEditVisModal}/>
             }
             {(project.admin_list.some(admin => admin === parseInt(thisUser.id))) &&
                 <div>

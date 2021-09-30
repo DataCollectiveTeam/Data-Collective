@@ -4,7 +4,6 @@ import DataPoint from './DataPoint';
 function RawData({procData, creator, admins, setAddData, dataDeleted, setDataDeleted }) {
 
     //maps through processed data and displays each point in a 'DataPoint' component
-
     return (
         <div>
             <button type='button' onClick={() => setAddData(true)} >log data</button>
