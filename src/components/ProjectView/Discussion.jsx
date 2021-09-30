@@ -16,6 +16,7 @@ function Discussion({project, admins}) {
     const [confirmDelete, setConfirmDelete] = useState(false);
     const [showNewPostModal, setShowNewPostModal] = useState(false);
     const [pin, setPin] = useState(false);
+    const [posted, setPosted] = useState(false);
 
     const pinPost = (thisPost) => {
         let postToPin = thisPost;
@@ -54,7 +55,7 @@ function Discussion({project, admins}) {
             
         } )) 
         .catch(console.error);   
-    }, [showNewPostModal, editPost, confirmDelete, pin])
+    }, [showNewPostModal, editPost, confirmDelete, pin, posted])
 
     return (
         <div className='Discussion'>
@@ -65,7 +66,7 @@ function Discussion({project, admins}) {
                 setConfirmDelete
             }}>
                 {(showNewPostModal) && 
-                    <NewPost project={project} setShowNewPostModal={setShowNewPostModal}/>
+                    <NewPost project={project} setShowNewPostModal={setShowNewPostModal} posted={posted} setPosted={setPosted}/>
                 }
                 <button className='new-post-button' type='button' onClick={() => setShowNewPostModal(true)} >new post</button>
                 {(pinnedPosts && posts) &&

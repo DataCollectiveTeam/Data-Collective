@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { DataContext } from '../../../DataContext';
 
-function NewPost({project, setShowNewPostModal}) {
+function NewPost({project, setShowNewPostModal, posted, setPosted}) {
 
     console.log(project)
 
@@ -28,7 +28,7 @@ function NewPost({project, setShowNewPostModal}) {
         console.log(newPost)
         const url = `${URL}/posts/`
         axios.post(url, newPost)
-            .then(res => console.log(res))
+            .then(res => setPosted(!posted))
             .catch(console.error);
         setShowNewPostModal(false);
     }

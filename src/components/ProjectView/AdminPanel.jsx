@@ -73,7 +73,7 @@ const AdminPanel = ({p, setShowNewForm, procData}) => {
     }, [])
 
     return (
-        <div>
+        <div className='AdminPanel'>
             {deleteProjectModal &&
                 <DeleteProjectModal 
                     p={p} 
@@ -94,29 +94,48 @@ const AdminPanel = ({p, setShowNewForm, procData}) => {
                 />
             }
             <div className='project-admin-buttons'>
-                {(!hasForm) && 
+                <div>
+                    <h4>Data Entry Form</h4>
+                {(!hasForm) ? 
                     <div>
                         <button type='button' onClick={() => setShowNewForm(true)} >add new form</button> 
                     </div>
-                }
-                <div>
-                    <button className='edit-project-button' type='button' onClick={editProject} ><span className='far fa-edit'>Edit Project</span></button>
-                    <button className='delete-project-button' type='button' onClick={() => setDeleteProjectModal(true)} ><span className='far fa-trash-alt'>Delete Project</span></button>
+                    :
+                    <div>
+                        <h5>This project has a data entry form.</h5>
+                        <h5>If you are unsatisifed with this form, you will need to delete this project and start a new one.</h5>
+                    </div>
+                } 
                 </div>
                 
-                <div className='add-admin-div'>
-                    <input type='text' placeholder='add admin' value={newAdmin} onChange={adminChange} />
-                    <button type='button' onClick={addAdmin}>add admin</button>
-                    {showUsers && 
-                        <div className='user-intellisense'>
-                            {filteredUsers.map(user => {
-                                return <p key={user.name} onClick={() => {setNewAdminId(user.id); setNewAdmin(user.name)}}>{user.name}</p>
-                            })}
-                        </div>
-                    }
+                <div>
+                    <h4>Project Controls</h4>
+                    <div>
+                        <button className='edit-project-button' type='button' onClick={editProject} ><span className='far fa-edit'>Edit Project</span></button>
+                        <button className='delete-project-button' type='button' onClick={() => setDeleteProjectModal(true)} ><span className='far fa-trash-alt'>Delete Project</span></button>
+                    </div>
                 </div>
-                <button type='button' onClick={() => setShowDataVisModal(true)} >add data visualization</button>
-            </div>
+                <div>
+                    <h4>Add a data visualization for your data</h4>
+                   <button className='add-data-vis-button' type='button' onClick={() => setShowDataVisModal(true)} >add data visualization</button>
+                </div>
+                <div className='add-admin-div'>
+                    <h4>Add admins to your project</h4>
+                    <div className='add-admin-sense'>
+                        <div>
+                            <input className='add-admin-input' type='text' placeholder='add admin' value={newAdmin} onChange={adminChange} />
+                            {showUsers && 
+                                filteredUsers.map(user => {
+                                    return <p className='user-intellisense' key={user.name} onClick={() => {setNewAdminId(user.id); setNewAdmin(user.name)}}>{user.name}</p>
+                                })
+                            } 
+                        </div>
+                        <button className='add-admin-button' type='button' onClick={addAdmin}>add admin</button>
+                    </div>
+                    
+                </div>
+                
+                </div>
         </div>
     );
 };

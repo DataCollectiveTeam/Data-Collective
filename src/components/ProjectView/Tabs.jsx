@@ -86,7 +86,7 @@ function Tabs({project, data, setShowNewForm, addData, setAddData, dataDeleted, 
                 <DataEntry project={project} setAddData={setAddData}/>
             }
             <div className='tab-buttons'>
-                <button className='tab-button' type='button' onClick={() => setTabState('desc')}>description</button>
+                <button className='tab-button' type='button' onClick={() => setTabState('desc')} autofocus='true'>description</button>
                 <button className='tab-button' type='button' onClick={() => setTabState('disc')}>discussion</button>
                 <button className='tab-button' type='button' onClick={() => setTabState('raw_data')}>view data</button>
                 <button className='tab-button' type='button' onClick={() => setTabState('data_vis')}>data visulaization</button>
