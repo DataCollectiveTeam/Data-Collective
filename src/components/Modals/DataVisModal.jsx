@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { DataContext } from '../../DataContext';
 import ChartForm from './ChartForm';
 import './Modals.css'
@@ -9,19 +9,11 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
     //import the current user and backend url from datacontext
     const {thisUser, URL} = useContext(DataContext);
 
-    //create an array to store the options for x/y values
-    const dataSample ={}
-    for (let key in procData[0]){
-        if (key !== 'id' && key !== 'contributor' && key!=="notes"){
-            dataSample[key] = procData[0][key]
-        }
-    }
-
     //default state of datavis form
     const defaultDataVis = {
         project: p.id,
         contributor: thisUser.id,
-        chart_type: 'LineChart',
+        chart_type: '',
         chart_title: 'new',
         x_axis: '',
         y_axis: '',
@@ -37,15 +29,14 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
     
     //store datavis form in state
     const [dataVis, setDataVis] = useState(defaultDataVis)
+    const [dataSample, setDataSample] = useState(null)
+    const [chartList, setChartList] = useState([])
     const [options, setOptions] = useState(defaultOptions)
 
     //set chart type and populate relevant dropdown menu options
-    const setChartType = (e) => {
+    function setChartType(type) {
         let options_1 = []
         let options_2 = []
-
-        let type = e.target.value
-        setDataVis({...dataVis, chart_type: e.target.value})
         
         if (type==='LineChart'){
             for (let key in dataSample) {
@@ -59,10 +50,10 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
         } else if (type==='BarChart'){
             for (let key in dataSample) {
             if ((typeof dataSample[key])==="string") {
-                options_1.push(key)
+                options_2.push(key)
             }
             if ((typeof dataSample[key])==="number") {
-                options_2.push(key)
+                options_1.push(key)
             }
             }
         } else if (type==='Histogram'){
@@ -79,8 +70,56 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
             }
         }
         setOptions({field1: options_1, field2: options_2})
+        setDataVis({...dataVis, chart_type: type})
     }
 
+    useEffect(() => {
+        
+        //remove id, contributor, and notes from data keys
+        let sample = {}
+        for (let key in procData[0]){
+            if (key !== 'id' && key !== 'contributor' && key!=="notes"){
+                sample[key] = procData[0][key]
+            }
+        }
+        //store remaining keys in state
+        setDataSample(sample)
+
+        //count number and string data types in project data
+        let numbers=0
+        let strings=0
+        let charts = []
+        for (let key in sample){
+            if ((typeof sample[key])==="number") {
+                numbers+=1
+            } 
+            if ((typeof sample[key])==="string") {
+                strings+=1
+            }
+        }
+        //only allow creation of charts with relevant data available
+        if (numbers>1){
+            charts.push("LineChart")
+        }
+        if (strings>0){
+            charts.push("PieChart")
+            if (numbers>0){
+                charts.push("BarChart")
+            }
+        }
+        if (numbers>0){
+            charts.push("Histogram")
+        }
+        //store list of valid charts in state
+        setChartList(charts)
+        setChartType(charts[0])
+        
+        }, [])
+    
+    const updateChartType = (e) => {
+        setChartType(e.target.value)
+    }
+    
     //update properties of datavis state object
     const handleChange = (e) => {
         setDataVis({...dataVis, [e.target.id]: e.target.value})
@@ -112,11 +151,10 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
             <div className='modal-textbox'>
 
                 {/* select chart type */}
-                <select id='chart_type' onChange={setChartType}>
-                    <option value='LineChart'>Line Chart</option>
-                    <option value='BarChart'>Bar Chart</option>
-                    <option value='Histogram'>Histogram</option>
-                    <option value='PieChart'>Pie Chart</option>
+                <select id='chart_type' value={dataVis.chart_type} onChange={updateChartType}>
+                    {chartList.map(item => {
+                        return <option key={item} value={item}>{item}</option>
+                    })}
                 </select>
 
                 {/* enter chart title */}
@@ -124,8 +162,9 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
                 <input type='text' id='chart_title' placeholder='chart title' onChange={handleChange} />
 
                 {/* generate form by chart type */}
-                <ChartForm type={dataVis.chart_type} options={options} handleChange={handleChange}/>
-
+                {dataVis.chart_type &&
+                <ChartForm data={dataVis} options={options} handleChange={handleChange}/>
+                }
                 {/* toggle chart legend */}
                 <p>toggle legend</p>
                 {(dataVis.legend) 

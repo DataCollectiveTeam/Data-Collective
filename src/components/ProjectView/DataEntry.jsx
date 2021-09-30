@@ -82,7 +82,8 @@ function DataEntry({project}) {
     //called on page load
     //gets form data for this project
     const getForm = () => {
-        const url = `${URL}/formgrab/${project.id}`
+        let id = project.id.toString()
+        const url = `${URL}/formgrab/${id}`
         axios.get(url)
             .then(res => {
                 if(res.data[0]){
