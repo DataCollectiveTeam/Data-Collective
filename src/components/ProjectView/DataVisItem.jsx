@@ -149,9 +149,9 @@ function DataVisItem({item, procData, project}) {
                 <EditVisModal item={item} procData={procData} p={project} setShowEditVisModal={setShowEditVisModal}/>
             }
             {(project.admin_list.some(admin => admin === parseInt(thisUser.id))) &&
-                <div>
-                    <button type='button' onClick={editVis} >edit visualization</button>
-                    <button type='button' onClick={deleteVis} >delete visualization</button>
+                <div className='vis-interaction-buttons'>
+                    <button className='edit-vis-button' type='button' onClick={editVis} >edit visualization</button>
+                    <button className='delete-vis-button' type='button' onClick={deleteVis} >delete visualization</button>
                 </div>
                 
             }
@@ -160,7 +160,7 @@ function DataVisItem({item, procData, project}) {
                     chartType={item.chart_type}
                     data={[[item.x_axis, item.y_axis], ...data]}
                     options={options}
-                    width='80%'
+                    width='500px'
                     height='500px'
                     legendToggle
                 />
@@ -170,7 +170,7 @@ function DataVisItem({item, procData, project}) {
                     chartType={item.chart_type}
                     data={[[item.x_axis], ...data]}
                     options={options}
-                    width='80%'
+                    width='500px'
                     height='500px'
                     legendToggle
                 />
@@ -180,17 +180,17 @@ function DataVisItem({item, procData, project}) {
                     chartType={item.chart_type}
                     data={[[item.x_axis, item.y_axis, {role: 'style'}], ...data]}
                     options={options}
-                    width='80%'
+                    width='500px'
                     height='500px'
                     legendToggle
                 />
             }
             {(item.chart_type === 'PieChart') &&
-                <Chart 
+                <Chart   
                     chartType={item.chart_type}
                     data={[[item.x_axis, item.y_axis], ...data]}
                     options={options}
-                    width='80%'
+                    width='500px'
                     height='500px'
                     legendToggle
                 />
