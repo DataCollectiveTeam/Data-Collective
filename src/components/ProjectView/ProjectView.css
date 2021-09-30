@@ -1,13 +1,22 @@
+/*--------- ProjectView ----------*/
+
+.ProjectView {
+    background-color: #DEEEF7;
+}
+
 /*-------- ProjectHeader --------*/
 
 .ProjectHeader {
+    background-color: whitesmoke;
     display: flex;
     flex-direction: row;
-    border: 2px solid black;
-    border-radius: 1em;
+    border: 2px solid #7F8D7C;
+    border-top: none;
+    border-radius: 0em 0em 0.5em 0.5em;
     justify-content: space-between;
-    margin: 2em auto;
-    width: 800px;
+    margin: auto;
+    margin-bottom: 2em;
+    width: 45em;
     box-shadow: 0 1em 1em rgb(130, 130, 130);
     text-align: left;
 }
@@ -29,9 +38,59 @@
     border-radius: 1em;
     margin: 1em;
     padding: 1em;
+    width: 10em;
 }
 
-/*------- DatePoint -------*/
+/*-------- Tabs -----------*/
+
+.Tabs {
+    width: 50em;
+    margin: auto;
+}
+
+.tab-buttons {
+    width: 50em;
+}
+
+.tab-button {
+    width: 20%;
+    background-color: #7F8D7C;
+    border-radius: 0.5em 0.5em 0em 0em;
+    border: 2px solid #7F8D7C;
+    color: whitesmoke;
+}
+
+.admin-button {
+    width: 20%;
+    background-color: #b080bd;
+    border-radius: 0.5em 0.5em 0em 0em;
+    border: 2px solid #b080bd;
+    color: whitesmoke;
+}
+
+.tab-button:focus {
+    background-color: whitesmoke;
+    border-bottom: 2px solid whitesmoke;
+    color: #7F8D7C;
+}
+
+.admin-button:focus {
+    background-color: whitesmoke;
+    border-bottom: 2px solid whitesmoke;
+    color: #b080bd;
+}
+
+/*-------- ProjectDesc -------*/
+
+.TabDescription {
+    background-color: whitesmoke;
+    padding: 1em;
+    border: 2px solid #7F8D7C;
+    border-top: none;
+
+}
+
+/*------- DataPoint -------*/
 
 .DataPoint {
     border: 1px solid black;
@@ -52,17 +111,23 @@
     padding: 5px;
 }
 
+.list-label {
+    width: 6em;
+    text-align: right;
+}
+
 .CitizenCard {
+    background-color: #DEEEF7;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     border-style: solid;
-    border: 2px solid black;
+    border: 2px solid #7F8D7C;
     padding: 1em;
     margin: 1em;
-    border-radius: 1em;
-    box-shadow: 0 1em 1em rgb(130, 130, 130);
+    border-radius: 0.25em;
+    box-shadow: 0 0.5em 1em rgb(130, 130, 130);
     height: 2em;
 }
 
@@ -77,4 +142,7 @@
     width: 50px;
     overflow: hidden;
     margin: 0px 5px;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.5em;
+    background-color: whitesmoke;
 }
