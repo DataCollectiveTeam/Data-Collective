@@ -67,7 +67,7 @@ function Discussion({project, admins}) {
                 {(showNewPostModal) && 
                     <NewPost project={project} setShowNewPostModal={setShowNewPostModal}/>
                 }
-                <button type='button' onClick={() => setShowNewPostModal(true)} >new post</button>
+                <button className='new-post-button' type='button' onClick={() => setShowNewPostModal(true)} >new post</button>
                 {(pinnedPosts && posts) &&
                     <div>
                         <PinnedPosts 
@@ -87,7 +87,6 @@ function Discussion({project, admins}) {
                     </div>
                 }
             </ PostContext.Provider>
-            
         </div>
     );
 }

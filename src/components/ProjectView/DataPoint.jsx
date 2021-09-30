@@ -31,7 +31,7 @@ function DataPoint({point, admins, dataDeleted, setDataDeleted}) {
                     maps through the dataToRender array 
                 */}
                 {dataToRender.map(pair => {
-                    return <p key={pair[0]}>{pair[0]}: {pair[1]}</p>
+                    return <p key={pair[0]}><span className='label' >{pair[0]}:</span> {pair[1]}</p>
                 })}
                 {/* 
                     if the currently logged in user is: 
@@ -42,7 +42,7 @@ function DataPoint({point, admins, dataDeleted, setDataDeleted}) {
                 */}
                 {((admins.some(admin => admin === parseInt(thisUser.id)) === true) ||
                  (point.contributor === parseInt(thisUser.id))) &&
-                    <button type='button' onClick={deletePoint} >delete data point</button> 
+                    <button className='delete-data-button' type='button' onClick={deletePoint} >delete data point</button> 
                 }
             </div>
         );
