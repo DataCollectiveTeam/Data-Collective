@@ -13,90 +13,71 @@ function DataVisItem({item, procData, project, dataVisChange, setDataVisChange})
     const [showEditVisModal, setShowEditVisModal] = useState(false);
 
     //declaring empty variables to be passed to charts
-    let options;
+    let options = {};
     let data = [];
     let xValues = [];
     let yValues = []
-
-    //strings should have accessible counts and values
-    // if(typeof item.x_axis === "string"){
-    //     console.log("string")
-    // }
-
+    options.title = item.chart_title;
+    //append legend if user chose to display legend 
+    if (item.legend === true) {
+        options.legend = {position: 'bottom'}
+    }
+    
     //cases for each chart type
     if (item.chart_type === 'LineChart') {
-        //for each data point, create a sub array
-        //that holds each chosen items' value
-        //and push the sub array into the data array
-        //for rendering
+
+        let categorySort = {}
+
         procData.forEach(point => {
-        let val = [point[item.x_axis], point[item.y_axis]];
-        xValues.push(point[item.x_axis]);
-        yValues.push(point[item.y_axis]);
-        data.push(val);
+            (categorySort[point[item.x_axis]] === undefined)
+            ? categorySort[point[item.x_axis]] = [point[item.y_axis]]
+            : categorySort[point[item.x_axis]].push(point[item.y_axis])
         })
+
+        for (let cat in categorySort){
+
+            let sum = categorySort[cat].reduce((a, b) => a + b, 0)
+            let avg = (sum/ categorySort[cat].length) || 0;
+            xValues.push(cat);
+            yValues.push(sum);
+            let val =[cat, avg];
+            data.push(val);
+        }
+
         //fill in chart options with chosen values
-        options = {
-            title: item.chart_title,
-            hAxis: { title: item.x_axis, viewWindow: { min: Math.min(xValues)-(Math.max(xValues)*1.1), max: (Math.max(xValues)*1.1)} },
-            vAxis: { title: item.y_axis, viewWindow: { min: Math.min(yValues)-(Math.max(yValues)*1.1), max: (Math.max(yValues)*1.1)} },
-            legend: 'none'
-        }
-        //append legend if user chose to display legend 
-        if (item.legend === true) {
-            options.legend = {position: 'bottom'}
-        }
+        options.hAxis = { title: item.x_axis, viewWindow: { min: Math.min(xValues)-(Math.max(xValues)*1.1), max: (Math.max(xValues)*1.1)} };
+        options.vAxis = { title: item.y_axis, viewWindow: { min: Math.min(yValues)-(Math.max(yValues)*1.1), max: (Math.max(yValues)*1.1)} };
         // sort data in ascending order
         data.sort((a, b) => {
             return a[0] - b[0]
         })
-    } else if (item.chart_type === 'Histogram') {
-        //for each data point, create a sub array
-        //that holds the chosen item's value
-        //and push the sub array into the data array
-        //for rendering
-        procData.forEach(point => {
-            let val = [point[item.x_axis]];
-            data.push(val);
-            })
-        //fill in chart options with chosen values
-        //y axis automatically set to frequency for histogram
-        options = {
-            title: item.chart_title,
-            hAxis: { title: item.x_axis, viewWindow: { min: Math.min(xValues)-(Math.max(xValues)*1.1), max: (Math.max(xValues)*1.1)} },
-            vAxis: { title: item.y_axis, viewWindow: { min: Math.min(yValues)-(Math.max(yValues)*1.1), max: (Math.max(yValues)*1.1)} },
-            legend: 'none'
-        }
-        //append legend if user chose to display legend 
-        if (item.legend === true) {
-            options.legend = {position: 'bottom'}
-        }
     } else if (item.chart_type === 'BarChart') {
         //bar colors
         let colors = ['red', 'blue', 'green', 'yellow', 'gray', 'purple'];
         //count for cycling through colors
-        let count = 0;
+        let colorIndex = 0;
         //for each data point...
+        let categorySort = {}
+        
         procData.forEach(point => {
-            //if color is last in colors, set count to 0, otherwise increment count
-            (count === colors.length - 1) ? count = 0 : count++;
-            // create a sub array with the chosen items' values 
-            // and the color determined from the count
-            // then push the sub array into the data array
-            // for rendering 
-            let val = [point[item.x_axis], point[item.y_axis], `color: ${colors[count]}`];
+            (categorySort[point[item.x_axis]] === undefined)
+            ? categorySort[point[item.x_axis]] = [point[item.y_axis]]
+            : categorySort[point[item.x_axis]].push(point[item.y_axis])
+        })
+
+        for (let cat in categorySort){
+            (colorIndex>=(colors.length-1) ? colorIndex=0 : colorIndex ++)
+
+            let sum = categorySort[cat].reduce((a, b) => a + b, 0)
+            let avg = (sum/ categorySort[cat].length) || 0;
+
+            let val =[cat, avg, `color: ${colors[colorIndex]}`];
             data.push(val);
-            })
+        }
+
         //fill in chart options with chosen values
-        options = {
-            title: item.chart_title,
-            hAxis: { title: item.y_axis, viewWindow: { min: Math.min(item.y_axis), max: Math.max(item.y_axis)} },
-            legend: 'none'
-        }
-        //append legend if user chose to display legend 
-        if (item.legend === true) {
-            options.legend = {position: 'bottom'}
-        }
+        options.hAxis = { title: item.y_axis };
+        options.vAxis = { title: item.x_axis }
     } else if (item.chart_type === 'PieChart') {
         //declare empty counts object
         let counts = {}
@@ -119,15 +100,7 @@ function DataVisItem({item, procData, project, dataVisChange, setDataVisChange})
             data.push(val)
         }
         //fill in chart options with chosen values
-        options = {
-            title: item.chart_title,
-            pieHole: 0,
-            legend: 'none'
-        }
-        //append legend if user chose to display legend 
-        if (item.legend === true) {
-            options.legend = {position: 'bottom'}
-        }
+        options.pieHole = 0;
     }
 
     //shows edit visualization modal
@@ -155,7 +128,7 @@ function DataVisItem({item, procData, project, dataVisChange, setDataVisChange})
                     setDataVisChange={setDataVisChange}
                     />
             }
-            {(project.admin_list.some(admin => admin === parseInt(thisUser.id))) &&
+            {(project.admin_list.includes(parseInt(thisUser.id))) &&
                 <div className='vis-interaction-buttons'>
                     <button className='edit-vis-button' type='button' onClick={editVis} >edit visualization</button>
                     <button className='delete-vis-button' type='button' onClick={deleteVis} >delete visualization</button>
@@ -166,16 +139,6 @@ function DataVisItem({item, procData, project, dataVisChange, setDataVisChange})
                 <Chart 
                     chartType={item.chart_type}
                     data={[[item.x_axis, item.y_axis], ...data]}
-                    options={options}
-                    width='500px'
-                    height='500px'
-                    legendToggle
-                />
-            }
-            {(item.chart_type === 'Histogram') &&
-                <Chart 
-                    chartType={item.chart_type}
-                    data={[[item.x_axis], ...data]}
                     options={options}
                     width='500px'
                     height='500px'
@@ -195,7 +158,7 @@ function DataVisItem({item, procData, project, dataVisChange, setDataVisChange})
             {(item.chart_type === 'PieChart') &&
                 <Chart   
                     chartType={item.chart_type}
-                    data={[[item.x_axis, item.y_axis], ...data]}
+                    data={[[item.x_axis, "Frequency"], ...data]}
                     options={options}
                     width='500px'
                     height='500px'
