@@ -6,7 +6,7 @@ import { DataContext } from '../../DataContext';
 function DataEntry({project, setAddData}) {
 
     const {thisUser, URL } = useContext(DataContext);
-    console.log(project);
+    console.log(thisUser)
 
     //defaut form includes this projects id
     //also includes this user's id
@@ -38,7 +38,7 @@ function DataEntry({project, setAddData}) {
         notes: "",
         lat: null,
         lon: null,
-        zipcode: null
+        zipcode: ""
     }
 
     const [form, setForm] = useState(null);
@@ -133,49 +133,49 @@ function DataEntry({project, setAddData}) {
                 {form.int1 && 
                     <div>
                         <p>{form.int1_label}</p>
-                        <input className='int-input' type='text' id='int1' placeholder='integer' onChange={handleChange} />
+                        <input className='int-input' type='number' id='int1' placeholder='integer' onChange={handleChange} />
                     </div>    
                 }
                 {form.int2 && 
                     <div>
                         <p>{form.int2_label}</p>
-                        <input className='int-input' type='text' id='int2' placeholder='integer' onChange={handleChange} />
+                        <input className='int-input' type='number' id='int2' placeholder='integer' onChange={handleChange} />
                     </div>    
                 }
                 {form.int3 && 
                     <div>
                         <p>{form.int3_label}</p>
-                        <input className='int-input' type='text' id='int3' placeholder='integer' onChange={handleChange} />
+                        <input className='int-input' type='number' id='int3' placeholder='integer' onChange={handleChange} />
                     </div>    
                 }
                 {form.int4 && 
                     <div>
                         <p>{form.int4_label}</p>
-                        <input className='int-input' type='text' id='int4' placeholder='integer' onChange={handleChange} />
+                        <input className='int-input' type='number' id='int4' placeholder='integer' onChange={handleChange} />
                     </div>    
                 }
                 {form.float1 && 
                     <div>
                         <p>{form.float1_label}</p>
-                        <input className='float-input' type='text' id='float1' placeholder='decimal' onChange={handleChange} />
+                        <input className='float-input' type='number' step='0.01' id='float1' placeholder='decimal' onChange={handleChange} />
                     </div>    
                 }
                 {form.float2 && 
                     <div>
                         <p>{form.float2_label}</p>
-                        <input className='float-input' type='text' id='float2' placeholder='decimal' onChange={handleChange} />
+                        <input className='float-input' type='number' step='0.01' id='float2' placeholder='decimal' onChange={handleChange} />
                     </div>    
                 }
                 {form.float3 && 
                     <div>
                         <p>{form.float3_label}</p>
-                        <input className='float-input' type='text' id='float3' placeholder='decimal' onChange={handleChange} />
+                        <input className='float-input' type='number' step='0.01' id='float3' placeholder='decimal' onChange={handleChange} />
                     </div>    
                 }
                 {form.float4 && 
                     <div>
                         <p>{form.float4_label}</p>
-                        <input className='float-input' type='text' id='float4' placeholder='decimal' onChange={handleChange} />
+                        <input className='float-input' type='number' step='0.01' id='float4' placeholder='decimal' onChange={handleChange} />
                     </div>    
                 }
                 {form.dropdown1 && 
@@ -212,8 +212,8 @@ function DataEntry({project, setAddData}) {
                 {form.latlon && 
                     <div>
                         <p>enter coordinates</p>
-                        <input className='lat-lon-input' type='text' id='lat' placeholder='latitude' onChange={handleChange} />
-                        <input className='lat-lon-input' type='text' id='lon' placeholder='longitude' onChange={handleChange} />
+                        <input className='lat-lon-input' type='number' id='lat' placeholder='latitude' onChange={handleChange} />
+                        <input className='lat-lon-input' type='number' id='lon' placeholder='longitude' onChange={handleChange} />
                     </div>    
                 }
                 {form.zipcode &&

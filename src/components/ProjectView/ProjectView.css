@@ -263,6 +263,28 @@
     background-color: #DEEEF7;
 }
 
+.post-title-input {
+    width: 20em;
+    margin: 0.5em auto;
+    padding: 0.25em;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+}
+
+.post-body-input {
+    width: 20em;
+    margin: 0.5em auto;
+    padding: 0.25em;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
 /*-------- RawData --------*/
 
 .RawData {

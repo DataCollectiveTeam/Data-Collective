@@ -1,10 +1,7 @@
-import React, { useContext, useEffect } from 'react';
-import { DataContext } from '../../../DataContext';
+import React from 'react';
 import Post from './Post';
 
-function Posts({posts, admins, editPost, setEditPost}) {
-
-    const {thisUser} = useContext(DataContext);
+function Posts({posts, admins}) {
 
     posts.sort((a, b) => {
         return a.id - b.id;
@@ -17,8 +14,6 @@ function Posts({posts, admins, editPost, setEditPost}) {
                             key={post.id}
                             post={post} 
                             admins={admins}
-                            editPost={editPost}
-                            setEditPost={setEditPost}
                         />
             })}
         </div>
