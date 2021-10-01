@@ -6,6 +6,8 @@ function RawData({procData, creator, admins, setAddData, dataDeleted, setDataDel
 
     const {thisUser} = useContext(DataContext);
 
+    procData = procData.reverse()
+
     //maps through processed data and displays each point in a 'DataPoint' component
     return (
         <div className='RawData'>

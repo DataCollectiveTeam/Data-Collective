@@ -24,7 +24,7 @@ function App() {
     //check whether there is a user in localstorage
     function checkSessionUser() {
       const sessionName = localStorage.getItem("name");
-      const sessionID = localStorage.getItem("id");
+      const sessionID = parseInt(localStorage.getItem("id"));
       const sessionImg = localStorage.getItem("img");
       if (sessionName && sessionID) {
         setThisUser({...thisUser, name: sessionName, id: sessionID, img: sessionImg});
@@ -47,7 +47,8 @@ function App() {
         thisUser, 
         setThisUser, 
         URL,
-        defaultUser
+        defaultUser,
+        setIsLoggedIn
       }}>
       {(newUserModal === true) && 
         <NewUserModal setNewUserModal={setNewUserModal}/>

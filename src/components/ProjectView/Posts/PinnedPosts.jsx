@@ -1,7 +1,7 @@
 import React from 'react';
 import Post from './Post';
 
-function PinnedPosts({posts, admins, editPost, setEditPost}) {
+function PinnedPosts({posts, admins}) {
 
     posts.sort((a, b) => {
         return a.id - b.id;
@@ -14,8 +14,6 @@ function PinnedPosts({posts, admins, editPost, setEditPost}) {
                             key={post.id} 
                             post={post} 
                             admins={admins}
-                            editPost={editPost}
-                            setEditPost={setEditPost}
                         />
             })}
         </div>

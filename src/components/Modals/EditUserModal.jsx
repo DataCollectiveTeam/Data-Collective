@@ -2,11 +2,12 @@ import React, { useContext, useState } from 'react';
 import './Modals.css'
 import axios from 'axios';
 import { DataContext } from '../../DataContext';
+import { Redirect } from 'react-router-dom';
 
 const EditUserModal = ({user, setEditUserModal}) => {
     
     //get function to update current user from DataContext
-    const { setThisUser, URL } = useContext(DataContext);
+    const { thisUser, setIsLoggedIn, setThisUser, URL } = useContext(DataContext);
     
     //pull current user info to set as initial state
     const defaultUserInfo= {
@@ -18,7 +19,8 @@ const EditUserModal = ({user, setEditUserModal}) => {
     
     //store user info in state and allow toggle of delete button in state
     const [editedUser, setEditedUser] = useState(defaultUserInfo)
-    const [deleteButton, setDeleteButton] = useState(false)
+    const [deleteButton, setDeleteButton] = useState(false);
+    const [userDeleted, setUserDeleted] = useState(false);
 
     //match input id to property of editedUser object and update
     const handleChange = (e) => {
@@ -42,13 +44,28 @@ const EditUserModal = ({user, setEditUserModal}) => {
 
     //delete user from database
     const deleteUser = () => {
+        const deletedUser = {
+            bio: 'this user has deleted their account',
+            img: 'https://www.drnitinborse.com/wp-content/uploads/2018/02/user-icon-300x300.png',
+            name: 'deleted',
+            password: 'JJNFSNOS78432879yfdsnj7KBJBKOBas789'
+        }
         const url = URL;
-        axios.delete(`${url}/citizens/${user.id}`)
+        axios.put(`${url}/citizens/${user.id}`, deletedUser)
+            .then(res => {
+                localStorage.clear();
+                setIsLoggedIn(false);
+                setUserDeleted(true)
+            })
+            .catch(console.error);
     }
     
     return (
         <div className='modal-background'>
             <div className='modal-textbox'>
+                {(userDeleted) &&
+                    <Redirect to='/' />
+                }
                 <input type='text' id='name' placeholder='username' value={editedUser.name} onChange={handleChange}/>
                 <input type='text' id='img' placeholder='image url' value={editedUser.img} onChange={handleChange}/>
                 <input type='text' id='bio' placeholder='brief bio' value={editedUser.bio} onChange={handleChange}/>

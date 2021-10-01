@@ -1,50 +1,74 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { DataContext } from '../../../DataContext';
 import { PostContext } from './PostContext';
-import EditPostModal from './EditPostModal';
-import ConfirmDelete from './ConfirmDelete';
+import axios from 'axios';
 
-function Post({post, admins, editPost, setEditPost}) {
+function Post({post, admins}) {
 
-    console.log(post)
 
     let dateOptions = {year: 'numeric', month: 'long', day: 'numeric'};
 
-    const {thisUser} = useContext(DataContext);
-    const {pinPost, deletePost, confirmDelete, setConfirmDelete} = useContext(PostContext);
+    const {thisUser, URL} = useContext(DataContext);
+    const {pinPost, deletePost, submitEdit} = useContext(PostContext);
+    const [thisPost, setThisPost] = useState(null);
+    const [editPost, setEditPost] = useState(false);
 
-    return (
+    const handleChange = (e) => {
+        console.log(thisPost)
+        setThisPost({...thisPost, [e.target.id]: e.target.value});
+    }
+
+    useEffect(() => {
+        const url = `${URL}/posts/${post.id}`
+        axios.get(url)
+            .then(res => setThisPost(res.data))
+            .catch(console.error);
+    },[])
+
+    if (thisPost) {
+        return (
         <div className={`Post ${(post.pinned ? 'pinned' : null)}`}>
-            {(confirmDelete) &&
-                <ConfirmDelete post={post} dateOptions={dateOptions} deletePost={deletePost}/>
-            }
-            {(editPost) &&
-                <EditPostModal post={post} setEditPost={setEditPost} />
-            }
             {(post.pinned) && 
                 <p>pinned</p>
             }
             <div className='post-buttons'>
                {(admins.some(admin => admin === parseInt(thisUser.id))) &&
-                    <button className='pin-post-button' type='button' onClick={() => pinPost(post)} >{(post.pinned) ? 'unpin post' : 'pin post'}</button>
+                    <button className='pin-post-button' type='button' onClick={() => pinPost(thisPost)} >{(thisPost.pinned) ? 'unpin post' : 'pin post'}</button>
                 }
-                {(post.author === parseInt(thisUser.id)) &&
-                    <button className='edit-post-button' type='button' onClick={() => setEditPost(true)} >edit post</button>
+                {(thisPost.author === parseInt(thisUser.id) && (editPost))
+                ? <button className='edit-post-button' type='button' onClick={() => {submitEdit(thisPost); setEditPost(false)}} >save edit</button>
+                : <button className='edit-post-button' type='button' onClick={() => setEditPost(true)} >edit post</button>
                 }
-                {(post.author === parseInt(thisUser.id) || admins.some(admin => admin === parseInt(thisUser.id))) &&
-                    <button className='delete-post-button' type='button' onClick={() => setConfirmDelete(true)} >delete post</button> 
+                {(thisPost.author === parseInt(thisUser.id) || admins.some(admin => admin === parseInt(thisUser.id))) &&
+                    <button className='delete-post-button' type='button' onClick={() => deletePost(thisPost)} >delete post</button> 
                 } 
             </div>
             
             <div>
-                <h4 className='post-title'>{post.title}</h4>
-                <h6 className='post-info'>posted by <a className='post-author-link' href={`/citizens/${post.author}`} >{post.username}</a> on {new Date(post.date_posted).toDateString(undefined, dateOptions)}</h6>
+                {(editPost)
+                ? <input className='post-title-input' type='text' id='title' value={thisPost.title} onChange={handleChange} />
+                : <h4 className='post-title'>{thisPost.title}</h4>
+                }
+                
+                <h6 className='post-info'>posted by <a className='post-author-link' href={`/citizens/${thisPost.author}`} >{thisPost.username}</a> on {new Date(thisPost.date_posted).toDateString(undefined, dateOptions)}</h6>
                 <hr />
-                <p className='post-body'>{post.body}</p>
+                {(editPost)
+                ? <input className='post-body-input' type='text' id='body' value={thisPost.body} onChange={handleChange} /> 
+                : <p className='post-body'>{thisPost.body}</p>
+                }
+                
             </div>
             
         </div>
     );
+    } else {
+        return (
+            <div className='Post'>
+                <p>loading post data...</p>
+            </div>
+        )
+    }
+    
 }
 
 export default Post;
