@@ -45,12 +45,16 @@ function NewProjectModal({setNewProjectModal}) {
                 {(response && redirectId) &&
                     <Redirect to={`/projects/${redirectId}`} />
                 }
-                <input type='text' id='name' placeholder='project name' onChange={handleChange} />
-                <input type='text' id='header' placeholder='quick explanation of your project' onChange={handleChange} />
-                <input type='text' id='img' placeholder='image url for your project' onChange={handleChange} />
-                <textarea id='description' placeholder='detailed explanation of your project' onChange={handleChange} />
-                <button type='button' onClick={handleSubmit} >start collecting</button>
-                <button type='button' onClick={() => setNewProjectModal(false)} >close</button>
+                <input className='project-name-input' type='text' id='name' placeholder='project name' onChange={handleChange} />
+                <input className='heading-input' type='text' id='header' placeholder='quick explanation of your project' onChange={handleChange} />
+                <input className='img-url-input' type='text' id='img' placeholder='image url for your project' onChange={handleChange} />
+                <textarea className='explaination-input' id='description' rows='5' placeholder='detailed explanation of your project' onChange={handleChange} />
+                <div>
+                    <button className='submit-project-button' type='button' onClick={handleSubmit} >start collecting</button>
+                    <button className='close-modal-button' type='button' onClick={() => setNewProjectModal(false)} >close</button> 
+                </div>
+                
+                
             </div>
         </div>
     );

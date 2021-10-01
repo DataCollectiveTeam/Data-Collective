@@ -49,6 +49,7 @@
     background-color: whitesmoke;
     border: 2px solid #7F8D7C;
     border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
 }
 
 .log-in-button, .close-modal-button {
@@ -60,6 +61,7 @@
     border-radius: 0.25em;
     box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
     width: 5em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
 }
 
 .log-in-button:hover, .close-modal-button:hover {
@@ -68,6 +70,8 @@
 }
 
 .login-failed {
+    font-style: italic;
+    font-weight: bold;
     color: rgb(233, 105, 105);
 }
 
@@ -80,6 +84,7 @@
     background-color: whitesmoke;
     border: 2px solid #7F8D7C;
     border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
 }
 
 .create-account-button {
@@ -91,9 +96,50 @@
     border-radius: 0.25em;
     box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
     width: 8em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
 }
 
 .create-account-button:hover {
     color: #7F8D7C;
     background-color: whitesmoke;
 }
+
+/*------- NewProjectModal ----------*/
+
+.project-name-input, .heading-input {
+    width: 20em;
+    margin: 0.5em auto;
+    padding: 0.25em;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+}
+
+.explaination-input {
+    width: 20em;
+    margin: 0.5em auto;
+    padding: 0.25em;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+}
+
+.submit-project-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 8em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+}
+
+.submit-project-button:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
+}
+
