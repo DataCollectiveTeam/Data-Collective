@@ -13,8 +13,8 @@
 }
 
 .modal-textbox {
-    background-color: white;
-    border: 2px solid black;
+    background-color: whitesmoke;
+    border: 2px solid #40483f;
     box-shadow: 0rem 0rem 2rem rgb(130, 130, 130);
     width: 20em;
     height: auto;
@@ -38,4 +38,190 @@
     align-items: center;
     justify-content: center;
     margin: 10px;
+}
+
+/*-------- LogInModal ---------*/
+
+.username-input, .password-input {
+    width: 20em;
+    margin: 0.5em auto;
+    padding: 0.25em;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+}
+
+.log-in-button, .close-modal-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 5em;
+}
+
+.log-in-button:hover, .close-modal-button:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
+}
+
+.login-failed {
+    font-style: italic;
+    font-weight: bold;
+    color: rgb(233, 105, 105);
+}
+
+/*------ NewUserModal ---------*/
+
+.img-url-input, .bio-input {
+    width: 20em;
+    margin: 0.5em auto;
+    padding: 0.25em;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+}
+
+.create-account-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 8em;
+}
+
+.create-account-button:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
+}
+
+/*------- NewProjectModal ----------*/
+
+.project-name-input, .heading-input {
+    width: 20em;
+    margin: 0.5em auto;
+    padding: 0.25em;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+}
+
+.explaination-input {
+    width: 20em;
+    margin: 0.5em auto;
+    padding: 0.25em;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.submit-project-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 8em;
+}
+
+.submit-project-button:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
+}
+
+/*-------- NewPostModal -------*/
+
+.post-title-input {
+    width: 20em;
+    margin: 0.5em auto;
+    padding: 0.25em;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+}
+
+.post-body-input {
+    width: 20em;
+    margin: 0.5em auto;
+    padding: 0.25em;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.post-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 5em;
+}
+
+.post-button:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
+}
+
+/*------ EditPostModal --------*/
+
+.confirm-edit-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 8em;
+}
+
+.confirm-edit-button:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
+}
+
+/*----- DeletePostModal -------*/
+
+.post-preview {
+    max-width: 15em;
+    margin: 0.5em auto;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    padding: 0.5em 2em;
+    text-align: left;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+}
+
+.yes-delete-button, .no-delete-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 8em;
+}
+
+.yes-delete-button:hover, .no-delete-button:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
 }

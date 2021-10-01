@@ -44,12 +44,14 @@ function LogInModal({setLogInModal}) {
     return (
         <div className='modal-background'>
             <div className='modal-textbox'>
-                <input type='text' id='name' placeholder='name' value={formState.name} onChange={handleChange}/>
-                <input type='password' id='password' placeholder='password' value={formState.password} onChange={handleChange}/>
-                {errorState ? <p>login failed</p>: null}
-                <button type='button' onClick={handleSubmit} >log in</button>
-                <button type='button' onClick={() => setLogInModal(false)} >close</button>
-            </div>
+                <input className='username-input' type='text' id='name' placeholder='name' value={formState.name} onChange={handleChange}/>
+                <input className='password-input' type='password' id='password' placeholder='password' value={formState.password} onChange={handleChange}/>
+                {errorState ? <p className='login-failed'>login failed</p>: null}
+                <div className='buttons'>
+                    <button className='log-in-button' type='button' onClick={handleSubmit} >log in</button>
+                    <button className='close-modal-button' type='button' onClick={() => setLogInModal(false)} >close</button>
+                </div>
+                </div>
         </div>
     );
 }
