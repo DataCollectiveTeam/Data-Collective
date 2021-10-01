@@ -6,12 +6,12 @@ import LogInModal from './Modals/LogInModal';
 
 const Header = ({logInModal, setLogInModal, setNewUserModal, setNewProjectModal, isLoggedIn, setIsLoggedIn}) => {
 
-    const {thisUser, setThisUser } = useContext(DataContext);
+    const {thisUser, setThisUser, defaultUser } = useContext(DataContext);
     const [loggedOut, setLoggedOut] = useState(false);
 
     const logOut = () => {
         setLoggedOut(true);
-        setThisUser(null)
+        setThisUser(defaultUser)
         localStorage.clear()
         setIsLoggedIn(false)
     }

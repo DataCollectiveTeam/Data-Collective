@@ -8,7 +8,7 @@ import { PostContext } from './Posts/PostContext';
 
 function Discussion({project, admins}) {
 
-    const {URL} = useContext(DataContext);
+    const {thisUser, URL} = useContext(DataContext);
 
     const [posts, setPosts] = useState(null);
     const [pinnedPosts, setPinnedPosts] = useState(null);
@@ -68,7 +68,9 @@ function Discussion({project, admins}) {
                 {(showNewPostModal) && 
                     <NewPost project={project} setShowNewPostModal={setShowNewPostModal} posted={posted} setPosted={setPosted}/>
                 }
-                <button className='new-post-button' type='button' onClick={() => setShowNewPostModal(true)} >new post</button>
+                {(thisUser.id !== 0) &&
+                    <button className='new-post-button' type='button' onClick={() => setShowNewPostModal(true)} >new post</button>
+                }
                 {(pinnedPosts && posts) &&
                     <div>
                         <PinnedPosts 
