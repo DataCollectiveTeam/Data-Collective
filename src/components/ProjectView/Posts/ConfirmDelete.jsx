@@ -8,15 +8,17 @@ function ConfirmDelete({post, dateOptions, deletePost}) {
     return (
         <div className='modal-background'>
             <div className='modal-textbox'>
-                <div>
-                    <h4>{post.title}</h4>
-                    <h6>posted by {post.username}</h6>
-                    <p>{post.body}</p>
-                    <p>{new Date(post.date_posted).toDateString(undefined, dateOptions)}</p>
+                <div className='post-preview'>
+                    <h4 className='post-title'>{post.title}</h4>
+                    <h6 className='post-info' >posted by {post.username} on {new Date(post.date_posted).toDateString(undefined, dateOptions)}</h6>
+                    <p className='post-body'>{post.body}</p>
                 </div>
                 <p>are you sure you want to delete this post?</p>
-                <button type='button' onClick={() => deletePost(post)} >yes</button>
-                <button type='button' onClick={() => setConfirmDelete(false)} >no</button>
+                <div>
+                    <button className='yes-delete-button' type='button' onClick={() => deletePost(post)} >yes</button>
+                    <button className='no-delete-button' type='button' onClick={() => setConfirmDelete(false)} >no</button> 
+                </div>
+                
             </div>
         </div>
     );

@@ -28,8 +28,8 @@ function DeleteProjectModal({p, setDeleteProjectModal}) {
                 <p>this will delete all data related to this project</p>
                 <p>you CAN NOT undo this action</p>
                 <div>
-                    <button type='button' onClick={() => setDeleteProjectModal(false)} >no, go back</button>
-                    <button type='button' onClick={deleteProject}>yes, I'm sure</button>
+                    <button className='no-delete-button' type='button' onClick={() => setDeleteProjectModal(false)} >no, go back</button>
+                    <button className='yes-delete-button' type='button' onClick={deleteProject}>yes, I'm sure</button>
                 </div>
 
             </div>

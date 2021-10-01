@@ -7,7 +7,7 @@ import Discussion from './Discussion';
 import RawData from './RawData';
 import TabDescription from './TabDescription';
 
-function Tabs({project, data, setShowNewForm, addData, setAddData, dataDeleted, setDataDeleted}) {
+function Tabs({project, data, setShowNewForm, addData, setAddData, dataDeleted, setDataDeleted, projectReload, setProjectReload}) {
 
 
     const {thisUser} = useContext(DataContext);
@@ -76,6 +76,27 @@ function Tabs({project, data, setShowNewForm, addData, setAddData, dataDeleted, 
 
     }
 
+    const tabClick = (e) => {
+        let buttons = document.getElementsByClassName('tab-button');
+        let tabButtons = [...buttons];
+        tabButtons.forEach(button => {
+            button.classList.remove('reg-selected');
+        })
+        let adminButton = document.getElementById('admin');
+        if (adminButton !== null) {
+            adminButton.classList.remove('admin-selected');
+        }
+        let clickedId = e.target.id;
+        let clicked = document.getElementById(clickedId);
+        if (clickedId === 'admin') {
+            clicked.classList.add('admin-selected');
+            setTabState(clickedId)
+        } else {
+            clicked.classList.add('reg-selected');
+            setTabState(clickedId)
+        }
+    }   
+
     useEffect(() => {
         processData();
     }, [data])
@@ -85,13 +106,13 @@ function Tabs({project, data, setShowNewForm, addData, setAddData, dataDeleted, 
             {(addData) && 
                 <DataEntry project={project} setAddData={setAddData}/>
             }
-            <div className='tab-buttons'>
-                <button className='tab-button' type='button' onClick={() => setTabState('desc')}>description</button>
-                <button className='tab-button' type='button' onClick={() => setTabState('disc')}>discussion</button>
-                <button className='tab-button' type='button' onClick={() => setTabState('raw_data')}>view data</button>
-                <button className='tab-button' type='button' onClick={() => setTabState('data_vis')}>data visulaization</button>
+            <div className='tab-buttons' id='tab-buttons'>
+                <button className='tab-button reg-selected' id='desc' type='button' onClick={tabClick}>description</button>
+                <button className='tab-button' id='disc' type='button' onClick={tabClick}>discussion</button>
+                <button className='tab-button' id='raw_data' type='button' onClick={tabClick}>view data</button>
+                <button className='tab-button' id='data_vis' type='button' onClick={tabClick}>data visulaization</button>
                 {thisUser && (project.admin_list.some(admin => admin === parseInt(thisUser.id))) && 
-                    <button className='admin-button' type='button' onClick={() => setTabState('admin')}>admin</button>
+                    <button className='admin-button' id='admin' type='button' onClick={tabClick}>admin</button>
                 }
             </div>
             <div className='tab-viewer'>
@@ -108,7 +129,7 @@ function Tabs({project, data, setShowNewForm, addData, setAddData, dataDeleted, 
                     <DataVis procData={procData} project={project} />
                 }
                 {(tabState === 'admin') && 
-                    <AdminPanel p={project} setShowNewForm={setShowNewForm} procData={procData}/>
+                    <AdminPanel p={project} setShowNewForm={setShowNewForm} procData={procData} projectReload={projectReload} setProjectReload={setProjectReload}/>
                 }
             </div>
             

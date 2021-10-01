@@ -15,6 +15,7 @@ const ProjectView = ({id}) => {
     const [showNewForm, setShowNewForm] = useState(false);
     const [addData, setAddData] = useState(false);
     const [dataDeleted, setDataDeleted] = useState(false);
+    const [projectReload, setProjectReload] = useState(false);
 
     //get info for this project and this project's data
     useEffect(() => {
@@ -30,7 +31,7 @@ const ProjectView = ({id}) => {
             setData(res2.data);
         }))
         .catch(console.error)
-    }, [id, addData, dataDeleted]);
+    }, [id, addData, dataDeleted, projectReload]);
 
     if(data && project) {
         return (
@@ -48,6 +49,8 @@ const ProjectView = ({id}) => {
                         setAddData={setAddData}
                         dataDeleted={dataDeleted}
                         setDataDeleted={setDataDeleted}
+                        projectReload={projectReload}
+                        setProjectReload={setProjectReload}
                     />
                 }
             </div>

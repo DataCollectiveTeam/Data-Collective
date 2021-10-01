@@ -5,8 +5,8 @@ import ChartForm from './ChartForm';
 import './Modals.css'
 
 
-function EditVisModal({item, procData, p, setShowEditVisModal}) {
-    
+function EditVisModal({item, procData, p, setShowEditVisModal, dataVisChange, setDataVisChange}) {
+
     //import the current user and backend url from datacontext
     const {thisUser, URL} = useContext(DataContext);
 
@@ -128,7 +128,7 @@ function EditVisModal({item, procData, p, setShowEditVisModal}) {
     const handleSubmit = () => {
         const url = `${URL}/data_vis/${item.id}`
         axios.put(url, dataVis)
-            .then(res => console.log(res))
+            .then(res => setDataVisChange(!dataVisChange))
             .catch(console.error);
         setShowEditVisModal(false);
     }
