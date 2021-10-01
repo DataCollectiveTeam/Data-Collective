@@ -197,3 +197,31 @@
     color: #7F8D7C;
     background-color: whitesmoke;
 }
+
+/*----- DeletePostModal -------*/
+
+.post-preview {
+    max-width: 15em;
+    margin: 0.5em auto;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    padding: 0.5em 2em;
+    text-align: left;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+}
+
+.yes-delete-button, .no-delete-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 8em;
+}
+
+.yes-delete-button:hover, .no-delete-button:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
+}
