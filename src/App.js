@@ -42,6 +42,7 @@ function App() {
     
   return (
     <div className="App">
+      <div className='background-div'></div>
       <DataContext.Provider value={{
         thisUser, 
         setThisUser, 

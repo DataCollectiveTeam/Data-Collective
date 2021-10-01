@@ -98,7 +98,7 @@ const AdminPanel = ({p, setShowNewForm, procData}) => {
                     <h4>Data Entry Form</h4>
                 {(!hasForm) ? 
                     <div>
-                        <button type='button' onClick={() => setShowNewForm(true)} >add new form</button> 
+                        <button className='add-admin-button' type='button' onClick={() => setShowNewForm(true)} >add new form</button> 
                     </div>
                     :
                     <div>

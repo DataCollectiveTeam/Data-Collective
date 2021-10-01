@@ -4,7 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     background-color: #DEEEF7;
-    min-height: 70vh;
+    margin-bottom: 5em;
 }
 
 /*--------- SearchBar ----------*/

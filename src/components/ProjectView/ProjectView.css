@@ -47,11 +47,12 @@
     width: 50em;
     max-width: 50em;
     margin: auto;
+    margin-bottom: 5em;
 }
 
 .tab-buttons {
     width: 100%;
-    transform: translateY(2px);
+    transform: translateY(3px);
 }
 
 .tab-button {
@@ -73,18 +74,6 @@
     color: whitesmoke;
 }
 
-.tab-button:focus {
-    background-color: whitesmoke;
-    border-bottom: 2px solid whitesmoke;
-    color: #7F8D7C;
-}
-
-.admin-button:focus {
-    background-color: whitesmoke;
-    border-bottom: 2px solid whitesmoke;
-    color: #b080bd;
-}
-
 .reg-selected {
     background-color: whitesmoke;
     border-bottom: 2px solid whitesmoke;
@@ -104,6 +93,7 @@
     padding: 1em;
     border: 2px solid #7F8D7C;
     max-width: 50em;
+    border-radius: 0em 0em 0.5em 0.5em;
 
 }
 
@@ -164,6 +154,7 @@
     display: flex;
     flex-direction: column;
     max-width: 50em;
+    border-radius: 0em 0em 0.5em 0.5em;
 }
 
 .new-post-button {
@@ -258,6 +249,7 @@
     display: flex;
     flex-direction: column;
     max-width: 50em;
+    border-radius: 0em 0em 0.5em 0.5em;
 }
 
 .new-data-button {
@@ -319,6 +311,7 @@
     display: flex;
     flex-direction: column;
     max-width: 50em;
+    border-radius: 0em 0em 0.5em 0.5em;
 }
 
 .DataVisItem {
@@ -381,6 +374,7 @@
     max-width: 50em;
     align-items: center;
     text-align: center;
+    border-radius: 0em 0em 0.5em 0.5em;
 }
 
 .edit-project-button {
@@ -429,6 +423,12 @@
 
 .add-data-vis-button {
     align-self: flex-end;
+}
+
+.add-admin-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .add-admin-button {
