@@ -25,10 +25,13 @@ function EditPostModal({post, setEditPost}) {
     return (
         <div className='modal-background'>
             <div className='modal-textbox'>
-                <input type='text' id='title' placeholder='title' value={editedPost.title} onChange={handleChange} />
-                <textarea id='body' placeholder='discuss here' value={editedPost.body} onChange={handleChange} />
-                <button type='button' onClick={handleEdit} >submit edit</button>
-                <button type='button' onClick={() => setEditPost(false)} >cancel</button>
+                <input className='post-title-input' type='text' id='title' placeholder='title' value={editedPost.title} onChange={handleChange} />
+                <textarea className='post-body-input' id='body' placeholder='discuss here' value={editedPost.body} onChange={handleChange} />
+                <div>
+                    <button className='confirm-edit-button' type='button' onClick={handleEdit} >submit edit</button>
+                    <button className='close-modal-button' type='button' onClick={() => setEditPost(false)} >cancel</button> 
+                </div>
+                
             </div>
         </div>
     );

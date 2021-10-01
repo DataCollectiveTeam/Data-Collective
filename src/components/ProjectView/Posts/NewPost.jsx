@@ -36,10 +36,12 @@ function NewPost({project, setShowNewPostModal, posted, setPosted}) {
     return (
         <div className='modal-background'>
             <div className='modal-textbox'>
-               <input type='text' id='title' placeholder='title' value={newPost.title} onChange={handleChange} />
-                <textarea id='body' placeholder='discuss here' value={newPost.body} onChange={handleChange} />
-                <button type='button' onClick={handleSubmit} >post</button> 
-                <button type='button' onClick={() => setShowNewPostModal(false)} >cancel</button>
+                <input className='post-title-input' type='text' id='title' placeholder='title' value={newPost.title} onChange={handleChange} />
+                <textarea className='post-body-input' id='body' rows='5' placeholder='discuss here' value={newPost.body} onChange={handleChange} />
+                <div>
+                    <button className='post-button' type='button' onClick={handleSubmit} >post</button> 
+                    <button className='close-modal-button' type='button' onClick={() => setShowNewPostModal(false)} >cancel</button>
+                </div>
             </div>
         </div>
     );

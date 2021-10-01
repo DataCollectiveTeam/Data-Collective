@@ -61,7 +61,6 @@
     border-radius: 0.25em;
     box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
     width: 5em;
-    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
 }
 
 .log-in-button:hover, .close-modal-button:hover {
@@ -96,7 +95,6 @@
     border-radius: 0.25em;
     box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
     width: 8em;
-    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
 }
 
 .create-account-button:hover {
@@ -124,6 +122,7 @@
     border: 2px solid #7F8D7C;
     border-radius: 0.25em;
     box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .submit-project-button {
@@ -135,7 +134,6 @@
     border-radius: 0.25em;
     box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
     width: 8em;
-    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
 }
 
 .submit-project-button:hover {
@@ -143,3 +141,59 @@
     background-color: whitesmoke;
 }
 
+/*-------- NewPostModal -------*/
+
+.post-title-input {
+    width: 20em;
+    margin: 0.5em auto;
+    padding: 0.25em;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+}
+
+.post-body-input {
+    width: 20em;
+    margin: 0.5em auto;
+    padding: 0.25em;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.post-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 5em;
+}
+
+.post-button:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
+}
+
+/*------ EditPostModal --------*/
+
+.confirm-edit-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 8em;
+}
+
+.confirm-edit-button:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
+}
