@@ -5,7 +5,7 @@ import DataVisModal from '../Modals/DataVisModal';
 import { DataContext } from '../../DataContext';
 import DeleteProjectModal from '../Modals/DeleteProjectModal';
 
-const AdminPanel = ({p, setShowNewForm, procData}) => {
+const AdminPanel = ({p, setShowNewForm, procData, projectReload, setProjectReload}) => {
 
     const { URL } = useContext(DataContext);
 
@@ -84,6 +84,8 @@ const AdminPanel = ({p, setShowNewForm, procData}) => {
                 <EditProjectModal 
                     p={p} 
                     setShowEditModal={setShowEditModal}
+                    projectReload={projectReload}
+                    setProjectReload={setProjectReload}
                 />
             }
             {showDataVisModal &&

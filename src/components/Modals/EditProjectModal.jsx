@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { DataContext } from '../../DataContext';
 
-const EditProjectModal = ({p, setShowEditModal}) => {
+const EditProjectModal = ({p, setShowEditModal, projectReload, setProjectReload}) => {
     
     //get current user from DataContext
     const { thisUser, URL } = useContext(DataContext);
@@ -21,7 +21,7 @@ const EditProjectModal = ({p, setShowEditModal}) => {
     }
 
     const handleSubmit = () => {
-        setShowEditModal(false);
+        
         let editedProjectObj = {
             ...editedProject,
             creator: thisUser.id,
@@ -30,8 +30,11 @@ const EditProjectModal = ({p, setShowEditModal}) => {
         }
         
         const url = URL;
-        axios.put(`${url}projects/${p.id}`, editedProjectObj)
-            .then(res => console.log(res))
+        axios.put(`${url}/projects/${p.id}`, editedProjectObj)
+            .then(res => {
+                setProjectReload(!projectReload)
+                setShowEditModal(false)
+            })
             .catch(console.error);
     }
 
