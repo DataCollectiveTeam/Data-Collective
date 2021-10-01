@@ -51,16 +51,11 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
             for (let key in data) {
             if ((typeof data[key])==="number") {
                 x.push(key)
+                y.push(key)
             }
             if ((typeof data[key])==="string") {
                 y.push(key)
             }
-            }
-        } else if (type==='Histogram'){
-            for (let key in data) {
-                if ((typeof data[key])==="number") {
-                    x.push(key)
-                }
             }
         } else if (type==='PieChart'){
             for (let key in data) {
@@ -104,12 +99,9 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
         }
         if (strings>0){
             charts.push("PieChart")
-            if (numbers>0){
-                charts.push("BarChart")
-            }
         }
-        if (numbers>0){
-            charts.push("Histogram")
+        if (numbers>0&& strings>0){
+            charts.push("BarChart")
         }
         //store list of valid charts in state
         setChartList(charts)
@@ -160,7 +152,7 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
 
                 {/* enter chart title */}
                 <p>enter chart title</p>
-                <input type='text' id='chart_title' placeholder='chart title' onChange={handleChange} />
+                <input type='text' id='chart_title' placeholder='chart title' value={dataVis.chart_title} onChange={handleChange} />
 
                 {/* generate form by chart type */}
                 {dataVis.chart_type &&
