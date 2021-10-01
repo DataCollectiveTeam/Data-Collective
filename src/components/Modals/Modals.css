@@ -319,3 +319,45 @@
     background-color: whitesmoke;
 }
 
+/*---- FormCreateModal ------*/
+
+.form-modal {
+    align-items: center;
+}
+
+.add-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.5em 0.5em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 10em;
+}
+
+.add-button:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
+}
+
+.long{
+    width: 17em;
+}
+
+.submit-new-form-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 5em;
+}
+
+.submit-new-form-button:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
+}
+

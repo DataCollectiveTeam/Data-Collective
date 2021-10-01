@@ -26,7 +26,6 @@ const HomeView = () => {
     //return project cards if axios call succeeds
     if (projects){
         return (
-
             <div>
                 <SearchBar setProjects={setProjects}/>
                 <div className="HomeView">
