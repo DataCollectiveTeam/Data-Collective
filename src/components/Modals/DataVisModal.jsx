@@ -152,7 +152,7 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
             <div className='modal-textbox'>
 
                 {/* select chart type */}
-                <select id='chart_type' value={dataVis.chart_type} onChange={updateChartType}>
+                <select className='dropdown-input' id='chart_type' value={dataVis.chart_type} onChange={updateChartType}>
                     {chartList.map(item => {
                         return <option key={item} value={item}>{item}</option>
                     })}
@@ -160,7 +160,7 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
 
                 {/* enter chart title */}
                 <p>enter chart title</p>
-                <input type='text' id='chart_title' placeholder='chart title' onChange={handleChange} />
+                <input className='chart-title-input' type='text' id='chart_title' placeholder='chart title' onChange={handleChange} />
 
                 {/* generate form by chart type */}
                 {dataVis.chart_type &&
@@ -169,13 +169,16 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
                 {/* toggle chart legend */}
                 <p>toggle legend</p>
                 {(dataVis.legend) 
-                ? <button type='button' onClick={() => setDataVis({...dataVis, legend: false})} >showing legend</button>
-                : <button type='button' onClick={() => setDataVis({...dataVis, legend: true})} >legend not showing</button>
+                ? <button className='legend-toggle-button' type='button' onClick={() => setDataVis({...dataVis, legend: false})} >showing legend</button>
+                : <button className='legend-toggle-button' type='button' onClick={() => setDataVis({...dataVis, legend: true})} >legend not showing</button>
                 }
 
                 {/* submit or cancel */}
-                <button type='button' onClick={handleSubmit} >submit</button>
-                <button type='button' onClick={() => setShowDataVisModal(false)} >cancel</button>
+                <div>
+                    <button className='submit-vis-button' type='button' onClick={handleSubmit} >submit</button>
+                    <button className='close-modal-button' type='button' onClick={() => setShowDataVisModal(false)} >cancel</button>
+                </div>
+                
             </div>
         </div>
     )
