@@ -38,7 +38,7 @@ function Post({post, admins, editPost, setEditPost}) {
             
             <div>
                 <h4 className='post-title'>{post.title}</h4>
-                <h6 className='post-info'>posted by {post.username} on {new Date(post.date_posted).toDateString(undefined, dateOptions)}</h6>
+                <h6 className='post-info'>posted by <a className='post-author-link' href={`/citizens/${post.author}`} >{post.username}</a> on {new Date(post.date_posted).toDateString(undefined, dateOptions)}</h6>
                 <hr />
                 <p className='post-body'>{post.body}</p>
             </div>

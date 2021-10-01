@@ -66,6 +66,10 @@
     box-shadow: 0 1em 1em rgb(130, 130, 130);
 }
 
+.ProjectCard:hover {
+    background-color: #F8EEDD;
+}
+
 .card-title {
     margin: 0em auto;
 }

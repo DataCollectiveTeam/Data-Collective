@@ -41,6 +41,15 @@
     width: 10em;
 }
 
+.user-link {
+    text-decoration: none;
+    color: #5070B9;
+}
+
+.user-link:hover {
+    color: #749eff;
+}
+
 /*-------- Tabs -----------*/
 
 .Tabs {
@@ -128,6 +137,10 @@
     text-decoration: none;
 }
 
+.CitizenCard:hover h4{
+    color: #5070B9;
+}
+
 .CitizenCard h4 {
     color: black;
     text-decoration: none;
@@ -190,6 +203,17 @@
 
 .post-buttons {
     align-self: center;
+}
+
+.post-author-link {
+    font-weight: bold;
+    font-size: 12px;
+    text-decoration: none;
+    color: #5070B9;
+}
+
+.post-author-link:hover {
+    color: #749eff;
 }
 
 .edit-post-button {

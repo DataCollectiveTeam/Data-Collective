@@ -46,7 +46,8 @@ function App() {
       <DataContext.Provider value={{
         thisUser, 
         setThisUser, 
-        URL
+        URL,
+        defaultUser
       }}>
       {(newUserModal === true) && 
         <NewUserModal setNewUserModal={setNewUserModal}/>
