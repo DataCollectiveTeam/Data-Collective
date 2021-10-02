@@ -21,7 +21,7 @@ function DeleteProjectModal({p, setDeleteProjectModal}) {
         <div className='modal-background'>
             <div className='modal-textbox'>
                 {isDeleted &&
-                    <Redirect to='/' />
+                    <Redirect to='/projects' />
                 }
                 <p>are you sure you want to delete this project?</p>
                 <h2>{p.name}</h2>

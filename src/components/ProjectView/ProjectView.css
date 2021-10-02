@@ -522,6 +522,10 @@
         width: 100vw;
     }
 
+    .Tabs {
+        width: 95%;
+    }
+
     .tab-buttons {
         display: flex;
         align-items: baseline;
@@ -554,5 +558,13 @@
 
     .DataVisItem {
         max-width: 85%;
+    }
+
+    .add-admin-input {
+        width: 75%;
+    }
+
+    .add-admin-sense {
+        align-items: center;
     }
 }

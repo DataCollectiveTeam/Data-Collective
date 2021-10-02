@@ -16,10 +16,10 @@
     background-color: whitesmoke;
     border: 2px solid #40483f;
     box-shadow: 0rem 0rem 2rem rgb(130, 130, 130);
-    width: 20em;
+    width: 300px;
     height: auto;
     border-radius: 1em;
-    padding: 1em;
+    padding: 1em 0em;
 
     margin: 10rem auto;
     display: flex;
@@ -361,3 +361,59 @@
     background-color: whitesmoke;
 }
 
+/*----- EditUserModal ------*/
+
+.edit-user-input {
+    width: 20em;
+    margin: 0.5em auto;
+    padding: 0.25em;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+}
+
+.submit-edit-user {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 5em;
+}
+
+.submit-edit-user:hover {
+    background-color: whitesmoke;
+    color: #7F8D7C;
+}
+
+.delete-user-button {
+    color:rgb(233, 105, 105);
+    background-color: whitesmoke;
+    border: 2px solid rgb(233, 105, 105);
+    margin: 0.25em;
+    border-radius: 0.25em;
+}
+
+.delete-user-button:hover {
+    background-color: rgb(233, 105, 105);
+    color: whitesmoke;
+}
+
+.delete-citizen {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 8em;
+}
+
+.delete-citizen:hover {
+    background-color: whitesmoke;
+    color: #7F8D7C;
+}
