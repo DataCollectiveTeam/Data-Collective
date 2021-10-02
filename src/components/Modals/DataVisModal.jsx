@@ -167,8 +167,8 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
 
                 {/* submit or cancel */}
                 <div>
-                    <button className='submit-vis-button' type='button' onClick={handleSubmit} >submit</button>
-                    <button className='close-modal-button' type='button' onClick={() => setShowDataVisModal(false)} >cancel</button>
+                    <button className='submit-vis-button' type='button' onClick={handleSubmit} ><i class="fas fa-check"></i></button>
+                    <button className='close-modal-button' type='button' onClick={() => setShowDataVisModal(false)} ><i class="fas fa-times"></i></button>
                 </div>
                 
             </div>

@@ -39,8 +39,8 @@ function NewPost({project, setShowNewPostModal, posted, setPosted}) {
                 <input className='post-title-input' type='text' id='title' placeholder='title' value={newPost.title} onChange={handleChange} />
                 <textarea className='post-body-input' id='body' rows='5' placeholder='discuss here' value={newPost.body} onChange={handleChange} />
                 <div>
-                    <button className='post-button' type='button' onClick={handleSubmit} >post</button> 
-                    <button className='close-modal-button' type='button' onClick={() => setShowNewPostModal(false)} >cancel</button>
+                    <button className='post-button' type='button' onClick={handleSubmit} ><i class="fas fa-plus"></i></button> 
+                    <button className='close-modal-button' type='button' onClick={() => setShowNewPostModal(false)} ><i class="fas fa-times"></i></button>
                 </div>
             </div>
         </div>

@@ -113,8 +113,8 @@ const AdminPanel = ({p, setShowNewForm, procData, projectReload, setProjectReloa
                 <div>
                     <h4>Project Controls</h4>
                     <div>
-                        <button className='edit-project-button' type='button' onClick={editProject} ><span className='far fa-edit'>Edit Project</span></button>
-                        <button className='delete-project-button' type='button' onClick={() => setDeleteProjectModal(true)} ><span className='far fa-trash-alt'>Delete Project</span></button>
+                        <button className='edit-project-button' type='button' onClick={editProject} ><span className='far fa-edit'></span></button>
+                        <button className='delete-project-button' type='button' onClick={() => setDeleteProjectModal(true)} ><span className='far fa-trash-alt'></span></button>
                     </div>
                 </div>
                 <div>
@@ -132,7 +132,7 @@ const AdminPanel = ({p, setShowNewForm, procData, projectReload, setProjectReloa
                                 })
                             } 
                         </div>
-                        <button className='add-admin-button' type='button' onClick={addAdmin}>add admin</button>
+                        <button className='add-admin-button' type='button' onClick={addAdmin}><i class="fas fa-user-plus"></i></button>
                     </div>
                     
                 </div>

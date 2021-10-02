@@ -223,8 +223,8 @@ function DataEntry({project, setAddData}) {
                     </div>
                 }
                 <div>
-                    <button className='data-submit-button' type='button' onClick={handleSubmit}>submit</button>
-                    <button className='close-modal-button' type='button' onClick={() => setAddData(false)} >cancel</button> 
+                    <button className='data-submit-button' type='button' onClick={handleSubmit}><i class="fas fa-plus"></i></button>
+                    <button className='close-modal-button' type='button' onClick={() => setAddData(false)} ><i class="fas fa-times"></i></button> 
                 </div>
                 
             </div>
