@@ -16,10 +16,10 @@
     background-color: whitesmoke;
     border: 2px solid #40483f;
     box-shadow: 0rem 0rem 2rem rgb(130, 130, 130);
-    width: 300px;
+    width: 275px;
     height: auto;
     border-radius: 1em;
-    padding: 1em 0em;
+    padding: 1em 0.5em;
 
     margin: 10rem auto;
     display: flex;

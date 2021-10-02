@@ -515,6 +515,10 @@
     z-index: 3;
 }
 
+.tabs-dropdown {
+    display: none;
+}
+
 /*------ Mobile -------*/
 
 @media only screen and (max-width: 415px) {
@@ -566,5 +570,32 @@
 
     .add-admin-sense {
         align-items: center;
+    }
+
+    .tab-buttons {
+        display: none;
+    }
+
+    .tabs-dropdown {
+        display: block;
+        width: 100%;
+        margin: 0.5em auto;
+        margin-bottom: none;
+        background-color: whitesmoke;
+        border: 2px solid #7F8D7C;
+        border-radius: 0.25em;
+        padding: 0.5em;
+        font-size: 16px;
+    }
+
+    .list-label {
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    .Tabs {
+        margin-top: none;
+        width: 90%;
     }
 }
