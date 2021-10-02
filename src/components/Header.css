@@ -81,3 +81,32 @@
     border: 2px solid whitesmoke;
     border-radius: 0.25em;
 }
+
+/*----- Mobile ------*/
+
+/*------ 770px or less -------*/
+
+@media only screen and (max-width: 770px) {
+    .Tabs {
+        max-width: 90%;
+    }
+}
+
+@media only screen and (max-width: 415px) {
+    .Header {
+        flex-direction: column;
+        width: 100vw;
+        padding-left: none;
+        padding-right: none;
+    }
+
+    .user-interaction {
+        flex-direction: row;
+        width: 80%;
+        margin: auto;
+    }
+
+    .home-link {
+        font-size: 30px;
+    }
+}

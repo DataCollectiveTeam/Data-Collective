@@ -73,3 +73,19 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+/*----- Mobile ------*/
+
+@media only screen and (max-width: 415px) {
+    .UserBio {
+        flex-direction: column;
+        width: 95%;
+        align-content: center;
+        text-align: center;
+    }
+
+    .user-profile {
+        flex-direction: column;
+    }
+}
+

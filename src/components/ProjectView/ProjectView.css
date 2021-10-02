@@ -515,3 +515,44 @@
     z-index: 3;
 }
 
+/*------ Mobile -------*/
+
+@media only screen and (max-width: 415px) {
+    .ProjectView {
+        width: 100vw;
+    }
+
+    .tab-buttons {
+        display: flex;
+        align-items: baseline;
+    }
+
+    .ProjectHeader {
+        flex-direction: column;
+        width: 90%;
+        align-items: center;
+    }
+
+    .project-info {
+        flex-direction: column;
+    }
+
+    .card-list {
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+
+    .Post {
+        max-width: 85%;
+        margin: 1em auto;
+    }
+
+    .DataPoint {
+        max-width: 85%;
+        margin: 1em auto;
+    }
+
+    .DataVisItem {
+        max-width: 85%;
+    }
+}

@@ -103,3 +103,22 @@
 .card-body {
     justify-self: baseline;
 }
+
+/*----- Mobile ------*/
+
+@media only screen and (max-width: 415px) {
+    .HomeView {
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ProjectCard {
+        margin: 1em auto;
+        max-width: 90%;
+    }
+
+    .horizontal-line {
+        width: 85%;
+    }
+}
