@@ -9,7 +9,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 1em;
+    padding: 1em 0em;
 }
 
 .home-link {
@@ -45,6 +45,7 @@
 .interaction-button {
     background-color: #7F8D7C;
     color: whitesmoke;
+    width: 6em;
     padding: 0.25em;
     margin: 0.25em;
     border: 2px solid #7F8D7C;
@@ -80,4 +81,41 @@
     box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
     border: 2px solid whitesmoke;
     border-radius: 0.25em;
+}
+
+/*----- Mobile ------*/
+
+/*------ 770px or less -------*/
+
+@media only screen and (max-width: 770px) {
+    .Header {
+        width: 100vw;
+        align-items: center;
+        margin: 0em;
+    }
+}
+
+@media only screen and (max-width: 415px) {
+    .Header {
+        flex-direction: column;
+        width: 100vw;
+        align-items: center;
+        padding-left: none;
+        padding-right: none;
+        margin: 0em;
+    }
+
+    .user-interaction {
+        flex-direction: row;
+        width: 80%;
+        margin: 0.25em 0em;
+    }
+
+    .interaction-buttons {
+        text-align: center;
+    }
+
+    .home-link {
+        font-size: 30px;
+    }
 }

@@ -64,16 +64,19 @@ const EditUserModal = ({user, setEditUserModal}) => {
         <div className='modal-background'>
             <div className='modal-textbox'>
                 {(userDeleted) &&
-                    <Redirect to='/' />
+                    <Redirect to='/projects' />
                 }
-                <input type='text' id='name' placeholder='username' value={editedUser.name} onChange={handleChange}/>
-                <input type='text' id='img' placeholder='image url' value={editedUser.img} onChange={handleChange}/>
-                <input type='text' id='bio' placeholder='brief bio' value={editedUser.bio} onChange={handleChange}/>
-                <button type='button' onClick={handleSubmit} >submit</button>
-                <button type='button' onClick={() => setEditUserModal(false)} >close</button>
+                <input className='edit-user-input' type='text' id='name' placeholder='username' value={editedUser.name} onChange={handleChange}/>
+                <input className='edit-user-input' type='text' id='img' placeholder='image url' value={editedUser.img} onChange={handleChange}/>
+                <input className='edit-user-input' type='text' id='bio' placeholder='brief bio' value={editedUser.bio} onChange={handleChange}/>
+                <div>
+                    <button className='submit-edit-user' type='button' onClick={handleSubmit} >submit</button>
+                    <button className='close-modal-button' type='button' onClick={() => setEditUserModal(false)} >close</button> 
+                </div>
+                
                 <div className="delete-user-panel">
-                    { deleteButton ? <button className='delete-button' type='button' onClick={deleteUser} >permanently delete</button> : <button type='button' onClick={() => setDeleteButton(true)}>delete citizen</button>}
-                    { deleteButton ? <button type='button' onClick={() => setDeleteButton(false)} >cancel</button> : null}
+                    { deleteButton ? <button className='delete-user-button' type='button' onClick={deleteUser} >permanently delete</button> : <button className='delete-citizen' type='button' onClick={() => setDeleteButton(true)}>delete citizen</button>}
+                    { deleteButton ? <button className='close-modal-button' type='button' onClick={() => setDeleteButton(false)} >cancel</button> : null}
                 </div>
             </div>
         </div>

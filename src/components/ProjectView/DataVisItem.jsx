@@ -140,8 +140,8 @@ function DataVisItem({item, procData, project, dataVisChange, setDataVisChange})
                     chartType={item.chart_type}
                     data={[[item.x_axis, item.y_axis], ...data]}
                     options={options}
-                    width='500px'
-                    height='500px'
+                    width='100%'
+                    height='100%'
                     legendToggle
                 />
             }
@@ -150,8 +150,8 @@ function DataVisItem({item, procData, project, dataVisChange, setDataVisChange})
                     chartType={item.chart_type}
                     data={[[item.x_axis, item.y_axis, {role: 'style'}], ...data]}
                     options={options}
-                    width='500px'
-                    height='500px'
+                    width='100%'
+                    height='100%'
                     legendToggle
                 />
             }
@@ -160,8 +160,8 @@ function DataVisItem({item, procData, project, dataVisChange, setDataVisChange})
                     chartType={item.chart_type}
                     data={[[item.x_axis, "Frequency"], ...data]}
                     options={options}
-                    width='500px'
-                    height='500px'
+                    width='100%'
+                    height='100%'
                     legendToggle
                 />
             }

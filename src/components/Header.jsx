@@ -24,7 +24,7 @@ const Header = ({logInModal, setLogInModal, setNewUserModal, setNewProjectModal,
         return (
             <div className='Header'>
                 <div className='site-logo'>
-                    <h1><a className='home-link' href='/'>DataCollective</a></h1>
+                    <h1><a className='home-link' href='/projects'>DataCollective</a></h1>
                 </div>
                 <div className='user-interaction'>
                     <a className="profile user" href={`/citizens/${thisUser.id}`}>
@@ -42,13 +42,13 @@ const Header = ({logInModal, setLogInModal, setNewUserModal, setNewProjectModal,
         return (
             <div className='Header'>
                 {loggedOut &&
-                    <Redirect to='/' />
+                    <Redirect to='/projects' />
                 }
                 {(logInModal === true) && 
                     <LogInModal setLogInModal={setLogInModal}/>
                 }
                 <div className='site-logo'>
-                    <h1><a className='home-link' href='/'>DataCollective</a></h1>
+                    <h1><a className='home-link' href='/projects'>DataCollective</a></h1>
                 </div>
                 <div className='profile-buttons'>
                     <button className='interaction-button' type='button' onClick={() => setLogInModal(true)}>log in</button>

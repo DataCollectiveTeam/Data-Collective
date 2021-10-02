@@ -13,7 +13,7 @@ const NewUserModal = ({setNewUserModal}) => {
         name: '',
         password: '',
         confirmPassword: '',
-        img: '',
+        img: 'https://www.drnitinborse.com/wp-content/uploads/2018/02/user-icon-300x300.png',
         bio: ''
     }
     

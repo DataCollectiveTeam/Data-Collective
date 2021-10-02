@@ -1,7 +1,24 @@
+.App {
+    width: 100vw;
+    height: 100vh;
+    background-color: #DEEEF7;
+
+}
+
 .background-div {
     background-color: #DEEEF7;
     width: 100vw;
     height: 100vh;
     position: fixed;
     z-index: -5;
+}
+
+@media only screen and (max-width: 415px) {
+    .background-div {
+        background-color: #DEEEF7;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        z-index: -5;
+    }
 }

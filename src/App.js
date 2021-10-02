@@ -9,6 +9,7 @@ import LogInModal from './components/Modals/LogInModal.jsx'
 import NewUserModal from './components/Modals/NewUserModal';
 import NewProjectModal from "./components/Modals/NewProjectModal";
 import { DataContext } from "./DataContext";
+import SplashPage from './components/SplashPage';
 
 function App() {
 
@@ -65,7 +66,13 @@ function App() {
         setIsLoggedIn={setIsLoggedIn}
       />
       <main>
-        <Route path="/" 
+        <Route path='/'
+          exact
+          render={() => 
+            <SplashPage newUserModal={newUserModal} setNewUserModal={setNewUserModal} />
+          }
+        />
+        <Route path="/projects" 
           exact 
           render={() => 
             <HomeView />
