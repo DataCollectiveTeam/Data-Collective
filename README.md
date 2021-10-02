@@ -2,8 +2,9 @@
 
 Data Collective is a citizen science platform for anyone to participate in scientific research and observation. Data Collective users can create projects tracking topics they care about, gather relevant data, and create accessible visualizations to share their findings.
 
-[Deployed App:](#)
-[Backend Repository:](https://github.com/DataCollectiveTeam/Data-Collective-Backend)
+[Deployed App](#)
+
+[Backend Repository](https://github.com/DataCollectiveTeam/Data-Collective-Backend)
 
 ## Why Citizen Science Matters
 
@@ -34,6 +35,7 @@ Citizen Science projects also expand public understanding of the scientific rese
 
 ## Development Team
 Michael Dunn-O’Connor - [GitHub](https://github.com/dunnoconnor) - [LinkedIn](https://www.linkedin.com/in/michael-dunn-o-connor/)
+
 Cole Rener - [GitHub](https://github.com/dishbin) - [LinkedIn](https://www.linkedin.com/in/cole-rener/)
 
 ### Project Planning and Workflow
