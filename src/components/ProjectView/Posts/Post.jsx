@@ -14,7 +14,6 @@ function Post({post, admins}) {
     const [editPost, setEditPost] = useState(false);
 
     const handleChange = (e) => {
-        console.log(thisPost)
         setThisPost({...thisPost, [e.target.id]: e.target.value});
     }
 

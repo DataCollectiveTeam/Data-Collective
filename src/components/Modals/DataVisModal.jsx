@@ -64,7 +64,6 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
                 }
             }
         }
-        console.log(x,y)
         setOptions({x_axis: x, y_axis: y})
         setDataVis({...dataVis, chart_type: type, x_axis: x[0], y_axis: y[0]})
     }
@@ -116,14 +115,12 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
     //update properties of datavis state object
     const handleChange = (e) => {
         setDataVis({...dataVis, [e.target.id]: e.target.value})
-        console.log(dataVis)
     }
 
     //post datavis to db
     const handleSubmit = () => {
         const url = `${URL}/data_vis/`
         axios.post(url, dataVis)
-            .then(res => console.log(res))
             .catch(console.error);
         setShowDataVisModal(false);
     }

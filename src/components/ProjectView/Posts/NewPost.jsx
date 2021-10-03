@@ -4,8 +4,6 @@ import { DataContext } from '../../../DataContext';
 
 function NewPost({project, setShowNewPostModal, posted, setPosted}) {
 
-    console.log(project)
-
     const { thisUser, URL } = useContext(DataContext);
 
     const defaultNewPost = {
@@ -25,7 +23,6 @@ function NewPost({project, setShowNewPostModal, posted, setPosted}) {
     }
 
     const handleSubmit = () => {
-        console.log(newPost)
         const url = `${URL}/posts/`
         axios.post(url, newPost)
             .then(res => setPosted(!posted))

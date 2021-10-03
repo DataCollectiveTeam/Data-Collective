@@ -46,7 +46,6 @@ const User = ({id}) => {
         axios.get(url)
         .then(res => {
             setUserContributions(res.data);
-            console.log(res.data)
         })
         .catch(console.error);
     }
