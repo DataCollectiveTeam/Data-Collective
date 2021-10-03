@@ -274,6 +274,10 @@
     background-color: whitesmoke;
 }
 
+.no-form-yet {
+    align-items: center;
+}
+
 /*----- DataVisModal ------*/
 
 .chart-title-input {

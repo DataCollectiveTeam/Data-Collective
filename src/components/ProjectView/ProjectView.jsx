@@ -44,6 +44,7 @@ const ProjectView = ({id}) => {
                     <Tabs 
                         project={project} 
                         data={data} 
+                        showNewForm={showNewForm}
                         setShowNewForm={setShowNewForm}
                         addData={addData}
                         setAddData={setAddData}

@@ -7,7 +7,7 @@ import Discussion from './Discussion';
 import RawData from './RawData';
 import TabDescription from './TabDescription';
 
-function Tabs({project, data, setShowNewForm, addData, setAddData, dataDeleted, setDataDeleted, projectReload, setProjectReload}) {
+function Tabs({project, data, showNewForm, setShowNewForm, addData, setAddData, dataDeleted, setDataDeleted, projectReload, setProjectReload}) {
 
 
     const {thisUser} = useContext(DataContext);
@@ -138,7 +138,7 @@ function Tabs({project, data, setShowNewForm, addData, setAddData, dataDeleted, 
                     <DataVis procData={procData} project={project} />
                 }
                 {(tabState === 'admin') && 
-                    <AdminPanel p={project} setShowNewForm={setShowNewForm} procData={procData} projectReload={projectReload} setProjectReload={setProjectReload}/>
+                    <AdminPanel p={project} showNewForm={showNewForm} setShowNewForm={setShowNewForm} procData={procData} projectReload={projectReload} setProjectReload={setProjectReload}/>
                 }
             </div>
             

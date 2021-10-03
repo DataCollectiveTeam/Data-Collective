@@ -50,7 +50,7 @@ function Post({post, admins}) {
                 <h6 className='post-info'>posted by <a className='post-author-link' href={`/citizens/${thisPost.author}`} >{thisPost.username}</a> on {new Date(thisPost.date_posted).toDateString(undefined, dateOptions)}</h6>
                 <hr />
                 {(editPost)
-                ? <input className='post-body-input' type='text' id='body' value={thisPost.body} onChange={handleChange} /> 
+                ? <textarea className='post-body-input' rows='5' id='body' value={thisPost.body} onChange={handleChange} /> 
                 : <p className='post-body'>{thisPost.body}</p>
                 }
                 

@@ -115,7 +115,7 @@ function DataEntry({project, setAddData}) {
     //posts new data entry to 'data_entries'
     const handleSubmit = () => {
         postEntry();
-        if (!project.contributor_list.some((cont => cont === thisUser.id))) {
+        if (!project.contributor_list.some((cont => cont === parseInt(thisUser.id)))) {
             addContributor();
         }
     }
@@ -233,10 +233,10 @@ function DataEntry({project, setAddData}) {
     } else {
         return (
             <div className='modal-background'>
-                <div className='modal-textbox'>
+                <div className='modal-textbox no-form-yet'>
                     <p>this project hasn't set up a form to track data yet</p>
                     <p>make a post in the discussion tab letting the admins know you want to contribute</p>
-                    <button type='button' onClick={() => setAddData(false)} >ok</button>
+                    <button className='data-submit-button' type='button' onClick={() => setAddData(false)} ><i class="fas fa-check"></i></button>
                 </div>
                 
             </div> 
