@@ -71,8 +71,9 @@
 }
 
 .card-title {
-    margin: 0em auto;
-    padding: 0.5em 0em;
+    margin: 1em auto;
+    padding: 0em 1em;
+    height: 5em;
 }
 
 .card-image {
