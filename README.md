@@ -23,7 +23,7 @@ Citizen Science projects also expand public understanding of the scientific rese
 * Creators and contributors can post discussion topics on a project page
 * Creators can pin important discussions to the discussion board or delete off-topic posts
 
-## Features Demonstrations
+## Features Demonstration
 ### Users can create a password-protected profile and log in and out of their accounts
 ![login](https://github.com/DataCollectiveTeam/Data-Collective/blob/master/public/gifs/login.gif)
 ### Users can create new projects open to public contribution.
