@@ -56,6 +56,12 @@ Cole is a botanist turned software engineer in Asheville, NC\
 [GitHub](https://github.com/dishbin)\
 [LinkedIn](https://www.linkedin.com/in/cole-rener/)
 
+## Project Diagram
+![Project Diagram](https://user-images.githubusercontent.com/63392756/135765806-3e04f4b5-f14e-45e7-8bc3-fff1c82c6f89.png)
+
+## Component Tree
+![Screen Shot 2021-10-03 at 3 00 07 PM](https://user-images.githubusercontent.com/63392756/135767751-4204d725-4928-41b0-9704-4795917d352c.png)
+
 ## Project Planning and Workflow
 We used GitHub project pages for planning and managing our workflow.  We identified that creating users, projects, forms, and data entries were all crucial to our MVP so we began by developing backend models for each of these, with associated urls and views.  On the front end, we developed the react components and axios calls to interact with each database model.  When we had full CRUD functionality, we added data visualizations and discussion boards.  For each additional feature, we divided tasks and tracked progress on the project board.  This minimized merge conflicts and allowed us to focus on rapidly completing features.  For the final sprint, we used daily end-of-day checklists to plan backward from our launch date and ensure features would be completed on time.
 ![project plan](https://user-images.githubusercontent.com/37776449/135728176-50d12dce-2667-4a27-a95d-43a5f849736b.png)
