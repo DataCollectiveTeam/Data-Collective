@@ -24,6 +24,9 @@ Citizen Science projects also expand public understanding of the scientific rese
 * Creators can pin important discussions to the discussion board or delete off-topic posts
 
 ## Features Demonstrations
+![login](https://github.com/DataCollectiveTeam/Data-Collective/master/public/gifs/login.gif)
+![new project](https://github.com/DataCollectiveTeam/Data-Collective/master/public/gifs/new_project.gif)
+![data entry](https://github.com/DataCollectiveTeam/Data-Collective/master/public/gifs/data_entry.gif)
 
 ### Technologies Used:
 * [React.js:](https://reactjs.org/) Frontend
@@ -42,7 +45,7 @@ Cole Rener - [GitHub](https://github.com/dishbin) - [LinkedIn](https://www.linke
 
 ### Project Planning and Workflow
 We used GitHub project pages for planning and managing our workflow.  We identified that creating users, projects, forms, and data entries were all crucial to our MVP so we began by developing backend models for each of these, with associated urls and views.  On the front end, we developed the react components and axios calls to interact with each database model.  When we had full CRUD functionality, we added data visualizations and discussion boards.  For each additional feature, we divided tasks and tracked progress on the project board.  This minimized merge conflicts and allowed us to focus on rapidly completing features.  For the final sprint, we used daily end-of-day checklists to plan backward from our launch date and ensure features would be completed on time.
-![image](https://user-images.githubusercontent.com/37776449/135728176-50d12dce-2667-4a27-a95d-43a5f849736b.png)
+![project plan](https://user-images.githubusercontent.com/37776449/135728176-50d12dce-2667-4a27-a95d-43a5f849736b.png)
 
 ### Initial Project Wireframes
 ![component heirarchy](https://user-images.githubusercontent.com/37776449/135728250-950e1021-70cb-4886-a557-1cc59d587b46.jpg)
