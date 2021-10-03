@@ -24,16 +24,21 @@ Citizen Science projects also expand public understanding of the scientific rese
 * Creators can pin important discussions to the discussion board or delete off-topic posts
 
 ## Features Demonstrations
+### Users can create a password-protected profile and log in and out of their accounts
 ![login](https://github.com/DataCollectiveTeam/Data-Collective/blob/master/public/gifs/login.gif)
-![new project](https://github.com/DataCollectiveTeam/Data-Collective/blob/master/public/gifs/data_entry.gif)
-![data entry](https://github.com/DataCollectiveTeam/Data-Collective/blob/master/public/gifs/new_project.gif)
+### Users can create new projects open to public contribution.
+![new project](https://github.com/DataCollectiveTeam/Data-Collective/blob/master/public/gifs/new_project.gif)
+### Project contributors can submit data entries for any active project
+![data entry](https://github.com/DataCollectiveTeam/Data-Collective/blob/master/public/gifs/data_entry%20.gif)
+### Project creators can create visualizations using bar, line, and pie charts to help users to interpret project data
+![data visualization](https://github.com/DataCollectiveTeam/Data-Collective/blob/master/public/gifs/data_vis.gif)
 
-### Technologies Used:
+## Technologies Used:
 * [React.js:](https://reactjs.org/) Frontend
 * [Django REST Framework:](https://www.django-rest-framework.org/) Backend
 * [Heroku:](https://dashboard.heroku.com/) Web hosting
 
-### Dependencies:
+## Dependencies:
 * Axios: Promise-based HTTP client
 * React-router-dom: Document object bindings for React router
 * React-google-charts: React wrapper for dynamic visualizations
@@ -43,11 +48,11 @@ Michael Dunn-O’Connor - [GitHub](https://github.com/dunnoconnor) - [LinkedIn](
 
 Cole Rener - [GitHub](https://github.com/dishbin) - [LinkedIn](https://www.linkedin.com/in/cole-rener/)
 
-### Project Planning and Workflow
+## Project Planning and Workflow
 We used GitHub project pages for planning and managing our workflow.  We identified that creating users, projects, forms, and data entries were all crucial to our MVP so we began by developing backend models for each of these, with associated urls and views.  On the front end, we developed the react components and axios calls to interact with each database model.  When we had full CRUD functionality, we added data visualizations and discussion boards.  For each additional feature, we divided tasks and tracked progress on the project board.  This minimized merge conflicts and allowed us to focus on rapidly completing features.  For the final sprint, we used daily end-of-day checklists to plan backward from our launch date and ensure features would be completed on time.
 ![project plan](https://user-images.githubusercontent.com/37776449/135728176-50d12dce-2667-4a27-a95d-43a5f849736b.png)
 
-### Initial Project Wireframes
+## Initial Project Wireframes
 ![component heirarchy](https://user-images.githubusercontent.com/37776449/135728250-950e1021-70cb-4886-a557-1cc59d587b46.jpg)
 ![home feed](https://user-images.githubusercontent.com/37776449/135728254-86da3c85-8417-43d0-b437-e4bf9aa2a9ba.jpg)
 ![user profile view](https://user-images.githubusercontent.com/37776449/135728263-2147af88-fee4-4037-99ca-bd295ffee87c.jpg)
