@@ -72,6 +72,7 @@
 
 .card-title {
     margin: 0em auto;
+    padding: 0.5em 0em;
 }
 
 .card-image {
@@ -102,6 +103,10 @@
 
 .card-body {
     justify-self: baseline;
+}
+
+.heading-div {
+    height: 6em;
 }
 
 /*----- Mobile ------*/

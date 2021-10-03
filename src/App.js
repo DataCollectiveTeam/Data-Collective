@@ -5,7 +5,6 @@ import HomeView from './components/HomeView/HomeView';
 import ProjectView from './components/ProjectView/ProjectView';
 import User from './components/UserView/User';
 import Header from "./components/Header";
-import LogInModal from './components/Modals/LogInModal.jsx'
 import NewUserModal from './components/Modals/NewUserModal';
 import NewProjectModal from "./components/Modals/NewProjectModal";
 import { DataContext } from "./DataContext";
