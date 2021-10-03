@@ -24,9 +24,9 @@ Citizen Science projects also expand public understanding of the scientific rese
 * Creators can pin important discussions to the discussion board or delete off-topic posts
 
 ## Features Demonstrations
-![login](https://github.com/DataCollectiveTeam/Data-Collective/master/public/gifs/login.gif)
-![new project](https://github.com/DataCollectiveTeam/Data-Collective/master/public/gifs/new_project.gif)
-![data entry](https://github.com/DataCollectiveTeam/Data-Collective/master/public/gifs/data_entry.gif)
+![login](https://github.com/DataCollectiveTeam/Data-Collective/blob/master/public/gifs/login.gif)
+![new project](https://github.com/DataCollectiveTeam/Data-Collective/blob/master/public/gifs/data_entry.gif)
+![data entry](https://github.com/DataCollectiveTeam/Data-Collective/blob/master/public/gifs/new_project.gif)
 
 ### Technologies Used:
 * [React.js:](https://reactjs.org/) Frontend
