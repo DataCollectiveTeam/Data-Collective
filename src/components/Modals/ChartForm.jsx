@@ -31,15 +31,14 @@ const ChartForm = ({data, options, handleChange}) => {
                 <p>A bar chart requires one text field and one number field</p>
                 <p>The chart displays the value of the number field categorized by the selected text field</p>
                 <p>Bar Category</p>
-                <select className='dropdown-input' id='y_axis' defaultValue={options.y_axis[0]} onChange={handleChange}>
-                    {options.y_axis.map(option => {
+                <select className='dropdown-input' id='x_axis' defaultValue={options.x_axis[0]} onChange={handleChange}>
+                    {options.x_axis.map(option => {
                         return <option key={option} value={option}>{option}</option>
                     })}
                 </select>
                 <p>Bar Length</p>
-                <select className='dropdown-input' id='x_axis' defaultValue={options.x_axis[0]} onChange={handleChange}>
-
-                    {options.x_axis.map(option => {
+                <select className='dropdown-input' id='y_axis' defaultValue={options.y_axis[0]} onChange={handleChange}>
+                    {options.y_axis.map(option => {
                         return <option key={option} value={option}>{option}</option>
                     })}
                 </select>

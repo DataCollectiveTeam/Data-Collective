@@ -71,7 +71,7 @@ function DataVisItem({item, procData, project, dataVisChange, setDataVisChange})
             let sum = categorySort[cat].reduce((a, b) => a + b, 0)
             let avg = (sum/ categorySort[cat].length) || 0;
 
-            let val =[cat, avg, `color: ${colors[colorIndex]}`];
+            let val = [cat, avg, `color: ${colors[colorIndex]}`];
             data.push(val);
         }
 

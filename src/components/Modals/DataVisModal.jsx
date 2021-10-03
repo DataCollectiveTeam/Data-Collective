@@ -54,7 +54,7 @@ function DataVisModal({p, setShowDataVisModal, procData}) {
                 y.push(key)
             }
             if ((typeof data[key])==="string") {
-                y.push(key)
+                x.push(key)
             }
             }
         } else if (type==='PieChart'){
