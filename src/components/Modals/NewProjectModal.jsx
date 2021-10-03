@@ -50,8 +50,8 @@ function NewProjectModal({setNewProjectModal}) {
                 <input className='img-url-input' type='text' id='img' placeholder='image url for your project' onChange={handleChange} />
                 <textarea className='explaination-input' id='description' rows='5' placeholder='detailed explanation of your project' onChange={handleChange} />
                 <div>
-                    <button className='submit-project-button' type='button' onClick={handleSubmit} >start collecting</button>
-                    <button className='close-modal-button' type='button' onClick={() => setNewProjectModal(false)} >close</button> 
+                    <button className='submit-project-button' type='button' onClick={handleSubmit} ><i class="fas fa-check"></i></button>
+                    <button className='close-modal-button' type='button' onClick={() => setNewProjectModal(false)} ><i class="fas fa-times"></i></button> 
                 </div>
                 
                 

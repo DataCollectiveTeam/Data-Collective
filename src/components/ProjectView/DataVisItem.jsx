@@ -130,8 +130,8 @@ function DataVisItem({item, procData, project, dataVisChange, setDataVisChange})
             }
             {(project.admin_list.includes(parseInt(thisUser.id))) &&
                 <div className='vis-interaction-buttons'>
-                    <button className='edit-vis-button' type='button' onClick={editVis} >edit visualization</button>
-                    <button className='delete-vis-button' type='button' onClick={deleteVis} >delete visualization</button>
+                    <button className='edit-vis-button' type='button' onClick={editVis} ><i class="fas fa-edit"></i></button>
+                    <button className='delete-vis-button' type='button' onClick={deleteVis} ><i class="fas fa-trash"></i></button>
                 </div>
                 
             }

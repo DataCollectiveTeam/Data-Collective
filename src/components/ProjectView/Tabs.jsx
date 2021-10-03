@@ -7,7 +7,7 @@ import Discussion from './Discussion';
 import RawData from './RawData';
 import TabDescription from './TabDescription';
 
-function Tabs({project, data, setShowNewForm, addData, setAddData, dataDeleted, setDataDeleted, projectReload, setProjectReload}) {
+function Tabs({project, data, showNewForm, setShowNewForm, addData, setAddData, dataDeleted, setDataDeleted, projectReload, setProjectReload}) {
 
 
     const {thisUser} = useContext(DataContext);
@@ -115,6 +115,15 @@ function Tabs({project, data, setShowNewForm, addData, setAddData, dataDeleted, 
                     <button className='admin-button' id='admin' type='button' onClick={tabClick}>admin</button>
                 }
             </div>
+            <select className='tabs-dropdown' onChange={(e) => setTabState(e.target.value)} >
+                <option id='desc' value='desc' >description</option>
+                <option id='disc' value='disc' >discussion</option>
+                <option id='raw_data' value='raw_data' >view data</option>
+                <option id='data_vis' value='data_vis' >data visulaization</option>
+                {thisUser && (project.admin_list.some(admin => admin === parseInt(thisUser.id))) &&
+                    <option id='admin' value='admin' >admin</option>
+                }
+            </select>
             <div className='tab-viewer'>
                 {(tabState === 'desc') && 
                     <TabDescription project={project} />
@@ -129,7 +138,7 @@ function Tabs({project, data, setShowNewForm, addData, setAddData, dataDeleted, 
                     <DataVis procData={procData} project={project} />
                 }
                 {(tabState === 'admin') && 
-                    <AdminPanel p={project} setShowNewForm={setShowNewForm} procData={procData} projectReload={projectReload} setProjectReload={setProjectReload}/>
+                    <AdminPanel p={project} showNewForm={showNewForm} setShowNewForm={setShowNewForm} procData={procData} projectReload={projectReload} setProjectReload={setProjectReload}/>
                 }
             </div>
             

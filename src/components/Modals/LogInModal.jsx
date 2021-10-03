@@ -48,8 +48,8 @@ function LogInModal({setLogInModal}) {
                 <input className='password-input' type='password' id='password' placeholder='password' value={formState.password} onChange={handleChange}/>
                 {errorState ? <p className='login-failed'>login failed</p>: null}
                 <div className='buttons'>
-                    <button className='log-in-button' type='button' onClick={handleSubmit} >log in</button>
-                    <button className='close-modal-button' type='button' onClick={() => setLogInModal(false)} >close</button>
+                    <button className='log-in-button' type='button' onClick={handleSubmit} ><i class="fas fa-sign-in-alt"></i></button>
+                    <button className='close-modal-button' type='button' onClick={() => setLogInModal(false)} ><i class="fas fa-times"></i></button>
                 </div>
                 </div>
         </div>

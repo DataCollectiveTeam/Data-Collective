@@ -69,14 +69,13 @@ const EditUserModal = ({user, setEditUserModal}) => {
                 <input className='edit-user-input' type='text' id='name' placeholder='username' value={editedUser.name} onChange={handleChange}/>
                 <input className='edit-user-input' type='text' id='img' placeholder='image url' value={editedUser.img} onChange={handleChange}/>
                 <input className='edit-user-input' type='text' id='bio' placeholder='brief bio' value={editedUser.bio} onChange={handleChange}/>
-                <div>
-                    <button className='submit-edit-user' type='button' onClick={handleSubmit} >submit</button>
-                    <button className='close-modal-button' type='button' onClick={() => setEditUserModal(false)} >close</button> 
-                </div>
-                
                 <div className="delete-user-panel">
-                    { deleteButton ? <button className='delete-user-button' type='button' onClick={deleteUser} >permanently delete</button> : <button className='delete-citizen' type='button' onClick={() => setDeleteButton(true)}>delete citizen</button>}
-                    { deleteButton ? <button className='close-modal-button' type='button' onClick={() => setDeleteButton(false)} >cancel</button> : null}
+                    { deleteButton ? <button className='delete-user-button' type='button' onClick={deleteUser} >permanently delete</button> : <button className='delete-citizen' type='button' onClick={() => setDeleteButton(true)}>delete account</button>}
+                    { deleteButton ? <button className='close-modal-button' type='button' onClick={() => setDeleteButton(false)} ><i class="fas fa-ban"></i></button> : null}
+                </div>
+                <div>
+                    <button className='submit-edit-user' type='button' onClick={handleSubmit} ><i class="fas fa-check"></i></button>
+                    <button className='close-modal-button' type='button' onClick={() => setEditUserModal(false)} ><i class="fas fa-times"></i></button> 
                 </div>
             </div>
         </div>

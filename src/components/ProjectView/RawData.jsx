@@ -12,7 +12,7 @@ function RawData({procData, creator, admins, setAddData, dataDeleted, setDataDel
     return (
         <div className='RawData'>
             {(thisUser.id !== 0) &&
-                <button className='new-data-button' type='button' onClick={() => setAddData(true)} >log data</button>
+                <button className='new-data-button' type='button' onClick={() => setAddData(true)} ><i class="fas fa-clipboard-check"></i></button>
             }
             {procData.map(entry => {
                 return <DataPoint key={entry.id} point={entry} creator={creator} admins={admins} dataDeleted={dataDeleted} setDataDeleted={setDataDeleted}/>

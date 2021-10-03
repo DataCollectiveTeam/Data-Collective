@@ -194,8 +194,8 @@ function NewFormModal({setShowNewForm, thisProject}) {
                 : <button className='add-button' type='button' id='zipcode' onClick={handleClick} >add zipcode entry</button>  
                 } 
                 <div>
-                    <button className='submit-new-form-button' type='button' onClick={handleSubmit} >submit</button>       
-                    <button className='close-modal-button' type='button' onClick={() => setShowNewForm(false)}>cancel</button> 
+                    <button className='submit-new-form-button' type='button' onClick={handleSubmit} ><i class="fas fa-check"></i></button>       
+                    <button className='close-modal-button' type='button' onClick={() => setShowNewForm(false)}><i class="fas fa-times"></i></button> 
                 </div>
                 
             </div>

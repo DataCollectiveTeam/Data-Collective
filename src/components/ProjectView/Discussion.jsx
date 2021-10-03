@@ -75,7 +75,7 @@ function Discussion({project, admins}) {
                     <NewPost project={project} setShowNewPostModal={setShowNewPostModal} posted={posted} setPosted={setPosted}/>
                 }
                 {(thisUser.id !== 0) &&
-                    <button className='new-post-button' type='button' onClick={() => setShowNewPostModal(true)} >new post</button>
+                    <button className='new-post-button' type='button' onClick={() => setShowNewPostModal(true)} ><i class="fas fa-pen-nib"></i></button>
                 }
                 {(pinnedPosts && regPosts) &&
                     <div>

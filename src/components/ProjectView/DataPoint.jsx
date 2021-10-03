@@ -42,7 +42,7 @@ function DataPoint({point, admins, dataDeleted, setDataDeleted}) {
                 */}
                 {((admins.some(admin => admin === parseInt(thisUser.id)) === true) ||
                  (point.contributor === parseInt(thisUser.id))) &&
-                    <button className='delete-data-button' type='button' onClick={deletePoint} >delete data point</button> 
+                    <button className='delete-data-button' type='button' onClick={deletePoint} ><i class="fas fa-trash"></i></button> 
                 }
             </div>
         );

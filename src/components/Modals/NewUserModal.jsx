@@ -13,7 +13,7 @@ const NewUserModal = ({setNewUserModal}) => {
         name: '',
         password: '',
         confirmPassword: '',
-        img: 'https://www.drnitinborse.com/wp-content/uploads/2018/02/user-icon-300x300.png',
+        img: '',
         bio: ''
     }
     
@@ -39,6 +39,9 @@ const NewUserModal = ({setNewUserModal}) => {
             let newUserObj ={
                 ...formState,
                 account_created: new Date()
+            }
+            if (newUserObj.img === '') {
+                newUserObj.img = 'https://www.drnitinborse.com/wp-content/uploads/2018/02/user-icon-300x300.png'
             }
             const url = `${URL}/citizens/`
             axios.post(url, newUserObj)
@@ -71,8 +74,8 @@ const NewUserModal = ({setNewUserModal}) => {
                 {errorState.passwordMismatch ? <p className='login-failed'>passwords must match</p>: null}
                 {errorState.duplicateUser ? <p className='login-failed'>username taken</p>: null}
                 <div>
-                    <button className='create-account-button' type='button' onClick={handleSubmit} >create account</button>
-                    <button className='close-modal-button' type='button' onClick={() => setNewUserModal(false)} >close</button>
+                    <button className='create-account-button' type='button' onClick={handleSubmit} ><i class="fas fa-user-plus"></i></button>
+                    <button className='close-modal-button' type='button' onClick={() => setNewUserModal(false)} ><i class="fas fa-times"></i></button>
                 </div>
                 
                 

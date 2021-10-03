@@ -16,10 +16,10 @@
     background-color: whitesmoke;
     border: 2px solid #40483f;
     box-shadow: 0rem 0rem 2rem rgb(130, 130, 130);
-    width: 300px;
+    width: 275px;
     height: auto;
     border-radius: 1em;
-    padding: 1em 0em;
+    padding: 1em 0.5em;
 
     margin: 10rem auto;
     display: flex;
@@ -60,7 +60,7 @@
     border: 2px solid #7F8D7C;
     border-radius: 0.25em;
     box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
-    width: 5em;
+    width: 3em;
 }
 
 .log-in-button:hover, .close-modal-button:hover {
@@ -94,7 +94,7 @@
     border: 2px solid #7F8D7C;
     border-radius: 0.25em;
     box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
-    width: 8em;
+    width: 3em;
 }
 
 .create-account-button:hover {
@@ -133,7 +133,7 @@
     border: 2px solid #7F8D7C;
     border-radius: 0.25em;
     box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
-    width: 8em;
+    width: 3em;
 }
 
 .submit-project-button:hover {
@@ -172,7 +172,7 @@
     border: 2px solid #7F8D7C;
     border-radius: 0.25em;
     box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
-    width: 5em;
+    width: 3em;
 }
 
 .post-button:hover {
@@ -190,7 +190,7 @@
     border: 2px solid #7F8D7C;
     border-radius: 0.25em;
     box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
-    width: 8em;
+    width: 3em;
 }
 
 .confirm-edit-button:hover {
@@ -266,12 +266,16 @@
     border: 2px solid #7F8D7C;
     border-radius: 0.25em;
     box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
-    width: 5em;
+    width: 3em;
 }
 
 .data-submit-button:hover {
     color: #7F8D7C;
     background-color: whitesmoke;
+}
+
+.no-form-yet {
+    align-items: center;
 }
 
 /*----- DataVisModal ------*/
@@ -311,7 +315,7 @@
     border: 2px solid #7F8D7C;
     border-radius: 0.25em;
     box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
-    width: 5em;
+    width: 3em;
 }
 
 .submit-vis-button:hover {
@@ -353,7 +357,7 @@
     border: 2px solid #7F8D7C;
     border-radius: 0.25em;
     box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
-    width: 5em;
+    width: 3em;
 }
 
 .submit-new-form-button:hover {
@@ -381,7 +385,7 @@
     border: 2px solid #7F8D7C;
     border-radius: 0.25em;
     box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
-    width: 5em;
+    width: 3em;
 }
 
 .submit-edit-user:hover {
