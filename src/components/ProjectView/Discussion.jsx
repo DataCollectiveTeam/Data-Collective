@@ -24,7 +24,6 @@ function Discussion({project, admins}) {
         const url = `${URL}/posts/${thisPost.id}`
         axios.put(url, postToPin)
             .then(res => {
-                console.log(postToPin)
                 setPin(!pin)
             })
             .catch(console.error);
@@ -54,12 +53,8 @@ function Discussion({project, admins}) {
             axios.get(url2)
         ])
         .then(axios.spread((res1, res2) => {
-            console.log('POSTS', res1.data)
             setRegPosts(res1.data);
-            
-            console.log('PINNED', res2.data)
             setPinnedPosts(res2.data); 
-            
         } )) 
         .catch(console.error);   
     }, [showNewPostModal, wasDeleted, pin, posted, wasEdited])

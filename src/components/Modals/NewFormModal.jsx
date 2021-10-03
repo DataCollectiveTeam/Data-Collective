@@ -47,12 +47,10 @@ function NewFormModal({setShowNewForm, thisProject}) {
 
     const handleClick = (e) => {
         setFormState({...formState, [e.target.id]: !formState[e.target.id]});
-        console.log(formState)
     }
 
     const handleChange = (e) => {
         setFormState({...formState, [e.target.id]: e.target.value});
-        console.log(formState);
     }
 
     //posts formState to the form database
@@ -60,7 +58,6 @@ function NewFormModal({setShowNewForm, thisProject}) {
         setShowNewForm(false);
         const url = `${URL}/forms/`;
         axios.post(url, formState)
-            .then(res => console.log(res))
             .catch(console.error);
     }
 

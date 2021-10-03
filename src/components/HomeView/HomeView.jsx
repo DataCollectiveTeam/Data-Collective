@@ -17,7 +17,6 @@ const HomeView = () => {
         const url = `${URL}/projects/`;
         axios.get(url)
           .then(res => {
-            console.log(res)
             setProjects(res.data);
             })
           .catch(console.error);

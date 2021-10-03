@@ -5,9 +5,7 @@ import { DataContext } from '../../DataContext';
 const ProjectHeader = ({p}) => {
 
     const { URL } = useContext(DataContext);
-
-    console.log(p)
-
+    
     let dateOptions = {year: 'numeric', month: 'long', day: 'numeric'};
     const dateStarted = new Date(p.date_created).toLocaleDateString(undefined, dateOptions)
     const [creator, setCreator] = useState(null);

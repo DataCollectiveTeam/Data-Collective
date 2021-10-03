@@ -65,7 +65,6 @@ function EditVisModal({item, procData, p, setShowEditVisModal, dataVisChange, se
                 }
             }
         }
-        console.log(x,y)
         setOptions({x_axis: x, y_axis: y})
         setDataVis({...dataVis, chart_type: type, x_axis: x[0], y_axis: y[0]})
     }
@@ -121,7 +120,6 @@ function EditVisModal({item, procData, p, setShowEditVisModal, dataVisChange, se
     //update properties of datavis state object
     const handleChange = (e) => {
         setDataVis({...dataVis, [e.target.id]: e.target.value})
-        console.log(dataVis)
     }
 
     //put datavis to db
