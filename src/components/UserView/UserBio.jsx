@@ -11,7 +11,6 @@ const UserBio = ({user, setEditUserModal, setDeleteUserModal}) => {
       }, []);
 
     function checkOwner(){
-        console.log(thisUser, user)
         if (parseInt(thisUser.id) === parseInt(user.id)){
             setProfileOwner(true)
         }

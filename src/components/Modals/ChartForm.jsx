@@ -1,7 +1,6 @@
 import React from 'react';
 
 const ChartForm = ({data, options, handleChange}) => {
-    console.log(options)
 
     if (data.chart_type==="LineChart"){
         return(

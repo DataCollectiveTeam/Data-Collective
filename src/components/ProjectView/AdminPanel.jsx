@@ -52,7 +52,6 @@ const AdminPanel = ({p, showNewForm, setShowNewForm, procData, projectReload, se
         let newAdminList = {admin_list: [...p.admin_list, newAdminId]}
         const url = `${URL}/projects/${p.id}`
         axios.patch(url, newAdminList)
-            .then(res => console.log(res))
             .catch(console.error);
     }
 

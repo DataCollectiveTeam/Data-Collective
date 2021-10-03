@@ -19,7 +19,6 @@ const ProjectView = ({id}) => {
 
     //get info for this project and this project's data
     useEffect(() => {
-        console.log('RELOADING')
         const url = `${URL}/projects/${id}`;
         const url2 = `${URL}/project_data/${id}`
         axios.all([

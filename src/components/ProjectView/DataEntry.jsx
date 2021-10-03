@@ -6,7 +6,6 @@ import { DataContext } from '../../DataContext';
 function DataEntry({project}) {
 
     const {thisUser, URL } = useContext(DataContext);
-    console.log(project);
 
     //defaut form includes this projects id
     //also includes this user's id
@@ -104,14 +103,12 @@ function DataEntry({project}) {
     const postEntry = () => {
         const url = `${URL}/data_entries/`
         axios.post(url, dataEntry)
-            .then(res => console.log(res))
             .catch(console.error);
     }
 
     const addContributor = () => {
         const url = `${URL}/projects/${project.id}`;
         axios.put(url, {...project, contributor_list: [...project.contributor_list, thisUser.id]})
-            .then(res => console.log(res))
             .catch(console.error);
     }
 
