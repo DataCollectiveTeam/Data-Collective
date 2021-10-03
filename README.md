@@ -30,7 +30,7 @@ Citizen Science projects also expand public understanding of the scientific rese
 ![new project](https://github.com/DataCollectiveTeam/Data-Collective/blob/master/public/gifs/new_project.gif)
 ### Project contributors can submit data entries for any active project
 ![data entry](https://github.com/DataCollectiveTeam/Data-Collective/blob/master/public/gifs/data_entry%20.gif)
-### Project creators can create visualizations using bar, line, and pie charts to help users to interpret project data
+### Project creators can create visualizations using bar, line, and pie charts
 ![data visualization](https://github.com/DataCollectiveTeam/Data-Collective/blob/master/public/gifs/data_vis.gif)
 
 ## Technologies Used:
