@@ -23,6 +23,8 @@ Citizen Science projects also expand public understanding of the scientific rese
 * Creators and contributors can post discussion topics on a project page
 * Creators can pin important discussions to the discussion board or delete off-topic posts
 
+## Features Demonstrations
+
 ### Technologies Used:
 * [React.js:](https://reactjs.org/) Frontend
 * [Django REST Framework:](https://www.django-rest-framework.org/) Backend
