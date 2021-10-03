@@ -54,7 +54,7 @@ Michael is a software engineer and educator in Malden, MA\
 Cole is a botanist turned software engineer in Asheville, NC\
 [Portfolio](https://dishbin.github.io/)\
 [GitHub](https://github.com/dishbin)\
-[LinkedIn](https://www.linkedin.com/in/cole-rener/)\
+[LinkedIn](https://www.linkedin.com/in/cole-rener/)
 
 ## Project Planning and Workflow
 We used GitHub project pages for planning and managing our workflow.  We identified that creating users, projects, forms, and data entries were all crucial to our MVP so we began by developing backend models for each of these, with associated urls and views.  On the front end, we developed the react components and axios calls to interact with each database model.  When we had full CRUD functionality, we added data visualizations and discussion boards.  For each additional feature, we divided tasks and tracked progress on the project board.  This minimized merge conflicts and allowed us to focus on rapidly completing features.  For the final sprint, we used daily end-of-day checklists to plan backward from our launch date and ensure features would be completed on time.
