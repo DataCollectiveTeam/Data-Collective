@@ -3,10 +3,8 @@ import ProjectHeader from './ProjectHeader';
 import axios from "axios";
 import { DataContext } from "../../DataContext";
 import NewFormModal from "../Modals/NewFormModal";
-import AdminPanel from "./AdminPanel";
 import './ProjectView.css';
 import Tabs from "./Tabs";
-import NewPost from "./Posts/NewPost";
 
 const ProjectView = ({id}) => {
 
@@ -15,10 +13,13 @@ const ProjectView = ({id}) => {
     const [project, setProject] = useState(null);
     const [data, setData] = useState(null);
     const [showNewForm, setShowNewForm] = useState(false);
-    const [showNewPostModal, setShowNewPostModal] = useState(false);
+    const [addData, setAddData] = useState(false);
+    const [dataDeleted, setDataDeleted] = useState(false);
+    const [projectReload, setProjectReload] = useState(false);
 
     //get info for this project and this project's data
     useEffect(() => {
+        console.log('RELOADING')
         const url = `${URL}/projects/${id}`;
         const url2 = `${URL}/project_data/${id}`
         axios.all([
@@ -27,11 +28,10 @@ const ProjectView = ({id}) => {
         ])
         .then(axios.spread((res1, res2) => {
             setProject(res1.data);
-            console.log(res2)
-            setData(res2.data)
+            setData(res2.data);
         }))
         .catch(console.error)
-    }, [id]);
+    }, [id, addData, dataDeleted, projectReload]);
 
     if(data && project) {
         return (
@@ -39,17 +39,19 @@ const ProjectView = ({id}) => {
                 {(showNewForm === true) && 
                     <NewFormModal setShowNewForm={setShowNewForm} thisProject={id} />
                 }
-                {(showNewPostModal) && 
-                    <NewPost project={project} setShowNewPostModal={setShowNewPostModal}/>
-                }
                 <ProjectHeader p={project}/>
                 {project && 
                     <Tabs 
                         project={project} 
                         data={data} 
+                        showNewForm={showNewForm}
                         setShowNewForm={setShowNewForm}
-                        showNewPostModal={showNewPostModal}
-                        setShowNewPostModal={setShowNewPostModal}
+                        addData={addData}
+                        setAddData={setAddData}
+                        dataDeleted={dataDeleted}
+                        setDataDeleted={setDataDeleted}
+                        projectReload={projectReload}
+                        setProjectReload={setProjectReload}
                     />
                 }
             </div>

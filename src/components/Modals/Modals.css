@@ -13,13 +13,13 @@
 }
 
 .modal-textbox {
-    background-color: white;
-    border: 2px solid black;
+    background-color: whitesmoke;
+    border: 2px solid #40483f;
     box-shadow: 0rem 0rem 2rem rgb(130, 130, 130);
-    width: 20em;
+    width: 275px;
     height: auto;
     border-radius: 1em;
-    padding: 1em;
+    padding: 1em 0.5em;
 
     margin: 10rem auto;
     display: flex;
@@ -38,4 +38,386 @@
     align-items: center;
     justify-content: center;
     margin: 10px;
+}
+
+/*-------- LogInModal ---------*/
+
+.username-input, .password-input {
+    width: 20em;
+    margin: 0.5em auto;
+    padding: 0.25em;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+}
+
+.log-in-button, .close-modal-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 3em;
+}
+
+.log-in-button:hover, .close-modal-button:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
+}
+
+.login-failed {
+    font-style: italic;
+    font-weight: bold;
+    color: rgb(233, 105, 105);
+}
+
+/*------ NewUserModal ---------*/
+
+.img-url-input, .bio-input {
+    width: 20em;
+    margin: 0.5em auto;
+    padding: 0.25em;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+}
+
+.create-account-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 3em;
+}
+
+.create-account-button:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
+}
+
+/*------- NewProjectModal ----------*/
+
+.project-name-input, .heading-input {
+    width: 20em;
+    margin: 0.5em auto;
+    padding: 0.25em;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+}
+
+.explaination-input {
+    width: 20em;
+    margin: 0.5em auto;
+    padding: 0.25em;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.submit-project-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 3em;
+}
+
+.submit-project-button:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
+}
+
+/*-------- NewPostModal -------*/
+
+.post-title-input {
+    width: 20em;
+    margin: 0.5em auto;
+    padding: 0.25em;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+}
+
+.post-body-input {
+    width: 20em;
+    margin: 0.5em auto;
+    padding: 0.25em;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.post-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 3em;
+}
+
+.post-button:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
+}
+
+/*------ EditPostModal --------*/
+
+.confirm-edit-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 3em;
+}
+
+.confirm-edit-button:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
+}
+
+/*----- DeletePostModal -------*/
+
+.post-preview {
+    max-width: 15em;
+    margin: 0.5em auto;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    padding: 0.5em 2em;
+    text-align: left;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+}
+
+.yes-delete-button, .no-delete-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 8em;
+}
+
+.yes-delete-button:hover, .no-delete-button:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
+}
+
+/*----- DataEntry ------*/
+
+.int-input, .float-input, .zipcode-input, .lat-lon-input {
+    width: 20em;
+    margin: 0.5em auto;
+    padding: 0.25em;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+}
+
+.notes-input {
+    width: 20em;
+    margin: 1em auto;
+    padding: 0.25em;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.dropdown-input {
+    width: 10em;
+    margin: 0.5em auto;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+}
+
+.data-submit-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 3em;
+}
+
+.data-submit-button:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
+}
+
+.no-form-yet {
+    align-items: center;
+}
+
+/*----- DataVisModal ------*/
+
+.chart-title-input {
+    width: 20em;
+    margin: 0.5em auto;
+    padding: 0.25em;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+}
+
+.legend-toggle-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em auto;
+    margin-bottom: 1em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 10em;
+}
+
+.legend-toggle-button:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
+}
+
+.submit-vis-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 3em;
+}
+
+.submit-vis-button:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
+}
+
+/*---- FormCreateModal ------*/
+
+.form-modal {
+    align-items: center;
+}
+
+.add-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.5em 0.5em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 10em;
+}
+
+.add-button:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
+}
+
+.long{
+    width: 17em;
+}
+
+.submit-new-form-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 3em;
+}
+
+.submit-new-form-button:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
+}
+
+/*----- EditUserModal ------*/
+
+.edit-user-input {
+    width: 20em;
+    margin: 0.5em auto;
+    padding: 0.25em;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+}
+
+.submit-edit-user {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 3em;
+}
+
+.submit-edit-user:hover {
+    background-color: whitesmoke;
+    color: #7F8D7C;
+}
+
+.delete-user-button {
+    color:rgb(233, 105, 105);
+    background-color: whitesmoke;
+    border: 2px solid rgb(233, 105, 105);
+    margin: 0.25em;
+    border-radius: 0.25em;
+}
+
+.delete-user-button:hover {
+    background-color: rgb(233, 105, 105);
+    color: whitesmoke;
+}
+
+.delete-citizen {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    width: 8em;
+}
+
+.delete-citizen:hover {
+    background-color: whitesmoke;
+    color: #7F8D7C;
 }

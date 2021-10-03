@@ -30,7 +30,7 @@ const ProjectHeader = ({p}) => {
                 <div className='creator-info'>
                     <h2 className='project-title'>{p.name}</h2>
                     {creator && 
-                        <a href={`/citizens/${creator.id}`} ><h4>started by: {creator.name}</h4></a>
+                        <h4>started by: <a className='user-link' href={`/citizens/${creator.id}`} >{creator.name}</a></h4>
                     }
                     <h4>on {dateStarted}</h4>
                 </div>

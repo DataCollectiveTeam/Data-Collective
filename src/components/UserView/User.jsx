@@ -37,7 +37,7 @@ const User = ({id}) => {
     function getAList(url){
         axios.get(url)
         .then(res => {
-            setUserProjects(res.data);
+            setUserProjects(res.data.filter(proj => proj.creator === parseInt(id)));
         })
         .catch(console.error);
     }
@@ -53,7 +53,6 @@ const User = ({id}) => {
 
     if(user){
         return (
-            
             <div className="User">
                 {(editUserModal === true) && 
                 <EditUserModal user={user} setEditUserModal={setEditUserModal}/>

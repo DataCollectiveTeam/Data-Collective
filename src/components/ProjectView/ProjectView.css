@@ -1,13 +1,22 @@
+/*--------- ProjectView ----------*/
+
+.ProjectView {
+    background-color: #DEEEF7;
+}
+
 /*-------- ProjectHeader --------*/
 
 .ProjectHeader {
+    background-color: whitesmoke;
     display: flex;
     flex-direction: row;
-    border: 2px solid black;
-    border-radius: 1em;
+    border: 2px solid #7F8D7C;
+    border-top: none;
+    border-radius: 0em 0em 0.5em 0.5em;
     justify-content: space-between;
-    margin: 2em auto;
-    width: 800px;
+    margin: auto;
+    margin-bottom: 2em;
+    width: 45em;
     box-shadow: 0 1em 1em rgb(130, 130, 130);
     text-align: left;
 }
@@ -29,18 +38,73 @@
     border-radius: 1em;
     margin: 1em;
     padding: 1em;
+    width: 10em;
 }
 
-/*------- DatePoint -------*/
+.user-link {
+    text-decoration: none;
+    color: #5070B9;
+}
 
-.DataPoint {
-    border: 1px solid black;
-    border-radius: 1em;
+.user-link:hover {
+    color: #749eff;
+}
+
+/*-------- Tabs -----------*/
+
+.Tabs {
+    width: 50em;
+    max-width: 50em;
+    margin: auto;
+    margin-bottom: 5em;
+}
+
+.tab-buttons {
+    width: 100%;
+    transform: translateY(3px);
+}
+
+.tab-button {
+    width: 20%;
+    background-color: #7F8D7C;
+    border-radius: 0.5em 0.5em 0em 0em;
+    border: 2px solid #7F8D7C;
+    border-bottom: none;
+    color: whitesmoke;
+    outline: none;
+}
+
+.admin-button {
+    width: 20%;
+    background-color: #b080bd;
+    border-radius: 0.5em 0.5em 0em 0em;
+    border: 2px solid #b080bd;
+    border-bottom: none;
+    color: whitesmoke;
+}
+
+.reg-selected {
+    background-color: whitesmoke;
+    border-bottom: 2px solid whitesmoke;
+    color: #7F8D7C;
+}
+
+.admin-selected {
+    background-color: whitesmoke;
+    border-bottom: 2px solid whitesmoke;
+    color: #b080bd;
+}
+
+/*-------- ProjectDesc -------*/
+
+.TabDescription {
+    background-color: whitesmoke;
     padding: 1em;
-    margin: 1em;
-    box-shadow: 0 1em 1em rgb(130, 130, 130);
-}
+    border: 2px solid #7F8D7C;
+    max-width: 50em;
+    border-radius: 0em 0em 0.5em 0.5em;
 
+}
 
 /*------- Creator / Admin / Contributor Cards -------*/
 
@@ -52,18 +116,29 @@
     padding: 5px;
 }
 
+.list-label {
+    width: 6em;
+    text-align: right;
+}
+
 .CitizenCard {
+    background-color: whitesmoke;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     border-style: solid;
-    border: 2px solid black;
+    border: 2px solid #7F8D7C;
     padding: 1em;
     margin: 1em;
-    border-radius: 1em;
-    box-shadow: 0 1em 1em rgb(130, 130, 130);
+    border-radius: 0.25em;
+    box-shadow: 0 0.5em 1em rgb(130, 130, 130);
     height: 2em;
+    text-decoration: none;
+}
+
+.CitizenCard:hover h4{
+    color: #5070B9;
 }
 
 .CitizenCard h4 {
@@ -77,4 +152,454 @@
     width: 50px;
     overflow: hidden;
     margin: 0px 5px;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.5em;
+    background-color: whitesmoke;
+}
+
+/*------- Discussion -------*/
+
+.Discussion {
+    background-color: whitesmoke;
+    padding: 1em;
+    border: 2px solid #7F8D7C;
+    min-height: 30em;
+    display: flex;
+    flex-direction: column;
+    max-width: 50em;
+    border-radius: 0em 0em 0.5em 0.5em;
+}
+
+.new-post-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(75, 75, 75);
+    font-size: 16px;
+    height: 2em;
+    width: 3em;
+    align-self: flex-end;
+}
+
+.new-post-button:hover {
+    background-color: whitesmoke;
+    color: #7F8D7C;
+}
+
+/*------- Post ------------*/
+.Post {
+    width: 20em;
+    border: 2px solid #7F8D7C;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+    margin: 2em auto;
+    padding: 1em;
+    border-radius: 0.5em;
+    display: flex;
+    flex-direction: column;
+}
+
+.pin {
+    margin-right: 1em;
+}
+
+.post-buttons {
+    align-self: center;
+}
+
+.post-author-link {
+    font-weight: bold;
+    font-size: 12px;
+    text-decoration: none;
+    color: #5070B9;
+}
+
+.post-author-link:hover {
+    color: #749eff;
+}
+
+.edit-post-button {
+    color:#bbaf55;
+    background-color: whitesmoke;
+    border: 2px solid #bbaf55;
+    margin: 0.25em;
+    border-radius: 0.25em;
+}
+
+.delete-post-button {
+    color:rgb(233, 105, 105);
+    background-color: whitesmoke;
+    border: 2px solid rgb(233, 105, 105);
+    margin: 0.25em;
+    border-radius: 0.25em;
+}
+
+.edit-post-button:hover {
+    color:whitesmoke;
+    background-color: #bbaf55;
+}
+
+.delete-post-button:hover {
+    color:whitesmoke;
+    background-color: rgb(233, 105, 105);
+}
+
+.pin-post-button {
+    color:rgb(206, 118, 24);
+    background-color: whitesmoke;
+    border: 2px solid rgb(206, 118, 24);
+    margin: 0.25em;
+    border-radius: 0.25em;
+}
+
+.post-title {
+    margin-bottom: 0.25em;
+}
+
+.post-info {
+    margin-top: 0.25em; 
+    margin-bottom: 0.25em;
+}
+
+.pinned {
+    background-color: #DEEEF7;
+}
+
+.post-title-input {
+    width: 20em;
+    margin: 0.5em auto;
+    padding: 0.25em;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+}
+
+.post-body-input {
+    width: 20em;
+    margin: 0.5em auto;
+    padding: 0.25em;
+    background-color: whitesmoke;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/*-------- RawData --------*/
+
+.RawData {
+    background-color: whitesmoke;
+    padding: 1em;
+    border: 2px solid #7F8D7C;
+    min-height: 30em;
+    display: flex;
+    flex-direction: column;
+    max-width: 50em;
+    border-radius: 0em 0em 0.5em 0.5em;
+}
+
+.new-data-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(75, 75, 75);
+    font-size: 16px;
+    width: 3em;
+    height: 2em;
+    align-self: flex-end;
+}
+
+.new-data-button:hover {
+    background-color: whitesmoke;
+    color: #7F8D7C;
+}
+
+.DataPoint {
+    width: 20em;
+    border: 2px solid #7F8D7C;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+    margin: 2em auto;
+    padding: 1em;
+    border-radius: 0.5em;
+    display: flex;
+    flex-direction: column;
+}
+
+.delete-data-button {
+    color:rgb(233, 105, 105);
+    background-color: whitesmoke;
+    border: 2px solid rgb(233, 105, 105);
+    margin: 0.25em;
+    border-radius: 0.25em;
+    width: 2em;
+    align-self: flex-end;
+}
+
+.delete-data-button:hover {
+    color:whitesmoke;
+    background-color: rgb(233, 105, 105);
+}
+
+.label {
+    font-weight: bold;
+}
+
+/*-------- DataVis ----------*/
+
+.DataVis {
+    background-color: whitesmoke;
+    padding: 1em;
+    border: 2px solid #7F8D7C;
+    min-height: 30em;
+    display: flex;
+    flex-direction: column;
+    max-width: 50em;
+    border-radius: 0em 0em 0.5em 0.5em;
+}
+
+.DataVisItem {
+    width: 35em;
+    border: 2px solid #7F8D7C;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+    margin: 2em auto;
+    padding: 1em;
+    border-radius: 0.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chart {
+    margin: 2em auto;
+    border: 2px solid #7F8D7C;
+    box-shadow: 0em 0.5em 1em rgb(130, 130, 130);
+}
+
+.vis-interaction-buttons {
+    margin-bottom: 1em;
+}
+
+.edit-vis-button {
+    color:#bbaf55;
+    background-color: whitesmoke;
+    border: 2px solid #bbaf55;
+    margin: 0.25em;
+    border-radius: 0.25em;
+}
+
+.delete-vis-button {
+    color:rgb(233, 105, 105);
+    background-color: whitesmoke;
+    border: 2px solid rgb(233, 105, 105);
+    margin: 0.25em;
+    border-radius: 0.25em;
+}
+
+.edit-vis-button:hover {
+    color:whitesmoke;
+    background-color: #bbaf55;
+}
+
+.delete-vis-button:hover {
+    color:whitesmoke;
+    background-color: rgb(233, 105, 105);
+}
+
+/*-------- AdminPanel ----------*/
+
+.AdminPanel {
+    background-color: whitesmoke;
+    padding: 1em;
+    border: 2px solid #7F8D7C;
+    min-height: 30em;
+    display: flex;
+    flex-direction: column;
+    max-width: 50em;
+    align-items: center;
+    text-align: center;
+    border-radius: 0em 0em 0.5em 0.5em;
+}
+
+.edit-project-button {
+    color:#bbaf55;
+    background-color: whitesmoke;
+    border: 2px solid #bbaf55;
+    margin: 0.25em;
+    border-radius: 0.25em;
+    font-size: 16px;
+}
+
+.delete-project-button {
+    color:rgb(233, 105, 105);
+    background-color: whitesmoke;
+    border: 2px solid rgb(233, 105, 105);
+    margin: 0.25em;
+    border-radius: 0.25em;
+    font-size: 16px;
+}
+
+.edit-project-button:hover {
+    color:whitesmoke;
+    background-color: #bbaf55;
+}
+
+.delete-project-button:hover {
+    color:whitesmoke;
+    background-color: rgb(233, 105, 105);
+}
+
+.add-data-vis-button, .add-admin-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(75, 75, 75);
+    font-size: 16px;
+}
+
+.add-data-vis-button:hover, .add-admin-button:hover {
+    background-color: whitesmoke;
+    color: #7F8D7C;
+}
+
+.add-data-vis-button {
+    align-self: flex-end;
+}
+
+.add-admin-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-admin-button {
+    margin-top: 0em;
+}
+
+.add-admin-input {
+    color: #7F8D7C;
+    width: 15em;
+    font-size: 16px;
+    padding: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    margin-bottom: 0em;
+}
+.user-intellisense {
+    background-color: white;
+    color: #7F8D7C;
+    width: 15em;
+    font-size: 16px;
+    padding: 0.25em;
+    border: 1px solid #7F8D7C;
+    border-top: none;
+    margin: 0em;
+    position: relative;
+    z-index: 5;
+}
+
+.add-admin-sense {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.intellisense {
+    margin-top: 0em;
+    position: absolute;
+    z-index: 3;
+}
+
+.tabs-dropdown {
+    display: none;
+}
+
+/*------ Mobile -------*/
+
+@media only screen and (max-width: 415px) {
+    .ProjectView {
+        width: 100vw;
+    }
+
+    .Tabs {
+        width: 95%;
+    }
+
+    .tab-buttons {
+        display: flex;
+        align-items: baseline;
+    }
+
+    .ProjectHeader {
+        flex-direction: column;
+        width: 90%;
+        align-items: center;
+    }
+
+    .project-info {
+        flex-direction: column;
+    }
+
+    .card-list {
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+
+    .Post {
+        max-width: 85%;
+        margin: 1em auto;
+    }
+
+    .DataPoint {
+        max-width: 85%;
+        margin: 1em auto;
+    }
+
+    .DataVisItem {
+        max-width: 85%;
+    }
+
+    .add-admin-input {
+        width: 75%;
+    }
+
+    .add-admin-sense {
+        align-items: center;
+    }
+
+    .tab-buttons {
+        display: none;
+    }
+
+    .tabs-dropdown {
+        display: block;
+        width: 100%;
+        margin: 0.5em auto;
+        margin-bottom: none;
+        background-color: whitesmoke;
+        border: 2px solid #7F8D7C;
+        border-radius: 0.25em;
+        padding: 0.5em;
+        font-size: 16px;
+    }
+
+    .list-label {
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    .Tabs {
+        margin-top: none;
+        width: 90%;
+    }
 }

@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { DataContext } from '../../DataContext';
 
-function DataPoint({point, admins}) {
+function DataPoint({point, admins, dataDeleted, setDataDeleted}) {
 
     const {thisUser, URL} = useContext(DataContext);
 
@@ -19,7 +19,7 @@ function DataPoint({point, admins}) {
     const deletePoint = () => {
         const url = `${URL}/data_entries/${point.id}`;
         axios.delete(url)
-            .then(res => console.log(res))
+            .then(res => setDataDeleted(!dataDeleted))
             .catch(console.error);
     }
 
@@ -31,7 +31,7 @@ function DataPoint({point, admins}) {
                     maps through the dataToRender array 
                 */}
                 {dataToRender.map(pair => {
-                    return <p key={pair[0]}>{pair[0]}: {pair[1]}</p>
+                    return <p key={pair[0]}><span className='label' >{pair[0]}:</span> {pair[1]}</p>
                 })}
                 {/* 
                     if the currently logged in user is: 
@@ -42,7 +42,7 @@ function DataPoint({point, admins}) {
                 */}
                 {((admins.some(admin => admin === parseInt(thisUser.id)) === true) ||
                  (point.contributor === parseInt(thisUser.id))) &&
-                    <button type='button' onClick={deletePoint} >delete data point</button> 
+                    <button className='delete-data-button' type='button' onClick={deletePoint} ><i class="fas fa-trash"></i></button> 
                 }
             </div>
         );

@@ -37,24 +37,24 @@ function TabDescription({project}) {
     }, []);
 
     return (
-        <div>
+        <div className='TabDescription'>
             <h2>project description</h2>
             <p>{project.description}</p>
 
             <div className="creator card-list">
-                <h3>Creator</h3>
+                <h3 className='list-label'>Creator</h3>
                 <CitizenCard key={creator.id} c={creator}/>
             </div>
 
             <div className="admin card-list">
-                <h3>Admin</h3>
+                <h3 className='list-label'>Admins</h3>
                 {admin.map((c) => {
                     return <CitizenCard key={c.id} c={c} />
                 })}
             </div>
 
             <div className="contributor card-list">
-                    <h3>Contributors</h3>
+                    <h3 className='list-label'>Contributors</h3>
                     {contributors.map((c) => {
                         return <CitizenCard key={c.id} c={c} />
                     })}

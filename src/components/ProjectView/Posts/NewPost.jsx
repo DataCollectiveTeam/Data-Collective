@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { DataContext } from '../../../DataContext';
 
-function NewPost({project, setShowNewPostModal}) {
+function NewPost({project, setShowNewPostModal, posted, setPosted}) {
 
     console.log(project)
 
@@ -28,7 +28,7 @@ function NewPost({project, setShowNewPostModal}) {
         console.log(newPost)
         const url = `${URL}/posts/`
         axios.post(url, newPost)
-            .then(res => console.log(res))
+            .then(res => setPosted(!posted))
             .catch(console.error);
         setShowNewPostModal(false);
     }
@@ -36,10 +36,12 @@ function NewPost({project, setShowNewPostModal}) {
     return (
         <div className='modal-background'>
             <div className='modal-textbox'>
-               <input type='text' id='title' placeholder='title' value={newPost.title} onChange={handleChange} />
-                <textarea id='body' placeholder='discuss here' value={newPost.body} onChange={handleChange} />
-                <button type='button' onClick={handleSubmit} >post</button> 
-                <button type='button' onClick={() => setShowNewPostModal(false)} >cancel</button>
+                <input className='post-title-input' type='text' id='title' placeholder='title' value={newPost.title} onChange={handleChange} />
+                <textarea className='post-body-input' id='body' rows='5' placeholder='discuss here' value={newPost.body} onChange={handleChange} />
+                <div>
+                    <button className='post-button' type='button' onClick={handleSubmit} ><i class="fas fa-plus"></i></button> 
+                    <button className='close-modal-button' type='button' onClick={() => setShowNewPostModal(false)} ><i class="fas fa-times"></i></button>
+                </div>
             </div>
         </div>
     );

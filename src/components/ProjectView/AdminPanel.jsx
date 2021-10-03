@@ -3,8 +3,9 @@ import EditProjectModal from '../Modals/EditProjectModal';
 import axios from 'axios';
 import DataVisModal from '../Modals/DataVisModal';
 import { DataContext } from '../../DataContext';
+import DeleteProjectModal from '../Modals/DeleteProjectModal';
 
-const AdminPanel = ({p, setShowNewForm}) => {
+const AdminPanel = ({p, showNewForm, setShowNewForm, procData, projectReload, setProjectReload}) => {
 
     const { URL } = useContext(DataContext);
 
@@ -15,6 +16,8 @@ const AdminPanel = ({p, setShowNewForm}) => {
     const [filteredUsers, setFilteredUsers] = useState(null);
     const [showUsers, setShowUsers] = useState(false);
     const [showDataVisModal, setShowDataVisModal] = useState(false);
+    const [deleteProjectModal, setDeleteProjectModal] = useState(false);
+    const [hasForm, setHasForm] = useState(false);
     
     //displays edit project modal
     const editProject = () => {
@@ -53,45 +56,88 @@ const AdminPanel = ({p, setShowNewForm}) => {
             .catch(console.error);
     }
 
-    const deleteProject = () => {
-        const url = URL;
-        axios.delete(`${url}/projects/${p.id}`)
-        .then(res => console.log(res))
-        .catch(console.error);
-    }
-
     useEffect(() => {
         const url = `${URL}/citizens/`
-        axios.get(url)
-            .then(res => setUsers(res.data))
-            .catch(console.error);
-    }, [])
+        const url2 = `${URL}/formgrab/${p.id}`
+        axios.all([
+            axios.get(url),
+            axios.get(url2)
+        ])
+        .then(axios.spread((res1, res2) => {
+            setUsers(res1.data)
+            if (res2.data.length > 0) {
+                setHasForm(true);
+            }
+        }))
+        .catch(console.error);
+    }, [showNewForm])
 
     return (
-        <div>
+        <div className='AdminPanel'>
+            {deleteProjectModal &&
+                <DeleteProjectModal 
+                    p={p} 
+                    setDeleteProjectModal={setDeleteProjectModal} 
+                />
+            }
             {showEditModal &&
-                <EditProjectModal p={p} setShowEditModal={setShowEditModal}/>
+                <EditProjectModal 
+                    p={p} 
+                    setShowEditModal={setShowEditModal}
+                    projectReload={projectReload}
+                    setProjectReload={setProjectReload}
+                />
             }
             {showDataVisModal &&
-                <DataVisModal p={p} setShowDataVisModal={setShowDataVisModal} />
+                <DataVisModal 
+                    p={p} 
+                    setShowDataVisModal={setShowDataVisModal} 
+                    procData={procData}
+                />
             }
             <div className='project-admin-buttons'>
-                <button type='button' onClick={() => setShowNewForm(true)} >add new form</button> 
-                <button className='edit-project-button' type='button' onClick={editProject} ><span className='far fa-edit'>Edit</span></button>
-                <button className='delete-project-button' type='button' onClick={deleteProject} ><span className='far fa-trash-alt'>Delete</span></button>
-                <div className='add-admin-div'>
-                    <input type='text' placeholder='add admin' value={newAdmin} onChange={adminChange} />
-                    <button type='button' onClick={addAdmin}>add admin</button>
-                    {showUsers && 
-                        <div className='user-intellisense'>
-                            {filteredUsers.map(user => {
-                                return <p key={user.name} onClick={() => {setNewAdminId(user.id); setNewAdmin(user.name)}}>{user.name}</p>
-                            })}
-                        </div>
-                    }
+                <div>
+                    <h4>Data Entry Form</h4>
+                {(!hasForm) ? 
+                    <div>
+                        <button className='add-admin-button' type='button' onClick={() => setShowNewForm(true)} >add new form</button> 
+                    </div>
+                    :
+                    <div>
+                        <h5>This project has a data entry form.</h5>
+                        <h5>If you are unsatisifed with this form, you will need to delete this project and start a new one.</h5>
+                    </div>
+                } 
                 </div>
-                <button type='button' onClick={() => setShowDataVisModal(true)} >add data visualization</button>
-            </div>
+                
+                <div>
+                    <h4>Project Controls</h4>
+                    <div>
+                        <button className='edit-project-button' type='button' onClick={editProject} ><span className='far fa-edit'></span></button>
+                        <button className='delete-project-button' type='button' onClick={() => setDeleteProjectModal(true)} ><span className='far fa-trash-alt'></span></button>
+                    </div>
+                </div>
+                <div>
+                    <h4>Add a data visualization for your data</h4>
+                   <button className='add-data-vis-button' type='button' onClick={() => setShowDataVisModal(true)} >add data visualization</button>
+                </div>
+                <div className='add-admin-div'>
+                    <h4>Add admins to your project</h4>
+                    <div className='add-admin-sense'>
+                        <div>
+                            <input className='add-admin-input' type='text' placeholder='add admin' value={newAdmin} onChange={adminChange} />
+                            {showUsers && 
+                                filteredUsers.map(user => {
+                                    return <p className='user-intellisense' key={user.name} onClick={() => {setNewAdminId(user.id); setNewAdmin(user.name)}}>{user.name}</p>
+                                })
+                            } 
+                        </div>
+                        <button className='add-admin-button' type='button' onClick={addAdmin}><i class="fas fa-user-plus"></i></button>
+                    </div>
+                    
+                </div>
+                
+                </div>
         </div>
     );
 };

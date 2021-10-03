@@ -1,5 +1,7 @@
+/*---------- Header ------------*/
+
 .Header {
-    background-color: gray;
+    background-color: #7F8D7C;
     top: 0;
     left: 0;
     margin-top: 0em;
@@ -7,21 +9,54 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 1em;
+    padding: 1em 0em;
 }
 
 .home-link {
     text-decoration: none;
     color: white;
+    margin-left: 1em;
 }
+
+/*------------ UserInteraction ------------*/
 
 .user-interaction {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid black;
     margin: 1em;
+    background-color: #DEEEF7;
+    padding: 0.25em;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(75, 75, 75);
+}
+
+.profile-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1em;
+    background-color: #DEEEF7;
+    padding: 1em;
+    border-radius: 0.25em;
+}
+
+.interaction-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    width: 6em;
+    padding: 0.25em;
+    margin: 0.25em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+}
+
+.interaction-button:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
 }
 
 .profile {
@@ -30,6 +65,7 @@
     justify-content: space-around;
     align-items: center;
     padding: 5px;
+    text-decoration: none;
 }
 
 .profile h4 {
@@ -43,4 +79,44 @@
     width: 50px;
     overflow: hidden;
     margin: 0px 5px;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+    border: 2px solid whitesmoke;
+    border-radius: 0.25em;
+}
+
+/*----- Mobile ------*/
+
+/*------ 770px or less -------*/
+
+@media only screen and (max-width: 770px) {
+    .Header {
+        width: 100vw;
+        align-items: center;
+        margin: 0em;
+    }
+}
+
+@media only screen and (max-width: 415px) {
+    .Header {
+        flex-direction: column;
+        width: 100vw;
+        align-items: center;
+        padding-left: none;
+        padding-right: none;
+        margin: 0em;
+    }
+
+    .user-interaction {
+        flex-direction: row;
+        width: 80%;
+        margin: 0.25em 0em;
+    }
+
+    .interaction-buttons {
+        text-align: center;
+    }
+
+    .home-link {
+        font-size: 30px;
+    }
 }

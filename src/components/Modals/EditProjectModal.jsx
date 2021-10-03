@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { DataContext } from '../../DataContext';
 
-const EditProjectModal = ({p, setShowEditModal}) => {
+const EditProjectModal = ({p, setShowEditModal, projectReload, setProjectReload}) => {
     
     //get current user from DataContext
     const { thisUser, URL } = useContext(DataContext);
@@ -21,7 +21,7 @@ const EditProjectModal = ({p, setShowEditModal}) => {
     }
 
     const handleSubmit = () => {
-        setShowEditModal(false);
+        
         let editedProjectObj = {
             ...editedProject,
             creator: thisUser.id,
@@ -30,20 +30,26 @@ const EditProjectModal = ({p, setShowEditModal}) => {
         }
         
         const url = URL;
-        axios.put(`${url}projects/${p.id}`, editedProjectObj)
-            .then(res => console.log(res))
+        axios.put(`${url}/projects/${p.id}`, editedProjectObj)
+            .then(res => {
+                setProjectReload(!projectReload)
+                setShowEditModal(false)
+            })
             .catch(console.error);
     }
 
     return (
         <div className='modal-background'>
             <div className='modal-textbox'>
-                <input type='text' id='name' placeholder='project name' value={editedProject.name} onChange={handleChange} />
-                <input type='text' id='header' placeholder='quick explanation of your project' value={editedProject.header} onChange={handleChange} />
-                <input type='text' id='img' placeholder='image url for your project' value={editedProject.img} onChange={handleChange} />
-                <textarea id='description' placeholder='detailed explanation of your project' value={editedProject.description} onChange={handleChange} />
-                <button type='button' onClick={handleSubmit} >submit changes</button>
-                <button type='button' onClick={() => setShowEditModal(false)} >close</button>
+                <input className='project-name-input' type='text' id='name' placeholder='project name' value={editedProject.name} onChange={handleChange} />
+                <input className='heading-input' type='text' id='header' placeholder='quick explanation of your project' value={editedProject.header} onChange={handleChange} />
+                <input className='img-url-input' type='text' id='img' placeholder='image url for your project' value={editedProject.img} onChange={handleChange} />
+                <textarea className='explaination-input' id='description' rows='5' placeholder='detailed explanation of your project' value={editedProject.description} onChange={handleChange} />
+                <div>
+                    <button className='submit-project-button' type='button' onClick={handleSubmit} ><i class="fas fa-check"></i></button>
+                    <button className='close-modal-button' type='button' onClick={() => setShowEditModal(false)} ><i class="fas fa-times"></i></button> 
+                </div>
+                
             </div>
         </div>
     );

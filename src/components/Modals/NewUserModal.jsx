@@ -31,7 +31,6 @@ const NewUserModal = ({setNewUserModal}) => {
 
     //if passwords match, post new citizen to database
     const handleSubmit = () => {
-        setNewUserModal(false);
         console.log(formState)
         if (formState.password !== formState.confirmPassword){
             setFormState(defaultForm)
@@ -40,6 +39,9 @@ const NewUserModal = ({setNewUserModal}) => {
             let newUserObj ={
                 ...formState,
                 account_created: new Date()
+            }
+            if (newUserObj.img === '') {
+                newUserObj.img = 'https://www.drnitinborse.com/wp-content/uploads/2018/02/user-icon-300x300.png'
             }
             const url = `${URL}/citizens/`
             axios.post(url, newUserObj)
@@ -64,15 +66,19 @@ const NewUserModal = ({setNewUserModal}) => {
     return (
         <div className='modal-background'>
             <div className='modal-textbox'>
-                <input type='text' id='name' placeholder='username' value={formState.name} onChange={handleChange}/>
-                <input type='password' id='password' placeholder='password' value={formState.password} onChange={handleChange}/>
-                <input type='password' id='confirmPassword' placeholder='confirm password' value={formState.confirmPassword} onChange={handleChange}/>
-                <input type='text' id='img' placeholder='image url' value={formState.img} onChange={handleChange}/>
-                <input type='text' id='bio' placeholder='brief bio' value={formState.bio} onChange={handleChange}/>
-                {errorState.passwordMismatch ? <p>passwords must match</p>: null}
-                {errorState.duplicateUser ? <p>username taken</p>: null}
-                <button type='button' onClick={handleSubmit} >create account</button>
-                <button type='button' onClick={() => setNewUserModal(false)} >close</button>
+                <input className='username-input' type='text' id='name' placeholder='username' value={formState.name} onChange={handleChange}/>
+                <input className='password-input' type='password' id='password' placeholder='password' value={formState.password} onChange={handleChange}/>
+                <input className='password-input' type='password' id='confirmPassword' placeholder='confirm password' value={formState.confirmPassword} onChange={handleChange}/>
+                <input className='img-url-input' type='text' id='img' placeholder='image url' value={formState.img} onChange={handleChange}/>
+                <input className='bio-input' type='text' id='bio' placeholder='brief bio' value={formState.bio} onChange={handleChange}/>
+                {errorState.passwordMismatch ? <p className='login-failed'>passwords must match</p>: null}
+                {errorState.duplicateUser ? <p className='login-failed'>username taken</p>: null}
+                <div>
+                    <button className='create-account-button' type='button' onClick={handleSubmit} ><i class="fas fa-user-plus"></i></button>
+                    <button className='close-modal-button' type='button' onClick={() => setNewUserModal(false)} ><i class="fas fa-times"></i></button>
+                </div>
+                
+                
             </div>
         </div>
     );

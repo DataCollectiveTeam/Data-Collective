@@ -19,6 +19,7 @@ const UserBio = ({user, setEditUserModal, setDeleteUserModal}) => {
     
     let dateOptions = {year: 'numeric', month: 'long', day: 'numeric'};
     let date = new Date(Date(user.account_created)).toLocaleDateString(undefined, dateOptions)
+    
     return (
         <div className='UserBio'>
             <div className='user-profile'>
@@ -31,7 +32,7 @@ const UserBio = ({user, setEditUserModal, setDeleteUserModal}) => {
             </div>
             <div className='profile-interaction'>
             
-            {profileOwner ? <button type='button' onClick={() => setEditUserModal(true)}>edit profile</button> : null}
+            {profileOwner ? <button className='user-edit-button' type='button' onClick={() => setEditUserModal(true)}>edit profile</button> : null}
             
             </div>
         </div>

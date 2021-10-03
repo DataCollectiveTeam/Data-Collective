@@ -6,7 +6,7 @@ import { DataContext } from '../../DataContext';
 function LogInModal({setLogInModal}) {
 
     //get function to update current user from DataContext
-    const { setThisUser, URL } = useContext(DataContext);
+    const { thisUser, setThisUser, URL } = useContext(DataContext);
 
     //default the form state to empty strings
     const defaultForm = {name: '', password: ''}
@@ -22,7 +22,6 @@ function LogInModal({setLogInModal}) {
 
     //get citizen by username and password
     const handleSubmit = () => {
-        setLogInModal(false);
         const url = `${URL}/citizens/login/${formState.name}&${formState.password}`
         axios.get(url)
             .then(res => {
@@ -45,12 +44,14 @@ function LogInModal({setLogInModal}) {
     return (
         <div className='modal-background'>
             <div className='modal-textbox'>
-                <input type='text' id='name' placeholder='name' value={formState.name} onChange={handleChange}/>
-                <input type='password' id='password' placeholder='password' value={formState.password} onChange={handleChange}/>
-                {errorState ? <p>login failed</p>: null}
-                <button type='button' onClick={handleSubmit} >log in</button>
-                <button type='button' onClick={() => setLogInModal(false)} >close</button>
-            </div>
+                <input className='username-input' type='text' id='name' placeholder='name' value={formState.name} onChange={handleChange}/>
+                <input className='password-input' type='password' id='password' placeholder='password' value={formState.password} onChange={handleChange}/>
+                {errorState ? <p className='login-failed'>login failed</p>: null}
+                <div className='buttons'>
+                    <button className='log-in-button' type='button' onClick={handleSubmit} ><i class="fas fa-sign-in-alt"></i></button>
+                    <button className='close-modal-button' type='button' onClick={() => setLogInModal(false)} ><i class="fas fa-times"></i></button>
+                </div>
+                </div>
         </div>
     );
 }

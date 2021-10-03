@@ -2,6 +2,9 @@
 
 .User {
     text-align: center;
+    background-color: #DEEEF7;
+    margin-top: 0em;
+    margin-bottom: 5em;
 }
 
 .projects-header {
@@ -12,12 +15,14 @@
 /*------ UserBio ------*/
 
 .UserBio {
+    background-color: whitesmoke;
     display: flex;
     flex-direction: row;
-    border: 2px solid black;
-    border-radius: 1em;
+    border: 2px solid #7F8D7C;
+    border-top: none;
+    border-radius: 0em 0em 0.5em 0.5em;
     justify-content: space-between;
-    margin: 2em auto;
+    margin: auto;
     width: 500px;
     box-shadow: 0 1em 1em rgb(130, 130, 130);
     text-align: left;
@@ -33,9 +38,10 @@
 .user-profile-img {
     max-width: 100px;
     max-height: 100px;
-    border-radius: 1em;
+    border-radius: 0.5em;
     margin: 1em;
     box-shadow: 0 1em 1em rgb(130, 130, 130);
+    border: 3px solid #7F8D7C;
 }
 
 .user-info {
@@ -46,9 +52,40 @@
     font-style: italic;
 }
 
+.user-edit-button {
+    background-color: #7F8D7C;
+    color: whitesmoke;
+    padding: 0.25em;
+    margin: 1em;
+    border: 2px solid #7F8D7C;
+    border-radius: 0.25em;
+    box-shadow: 0em 0.25em 0.5em rgb(130, 130, 130);
+}
+
+.user-edit-button:hover {
+    color: #7F8D7C;
+    background-color: whitesmoke;
+}
+
 /*------ UserProjects -------*/
 
 .UserProjects {
     display: flex;
     flex-wrap: wrap;
 }
+
+/*----- Mobile ------*/
+
+@media only screen and (max-width: 415px) {
+    .UserBio {
+        flex-direction: column;
+        width: 95%;
+        align-content: center;
+        text-align: center;
+    }
+
+    .user-profile {
+        flex-direction: column;
+    }
+}
+

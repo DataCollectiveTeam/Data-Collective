@@ -1,13 +1,13 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { DataContext } from '../../DataContext';
 import AdminPanel from './AdminPanel';
-import DataEntry from './DataEntry';
+import DataEntry from '../Modals/DataEntry';
 import DataVis from './DataVis';
 import Discussion from './Discussion';
 import RawData from './RawData';
 import TabDescription from './TabDescription';
 
-function Tabs({project, data, setShowNewForm, showNewPostModal, setShowNewPostModal}) {
+function Tabs({project, data, showNewForm, setShowNewForm, addData, setAddData, dataDeleted, setDataDeleted, projectReload, setProjectReload}) {
 
 
     const {thisUser} = useContext(DataContext);
@@ -17,11 +17,10 @@ function Tabs({project, data, setShowNewForm, showNewPostModal, setShowNewPostMo
 
     const [tabState, setTabState] = useState(defaultTabState);
     const [procData, setProcData] = useState(null);
+
     //regexs to check for when processing data
     let labelRegEx = '_label';
     let optionsRegEx = 'Options';
-
-    
 
     const processData = () => {
         let processedData = [];
@@ -77,40 +76,69 @@ function Tabs({project, data, setShowNewForm, showNewPostModal, setShowNewPostMo
 
     }
 
+    const tabClick = (e) => {
+        let buttons = document.getElementsByClassName('tab-button');
+        let tabButtons = [...buttons];
+        tabButtons.forEach(button => {
+            button.classList.remove('reg-selected');
+        })
+        let adminButton = document.getElementById('admin');
+        if (adminButton !== null) {
+            adminButton.classList.remove('admin-selected');
+        }
+        let clickedId = e.target.id;
+        let clicked = document.getElementById(clickedId);
+        if (clickedId === 'admin') {
+            clicked.classList.add('admin-selected');
+            setTabState(clickedId)
+        } else {
+            clicked.classList.add('reg-selected');
+            setTabState(clickedId)
+        }
+    }   
+
     useEffect(() => {
         processData();
-    }, [])
+    }, [data])
 
     return (
         <div className='Tabs'>
-            <div className='buttons'>
-                <button type='button' onClick={() => setTabState('desc')}>description</button>
-                <button type='button' onClick={() => setTabState('disc')}>discussion</button>
-                <button type='button' onClick={() => setTabState('data_entry')}>enter data</button>
-                <button type='button' onClick={() => setTabState('raw_data')}>view data</button>
-                <button type='button' onClick={() => setTabState('data_vis')}>data visulaization</button>
+            {(addData) && 
+                <DataEntry project={project} setAddData={setAddData}/>
+            }
+            <div className='tab-buttons' id='tab-buttons'>
+                <button className='tab-button reg-selected' id='desc' type='button' onClick={tabClick}>description</button>
+                <button className='tab-button' id='disc' type='button' onClick={tabClick}>discussion</button>
+                <button className='tab-button' id='raw_data' type='button' onClick={tabClick}>view data</button>
+                <button className='tab-button' id='data_vis' type='button' onClick={tabClick}>data visulaization</button>
                 {thisUser && (project.admin_list.some(admin => admin === parseInt(thisUser.id))) && 
-                    <button type='button' onClick={() => setTabState('admin')}>admin</button>
+                    <button className='admin-button' id='admin' type='button' onClick={tabClick}>admin</button>
                 }
             </div>
+            <select className='tabs-dropdown' onChange={(e) => setTabState(e.target.value)} >
+                <option id='desc' value='desc' >description</option>
+                <option id='disc' value='disc' >discussion</option>
+                <option id='raw_data' value='raw_data' >view data</option>
+                <option id='data_vis' value='data_vis' >data visulaization</option>
+                {thisUser && (project.admin_list.some(admin => admin === parseInt(thisUser.id))) &&
+                    <option id='admin' value='admin' >admin</option>
+                }
+            </select>
             <div className='tab-viewer'>
                 {(tabState === 'desc') && 
                     <TabDescription project={project} />
                 }
-                {(tabState === 'data_entry') && 
-                    <DataEntry project={project}/>
-                }
                 {(tabState === 'disc') &&
-                    <Discussion project={project.id} admins={project.admin_list} showNewPostModal={showNewPostModal} setShowNewPostModal={setShowNewPostModal} />
+                    <Discussion project={project} admins={project.admin_list} />
                 }
                 {(tabState === 'raw_data') && 
-                    <RawData procData={procData} creator={project.creator} admins={project.admin_list} />
+                    <RawData procData={procData} creator={project.creator} admins={project.admin_list} setAddData={setAddData} dataDeleted={dataDeleted} setDataDeleted={setDataDeleted} />
                 }
                 {(tabState === 'data_vis') && 
                     <DataVis procData={procData} project={project} />
                 }
                 {(tabState === 'admin') && 
-                    <AdminPanel p={project} setShowNewForm={setShowNewForm} procData={procData}/>
+                    <AdminPanel p={project} showNewForm={showNewForm} setShowNewForm={setShowNewForm} procData={procData} projectReload={projectReload} setProjectReload={setProjectReload}/>
                 }
             </div>
             

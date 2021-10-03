@@ -5,10 +5,10 @@ import HomeView from './components/HomeView/HomeView';
 import ProjectView from './components/ProjectView/ProjectView';
 import User from './components/UserView/User';
 import Header from "./components/Header";
-import LogInModal from './components/Modals/LogInModal.jsx'
 import NewUserModal from './components/Modals/NewUserModal';
 import NewProjectModal from "./components/Modals/NewProjectModal";
 import { DataContext } from "./DataContext";
+import SplashPage from './components/SplashPage';
 
 function App() {
 
@@ -24,7 +24,7 @@ function App() {
     //check whether there is a user in localstorage
     function checkSessionUser() {
       const sessionName = localStorage.getItem("name");
-      const sessionID = localStorage.getItem("id");
+      const sessionID = parseInt(localStorage.getItem("id"));
       const sessionImg = localStorage.getItem("img");
       if (sessionName && sessionID) {
         setThisUser({...thisUser, name: sessionName, id: sessionID, img: sessionImg});
@@ -42,14 +42,14 @@ function App() {
     
   return (
     <div className="App">
+      <div className='background-div'></div>
       <DataContext.Provider value={{
         thisUser, 
         setThisUser, 
-        URL
+        URL,
+        defaultUser,
+        setIsLoggedIn
       }}>
-      {(logInModal === true) && 
-        <LogInModal setLogInModal={setLogInModal}/>
-      }
       {(newUserModal === true) && 
         <NewUserModal setNewUserModal={setNewUserModal}/>
       }
@@ -57,6 +57,7 @@ function App() {
         <NewProjectModal setNewProjectModal={setNewProjectModal} />
       }
       <Header 
+        logInModal={logInModal}
         setLogInModal={setLogInModal} 
         setNewUserModal={setNewUserModal}
         setNewProjectModal={setNewProjectModal}
@@ -64,7 +65,13 @@ function App() {
         setIsLoggedIn={setIsLoggedIn}
       />
       <main>
-        <Route path="/" 
+        <Route path='/'
+          exact
+          render={() => 
+            <SplashPage newUserModal={newUserModal} setNewUserModal={setNewUserModal} />
+          }
+        />
+        <Route path="/projects" 
           exact 
           render={() => 
             <HomeView />
